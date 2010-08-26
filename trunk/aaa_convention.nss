@@ -34,13 +34,21 @@ s'y retrouver à l'avenir.
       
     Les préfixes changent en fonction de l'utilisation du script dans le module.
     
-    1. Cas d'une utilisation générale (c'est à dire que le script doit forcément être utilisé dans
-    les évènements du module et avoir une portée globale). Dans ce cas le préfixe est égal aux trois
-    lettres définissant son système. Si le script appartient au coeur du système il sera affublé du
-    préfixe cos.
+    1. Cas d'un script de type bibliothèque (c'est à dire que le script intègre des fonctions générales
+    qui ne sont pas forcément propres au fonctionnement du moteur du module mais qui peuvent être utilisées
+    partout).
+            
+            AAA : usu
     
-    2. Cas d'une utilisation spécifique à une aire (c'est à dire que le script doit nécessairement
-    être contenu dans un des objets de l'aire).    
+    2. Cas d'une utilisation générale (c'est à dire que le script doit forcément être utilisé dans
+    les évènements du module et avoir une portée globale).
+            
+            AAA : Groupe de trois lettres correspondant au système auquel le script appartient.
+    
+    3. Cas d'une utilisation spécifique à une aire (c'est à dire que le script doit nécessairement
+    être contenu dans un des objets de l'aire ou dans l'un des évènements de l'aire).
+            
+            AAA : Numéro de l'aire concernée, c'est à dire 000 si le script correspond à l'aire area000.    
 
       - Types de scripts
       ------------------
@@ -48,6 +56,7 @@ s'y retrouver à l'avenir.
     EV : Correspond à tous les scripts qui sont appelés par les évènements ces scripts sont compilés
          en NCS.
     IN : Correspond aux scripts qui sont inclus dans d'autres, ils servent en général de bibliothèques.
+    DL : Correspond aux scripts qui sont utilisés dans un dialogue ou une conversation.
 
       - Convention de description
       ---------------------------
