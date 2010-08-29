@@ -96,28 +96,28 @@ object cosGetObjectFromPC(object oPC, string sVarName);
 
 // DEF IN "cosaf_pcmanips"
 // Fonction qui charge les identifiants du personnage.
-//   > object oPC - Personnage   traiter.
+//   > object oPC - Personnage à traiter.
 void cosLoadPCIdentifiers(object oPC);
 
 // DEF IN "cosaf_pcmanips"
 // Fonction qui charge la position de départ du personnage.
-//   > object oPC - Personnage   traiter.
+//   > object oPC - Personnage à traiter.
 void cosLoadPCStartingLocation(object oPC);
 
 // DEF IN "cosaf_pcmanips"
 // Fonction qui charge les données de la base de donnée vers un Waypoint de donnée correspondant au personnage.
-//   > object oPC - Personnage dont les identifiants sont   v rifier.
+//   > object oPC - Personnage dont les identifiants sont à vérifier.
 //   o int - TRUE si les identifiants sont valides, FALSE sinon.
 int cosIsPCIdentifiersValid(object oPC);
 
 // DEF IN "cosaf_pcmanips"
 // Fonction qui met   jour la date de la dernière connexion du personnage et du compte joueur.
-//   > object oPC - Personnage concern  par la mise   jour.
+//   > object oPC - Personnage concerné par la mise   jour.
 void cosUpdateLastConnexion(object oPC);
 
 // DEF IN "cosaf_pcmanips"
 // Fonction qui ram ne le personnage à la dernière position connue.
-//   > object oPC - Personnage concern  que l'on veut d placer.
+//   > object oPC - Personnage concerné que l'on veut déplacer.
 void cosJumpToPCStartingLocation(object oPC);
 
 // DEF IN "cosaf_pcmanips"
@@ -128,7 +128,7 @@ int cosPCStartingLocationValid(object oPC);
 
 // DEF IN "cosaf_pcmanips"
 // Fonction qui envoie le personnage au centre de formation.
-//   > object oPC - Personnage concern  que l'on veut d placer.
+//   > object oPC - Personnage concerné que l'on veut déplacer.
 void cosJumpPCToTrainingCenter(object oPC);
 
 /**************************************** IMPLEMENTATIONS *****************************************/

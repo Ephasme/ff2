@@ -6,7 +6,7 @@
 /***************************** ChangeLog *****************************/
 /** V1.0.0 (par Peluso Loup) :
 /**      Script contenant la liste des commandes relatives aux
-/**    d placements des personnages.
+/**    déplacements des personnages.
 /*********************************************************************/
 
 /***************************** INCLUDES ******************************/
@@ -22,15 +22,15 @@
 /***************************** PROTOTYPES ****************************/
 
 // DEF IN "scmaf_commands"
-// Fonction qui d place un personnage vers un point du module.
-//   > string sCommand - Commande   tra ter.
+// Fonction qui déplace un personnage vers un point du module.
+//   > string sCommand - Commande à tra ter.
 //   > object oPC - Source de la requ te.
 //   o string - Chaîne vide.
 string scmMoveToCommand(string sCommand, object oPC);
 
 // DEF IN "scmaf_commands"
 // Fonction qui sauvegarde la position actuelle du personnage.
-//   > string sCommand - Commande   tra ter.
+//   > string sCommand - Commande à tra ter.
 //   > object oPC - Source de la requ te.
 //   o string - Chaîne vide.
 string scmSaveLocCommand(string sCommand, object oPC);
@@ -57,9 +57,9 @@ string scmMoveToCommand(string sCommand, object oPC) {
         return SCM_EMPTY_RESULT; 
     }
     
-    // Est-ce qu'on se d place vers une location ?
+    // Est-ce qu'on se déplace vers une location ?
     int iToLocation = scmIsParameterDefined(sCommand, SCM_PAR_TO_LOCATION);
-    // Est-ce qu'on se d place vers un waypoint ?
+    // Est-ce qu'on se déplace vers un waypoint ?
     int iToWaypoint = scmIsParameterDefined(sCommand, SCM_PAR_TO_WAYPOINT);
     
     // Impossible de faire les deux.
@@ -74,7 +74,7 @@ string scmMoveToCommand(string sCommand, object oPC) {
         return SCM_EMPTY_RESULT;
     } 
     
-    // Variables contenant les informations pass es en param tre de la commande pour d placer le PJ.
+    // Variables contenant les informations pass es en param tre de la commande pour déplacer le PJ.
     location lDest;
     string sWaypointTag;
     string sLocalLocationVarName;
@@ -97,13 +97,13 @@ string scmMoveToCommand(string sCommand, object oPC) {
         lDest = GetLocation(oWP);
     }
     
-    // Est-ce le PJ va se d placer en courant ?
+    // Est-ce le PJ va se déplacer en courant ?
     int iRun = scmIsParameterDefined(sCommand, SCM_PAR_RUN);
 
-    // Est-ce qu'on va d placer le PJ instantanément ?
+    // Est-ce qu'on va déplacer le PJ instantanément ?
     int iJump = scmIsParameterDefined(sCommand, SCM_PAR_JUMP);
 
-    // On d place le personnage jusqu'à la location sauv e.
+    // On déplace le personnage jusqu'à la location sauv e.
     usuMoveToLocation(oPC, lDest, iRun, iJump);
 
     return SCM_EMPTY_RESULT;

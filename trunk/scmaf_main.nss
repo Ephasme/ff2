@@ -22,7 +22,7 @@
 
 // DEF IN "scmaf_main"
 // Fonction qui ex cute une commande et renvoie le résultat sous forme de chaîne.
-//   > string sCommand - Commande   tra ter.
+//   > string sCommand - Commande à tra ter.
 //   > object oPC - Personnage qui a lanc  la requ te.
 //   o string - résultat de la commande (renvoie une chaîne vide si aucun résultat n'est trouvé).
 string scmExecuteCommand(string sCommand, object oPC);

@@ -6,7 +6,7 @@
 /***************************** ChangeLog *****************************/
 /** V1.0.0 (par Peluso Loup) :
 /**      Script contenant la liste des commandes relatives aux
-/**    d placements des personnages.
+/**    déplacements des personnages.
 /*********************************************************************/
 
 /***************************** INCLUDES ******************************/
