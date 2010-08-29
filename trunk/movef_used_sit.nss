@@ -5,7 +5,7 @@
 /** Créateur :         Peluso Loup
 /***************************** ChangeLog *****************************/
 /** V1.0.0 (par Peluso Loup) :
-/**      Script qui permet au personne de s'asseoir sur le pla‡able qui le lance.
+/**      Script qui permet au personne de s'asseoir sur le plaçable qui le lance.
 /*********************************************************************/
 
 void main() {

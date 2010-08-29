@@ -1,6 +1,6 @@
 /**************************************************************************************************/
 /** Nom :              cosaf_pcmanips
-/** Date de cr ation : 16/07/2010
+/** Date de création : 16/07/2010
 /** Version :          1.0.0
 /** Cr ateur :         Peluso Loup
 /******************************************** ChangeLog *******************************************/
@@ -116,7 +116,7 @@ int cosIsPCIdentifiersValid(object oPC);
 void cosUpdateLastConnexion(object oPC);
 
 // DEF IN "cosaf_pcmanips"
-// Fonction qui ram ne le personnage   la dernière position connue.
+// Fonction qui ram ne le personnage à la dernière position connue.
 //   > object oPC - Personnage concern  que l'on veut d placer.
 void cosJumpToPCStartingLocation(object oPC);
 

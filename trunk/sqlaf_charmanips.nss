@@ -1,6 +1,6 @@
 /*********************************************************************/
 /** Nom :              sqlaf_charmanips
-/** Date de cr ation : 23/08/2010
+/** Date de création : 23/08/2010
 /** Version :          1.0.0
 /** Createur :         Loup Peluso
 /***************************** ChangeLog *****************************/
@@ -20,14 +20,14 @@
 
 // DEF IN "sqlaf_charmanips"
 // Cette fonction récupère un identifiant de compte joueur en fonction de son nom.
-// Si le nom de compte est nouveau, elle cr e une entr e dans la base de donnée.
+// Si le nom de compte est nouveau, elle crée une entr e dans la base de donnée.
 //   > string sAccountName - Nom du compte joueur.
 //   o int - Identifiant de ce compte.
 int sqlGetAccountId(string sAccountName);
 
 // DEF IN "sqlaf_charmanips"
 // Cette fonction récupère un identifiant de personnage en fonction de son nom.
-// Si le personnage est nouveau, elle cr e une entr e dans la base de donnée.
+// Si le personnage est nouveau, elle crée une entr e dans la base de donnée.
 //   > string sAccountName - Nom du personnage.
 //   > int iAccountId - Identifiant du compte associ    ce personnage.
 //   o int - Identifiant de ce personnage.
@@ -35,14 +35,14 @@ int sqlGetPCId(string sPCName, int iAccountId);
 
 // DEF IN "sqlaf_charmanips"
 // Cette fonction récupère un identifiant de clef CD en fonction de son nom.
-// Si le nom de compte est nouveau, elle cr e une entr e dans la base de donnée.
+// Si le nom de compte est nouveau, elle crée une entr e dans la base de donnée.
 //   > string sKey - Clef CD du joueur.
 //   > int iAccountId - Identifiant du compte associ    ce personnage.
 //   o int - Identifiant de cette clef.
 int sqlGetKeyId(string sKey, int iAccountId);
 
 // DEF IN "sqlaf_charmanips"
-// Cette fonction cr e un lien entre une clef CD et un compte joueur.
+// Cette fonction crée un lien entre une clef CD et un compte joueur.
 //   > int iKeyId - Identifiant de la clef CD.
 //   > int iAccountId - Identifiant du compte associ    ce personnage.
 //   o int - Identifiant du lien clef/compte joueur.

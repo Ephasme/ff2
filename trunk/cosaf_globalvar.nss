@@ -1,11 +1,11 @@
 /*********************************************************************/
 /** Nom :              cosaf_globalvar
-/** Date de cr ation : 15/07/2010
+/** Date de création : 15/07/2010
 /** Version :          1.0.0
 /** Cr ateur :         Peluso Loup
 /***************************** ChangeLog *****************************/
 /** V1.0.0 (par Peluso Loup) :
-/**      Script contenant les fonctions d'acc s et de cr ation des
+/**      Script contenant les fonctions d'accès et de création des
 /**    Waypoints de stockage est variables globales.
 /*********************************************************************/
 
@@ -47,22 +47,22 @@ object cosGetGlobalObject(string sGlobalVarName);
 /************************** IMPLEMENTATIONS **************************/
 
 object cosGetGlobalVarWaypoint() {
-    // On cr e la variable   la valeur nulle.
+    // On crée la variable à la valeur nulle.
     object oGlobalVarWP;
     // On tente de récupérer le Waypoint (s'il existe, l'objet sera valide.)
     oGlobalVarWP = GetObjectByTag(COS_WP_GVSTOCK_TAG);
     if (!GetIsObjectValid(oGlobalVarWP)) {
-        /* L'objet est invalide, donc le Waypoint n'a pas encore été cr  .
-        On cr e un Waypoint avec un tag sp cifique d fini dans le script de
+        /* L'objet est invalide, donc le Waypoint n'a pas encore été créé.
+        On crée un Waypoint avec un tag sp cifique d fini dans le script de
         configuration qui contiendra toutes les variables globales du module. */
         oGlobalVarWP = CreateObject(OBJECT_TYPE_WAYPOINT, COS_WP_GVSTOCK_RESREF, GetStartingLocation(), FALSE, COS_WP_GVSTOCK_TAG);
     }
-    // Dans tous les cas, on renvoie l'objet sus-cr  .
+    // Dans tous les cas, on renvoie l'objet sus-créé.
     return oGlobalVarWP;
 }
 
 void cosSetGlobalInt(string sGlobalVarName, int iValue) {
-    // R cup ration du Waypoint de stockage.
+    // Récupération du Waypoint de stockage.
     object oGlobalVarWP = cosGetGlobalVarWaypoint();
     if (GetIsObjectValid(oGlobalVarWP)) {
         // Tout se passe bien : on stocke la variable.
@@ -71,7 +71,7 @@ void cosSetGlobalInt(string sGlobalVarName, int iValue) {
 }
 
 void cosSetGlobalObject(string sGlobalVarName, object oObject) {
-    // R cup ration du Waypoint de stockage.
+    // Récupération du Waypoint de stockage.
     object oGlobalVarWP = cosGetGlobalVarWaypoint();
     if (GetIsObjectValid(oGlobalVarWP)) {
         // Tout se passe bien : on stocke la variable.
@@ -80,25 +80,25 @@ void cosSetGlobalObject(string sGlobalVarName, object oObject) {
 }
 
 int cosGetGlobalInt(string sGlobalVarName) {
-    // R cup ration du Waypoint de stockage.
+    // Récupération du Waypoint de stockage.
     object oGlobalVarWP = cosGetGlobalVarWaypoint();
     int result = -1;
     if (GetIsObjectValid(oGlobalVarWP)) {
         // Tout se passe bien : on renvoie la variable.
         result = GetLocalInt(oGlobalVarWP, sGlobalVarName);
     }
-    // Fin de la fonction, exp dition du r sultat.
+    // Fin de la fonction, expédition du résultat.
     return result;
 }
 
 object cosGetGlobalObject(string sGlobalVarName) {
-    // R cup ration du Waypoint de stockage.
+    // Récupération du Waypoint de stockage.
     object oGlobalVarWP = cosGetGlobalVarWaypoint();
     object result = OBJECT_INVALID;
     if (GetIsObjectValid(oGlobalVarWP)) {
         // Tout se passe bien : on renvoie la variable.
         result = GetLocalObject(oGlobalVarWP, sGlobalVarName);
     }
-    // Fin de la fonction, exp dition du r sultat.
+    // Fin de la fonction, expédition du résultat.
     return result;
 }

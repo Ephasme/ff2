@@ -1,12 +1,12 @@
 /*********************************************************************/
 /** Nom :              sqlaf_main
-/** Date de cr ation : 12/07/2010
+/** Date de création : 12/07/2010
 /** Version :          1.0.0
 /** Createur :         Loup Peluso
 /***************************** ChangeLog *****************************/
 /** V1.0.0 :
 /**      Mise en place des fonctions de base n cessaires au bon
-/**   fonctionnement des acc s   la base de donnée MySQL. Ce script
+/**   fonctionnement des accès   la base de donnée MySQL. Ce script
 /**   contient le strict minimum pour une connection   la BDD.
 /*********************************************************************/
 
@@ -49,7 +49,7 @@ string sqlGetData(int iCol);
 // la forme d'un entier unique (  utiliser pour récupérer l'ID d'un personnage par exemple).
 // EAFD signifie ExecAndFetchDirect.
 //   > string sQuery - Requ te   ex cuter.
-//   o int - Entier récupéré, r sultat de la requ te.
+//   o int - Entier récupéré, résultat de la requ te.
 int sqlEAFDSingleInt(string sQuery);
 
 // DEF IN "sqlaf_main"
@@ -57,7 +57,7 @@ int sqlEAFDSingleInt(string sQuery);
 // sous la forme d'une location (  utiliser pour récupérer le point de d part d'un personnage par exemple).
 // EAFD signifie ExecAndFetchDirect.
 //   > string sQuery - Requ te   ex cuter.
-//   o location - Location récupère, r sultat de la requ te (renvoie le point de d part du module en cas d'erreur).
+//   o location - Location récupère, résultat de la requ te (renvoie le point de d part du module en cas d'erreur).
 location sqlEAFDSingleLocation(string sQuery);
 
 // DEF IN "sqlaf_main"
@@ -66,11 +66,11 @@ location sqlEAFDSingleLocation(string sQuery);
 //   > string sSelectQuery - Requ te de s lection   ex cuter.
 //   > string sInsertQuery - Insertion dans le cas d'une s lection vide.
 //   > int iDepth - Profondeur de r cursivit  (  ne pas d finir).
-//   o int - Entier récupéré, r sultat de la requ te.
+//   o int - Entier récupéré, résultat de la requ te.
 int sqlEAFDSingleIntOrInsert(string sSelectQuery, string sInsertQuery, int iDepth = 0);
 
 // DEF IN "sqlaf_main"
-// Cette fonction cr e une structure sub_query.
+// Cette fonction crée une structure sub_query.
 //   > string sQuery - Select correspondant   la sous-requ te d sir e.
 //   > string sAlias - Alias de la sous-requ te.
 //   o struct sub_query - Structure de sous-requ te.
@@ -100,7 +100,7 @@ void sqlInit() {
     for (i = 0; i < 8; i++) {
         sStringBuffer += "................................................................................................................................";
     }
-    // Laisse de l'espace entre chaque r sultat de requêtes.
+    // Laisse de l'espace entre chaque résultat de requêtes.
     SetLocalString(sqlGetWaypoint(), "NWNX!ODBC!SPACER", sStringBuffer);
 }
 
@@ -203,7 +203,7 @@ location sqlEAFDSingleLocation(string sQuery) {
 
 int sqlEAFDSingleIntOrInsert(string sSelectQuery, string sInsertQuery, int iDepth = 0) {
     if (iDepth < 2) {
-        // On ex cute la requ te de r cup ration de la valeur.
+        // On ex cute la requ te de Récupération de la valeur.
         sqlExecDirect(sSelectQuery);
 
         sqlFetch();
