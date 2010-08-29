@@ -134,11 +134,11 @@ void cosJumpPCToTrainingCenter(object oPC);
 /**************************************** IMPLEMENTATIONS *****************************************/
 
 object cosGetPCWaypoint(object oPC) {
-    object oPCWP = GetLocalObject(oPC, COS_PC_WP_VARNAME);
+    object oPCWP = GetLocalObject(oPC, COS_WP_CHARDATA_VARNAME);
     if (!GetIsObjectValid(oPCWP)) {
-        oPCWP = CreateObject(OBJECT_TYPE_WAYPOINT, COS_PC_WP_RESREF, GetStartingLocation(), FALSE, COS_PC_WP_TAG);
+        oPCWP = CreateObject(OBJECT_TYPE_WAYPOINT, COS_WP_CHARDATA_RESREF, GetStartingLocation(), FALSE, COS_WP_CHARDATA_TAG);
         if (GetIsObjectValid(oPCWP)) {
-            SetLocalObject(oPC, COS_PC_WP_VARNAME, oPCWP);
+            SetLocalObject(oPC, COS_WP_CHARDATA_VARNAME, oPCWP);
         }
     }
     return oPCWP;

@@ -1,9 +1,9 @@
 /* Nom du Waypoint contenant le buffer. */
-const string SQLWP_TAG = "wpsql";
-const string SQLWP_RESREF = "wpsql";
+const string SQLWP_TAG = "sql_wpRequestBuffer";
+const string SQLWP_RESREF = "nw_waypoint001";
 
 /* Message de Debug. */
-const string MESS_DEBUG_QUERY = "Requ te SQL";
+const string MESS_DEBUG_QUERY = "Requête SQL";
 
 /* Erreurs. */
 const int SQL_ERROR = 0;

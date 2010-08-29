@@ -64,6 +64,11 @@ void main() {
         DelayCommand(DELAY_BEFORE_JUMP, cosJumpToPCStartingLocation(oPC));
     }
 
+    ExecuteScript("ts_cos_sys", oPC);
+    ExecuteScript("ts_usu_sys", oPC);
+    ExecuteScript("ts_scm_sys", oPC);
+    ExecuteScript("ts_sql_sys", oPC);
+
     // On affiche un message de bienvenue.
     FloatingTextStringOnCreature(MESS_WELCOME_ONTO_SERVER+" "+GetName(oPC)+" !", oPC);
 }

@@ -21,18 +21,6 @@
     // #include "usu_stringtokman"
 #include "usu_locmanip"
 
-/***************************** CONSTANTES ****************************/
-
-// Constante à désactiver pour supprimer cette série de test des logs.
-const int TS_USU_SYS = TRUE;
-
-/* Chaîne utilisée pour tester les fonctions de manipulation de chaîne. */
-const string TEST_STRING = "jfi<omJ  F IE!>fj <JKFMDio  <  uhuaibj!> k lru<jeuirez!> f5kdsmHB<uohe>!!!";
-//                                       1    1         2         3       4       5          6    6  //
-//                             3         3    8         8         8       6       4          5    0  //
-
-const string TEST_TRIM_SPACE_STRING = "    testme    ";
-
 /************************** IMPLEMENTATIONS **************************/
 
 /* Private function */
@@ -55,7 +43,7 @@ void ts_usuLocationToString_LocationValid() {
 
 void ts_usuLocationToString_LocationInvalid() {
     // Création de la location à tester.
-    location lLoc = pv_SetLocation(GetObjectByTag("__##__"), 0.0, 0.0, 0.0, 0.0);
+    location lLoc = pv_SetLocation(GetObjectByTag(""), 0.0, 0.0, 0.0, 0.0);
     string sResult = usuLocationToString(lLoc);
     addTest("usuLocationToString", "Test avec une Location invalide.", sResult == "####0.000##0.000##0.000##0.000##");
     addTestInfo("Resultat", sResult);
@@ -100,47 +88,47 @@ void ts_usuStringToLocation_StringInvalid() {
 }
 
 void ts_usuGetLastTokenPosition() {
-    int iPos = usuGetLastTokenPosition(TEST_STRING, "!>");
+    int iPos = usuGetLastTokenPosition(TS_CMD_STRING, "!>");
     addTest("usuGetLastTokenPosition", "Renvoyer la position du premier token.", iPos == 54);
 }
 
 void ts_usuGetFirstTokenPosition() {
-    int iPos = usuGetFirstTokenPosition(TEST_STRING, "<");
+    int iPos = usuGetFirstTokenPosition(TS_CMD_STRING, "<");
     addTest("usuGetFirstTokenPosition", "Renvoyer la position du premier token.", iPos == 3);
 }
 
 void ts_usuTrimLeftSpaces() {
-    string sRes = usuTrimLeftSpaces(TEST_TRIM_SPACE_STRING);
+    string sRes = usuTrimLeftSpaces(TS_CMD_TRIM_SPACES);
     addTest("usuTrimRightSpaces", "Retirer les espaces à gauche.", GetStringLeft(sRes, 1) != " ");
 }
 
 void ts_usuTrimRightSpaces() {
-    string sRes = usuTrimRightSpaces(TEST_TRIM_SPACE_STRING);
+    string sRes = usuTrimRightSpaces(TS_CMD_TRIM_SPACES);
     addTest("usuTrimRightSpaces", "Retirer les espaces à droite.", GetStringRight(sRes, 1) != " ");
 }
 
 void ts_usuGetStringBeforeToken() {
-    string sRes = usuGetStringBeforeToken(TEST_STRING, 18);
+    string sRes = usuGetStringBeforeToken(TS_CMD_STRING, 18);
     addTest("usuGetStringBeforeToken", "Récupération d'une chaîne avant un token.", sRes == "jfi<omJ  F IE!>fj ");
 }
 
 void ts_usuGetStringAfterToken() {
-    string sRes = usuGetStringAfterToken(TEST_STRING, 2, 54);
+    string sRes = usuGetStringAfterToken(TS_CMD_STRING, 2, 54);
     addTest("usuGetStringAfterToken", "Récupération d'une chaîne après un token.", sRes == " f5kdsmHB<uohe>!!!");
 }
 
 void ts_usuGetStringBetweenTokens_TokenPositionOK() {
-    string sRes = usuGetStringBetweenTokens(TEST_STRING, 28, 1, 38);
+    string sRes = usuGetStringBetweenTokens(TS_CMD_STRING, 28, 1, 38);
     addTest("usuGetStringBetweenTokens", "Récupération d'une chaîne entre deux tokens, les tokens sont bien placés.", sRes == "  uhuaibj");
-    addTestInfo("Chaîne testée", TEST_STRING);
+    addTestInfo("Chaîne testée", TS_CMD_STRING);
     addTestInfo("Résultat attendu", "  uhuaibj");
     addTestInfo("Résultat", sRes);
 }
 
 void ts_usuGetStringBetweenTokens_TokenPositionError() {
-    string sRes = usuGetStringBetweenTokens(TEST_STRING, 28, 1, 13);
+    string sRes = usuGetStringBetweenTokens(TS_CMD_STRING, 28, 1, 13);
     addTest("usuGetStringBetweenTokens", "Récupération d'une chaîne entre deux tokens, les tokens sont mal placés.", sRes == STRING_RESULT_ERROR);
-    addTestInfo("Chaîne testée", TEST_STRING);
+    addTestInfo("Chaîne testée", TS_CMD_STRING);
     addTestInfo("Résultat attendu", STRING_RESULT_ERROR);
     addTestInfo("Résultat", sRes);
 }
@@ -239,36 +227,58 @@ void ts_usuGetNextTokenPosition_TokenSize(int iSize = 5) {
     addTest("usuGetNextTokenPosition", "Deux tokens différents de taille donnée.", iRes == iSecondTokPos);
 }
 
+/* Private Function */
+void pv_do_OnModuleLoad_Tests() {
+    
+    ts_usuLocationToString_LocationValid();
+    ts_usuLocationToString_LocationInvalid();
+    ts_usuStringToLocation_StringValid();
+    ts_usuStringToLocation_StringInvalid();
 
-void main()
-{
-    // On exécute les tests.
+    ts_usuGetLastTokenPosition();
+    ts_usuGetFirstTokenPosition();
+
+    ts_usuTrimLeftSpaces();
+    ts_usuTrimRightSpaces();
+
+    ts_usuGetStringAfterToken();
+    ts_usuGetStringBeforeToken();
+    ts_usuGetStringBetweenTokens_TokenPositionOK();
+    ts_usuGetStringBetweenTokens_TokenPositionError();
+
+    ts_usuGetNextTokenPosition_TokenSize(3);
+    ts_usuGetNextTokenPosition_IdenticalTokens("/!%*");
+    ts_usuGetNextTokenPosition_NotExists();
+
+    ts_usuGetPreviousTokenPosition_TokenSize(3);
+    ts_usuGetPreviousTokenPosition_IdenticalTokens("/!%*");
+    ts_usuGetPreviousTokenPosition_NotExists();
+    
+    printResult(TS_USU_TITLE);
+}
+
+/* Private Function */
+void pv_do_OnClientEnter_Tests(object oPC, int iDepth = 0) {
+    if (iDepth < TS_LOOP_MAX) {
+        if (GetIsObjectValid(GetArea(oPC))) {
+            
+            /* INSERER LES TESTS A FAIRE SUR UN PC ICI */
+                        
+            printResult(TS_USU_TITLE);
+        } else {
+            DelayCommand(TS_LOOP_DELAY, pv_do_OnClientEnter_Tests(oPC, iDepth++));
+        }
+    }
+}
+
+void main() {
     if (TEST_MODE && TS_USU_SYS) {
-        ts_usuLocationToString_LocationValid();
-        ts_usuLocationToString_LocationInvalid();
-        ts_usuStringToLocation_StringValid();
-        ts_usuStringToLocation_StringInvalid();
+        object oMe = OBJECT_SELF;
+        if (oMe == GetModule()) {
+            pv_do_OnModuleLoad_Tests();
 
-        ts_usuGetLastTokenPosition();
-        ts_usuGetFirstTokenPosition();
-
-        ts_usuTrimLeftSpaces();
-        ts_usuTrimRightSpaces();
-
-        ts_usuGetStringAfterToken();
-        ts_usuGetStringBeforeToken();
-        ts_usuGetStringBetweenTokens_TokenPositionOK();
-        ts_usuGetStringBetweenTokens_TokenPositionError();
-
-        ts_usuGetNextTokenPosition_TokenSize(3);
-        ts_usuGetNextTokenPosition_IdenticalTokens("/!%*");
-        ts_usuGetNextTokenPosition_NotExists();
-
-        ts_usuGetPreviousTokenPosition_TokenSize(3);
-        ts_usuGetPreviousTokenPosition_IdenticalTokens("/!%*");
-        ts_usuGetPreviousTokenPosition_NotExists();
-
-        // On envoie les resultats.
-        printResult("USU SYSTEM");
+        } else if (GetIsPC(oMe)) {
+            pv_do_OnClientEnter_Tests(oMe);
+        }
     }
 }
