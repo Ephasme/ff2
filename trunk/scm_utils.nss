@@ -1,50 +1,23 @@
 /*********************************************************************/
 /** Nom :              scm_utils
-/** Date de création : 08/08/2010 13:23:08
+/** Date de cr ation : 08/08/2010 13:23:08
 /** Version :          1.0.0
-/** Créateur :         Peluso Loup
+/** Cr ateur :         Peluso Loup
 /***************************** ChangeLog *****************************/
 /** V1.0.0 (par Peluso Loup) :
-/**      Fonctions utilitaires pour le système de commande.
+/**      Fonctions utilitaires pour le syst‡me de commande.
 /*********************************************************************/
 
 /***************************** INCLUDES ******************************/
 
-// Donnees de config.
-#include "cos_config"
-
-// Fonctions de manipulation des chaînes de caractères.
+    // #include "usu_constants"
 #include "usu_stringtokman"
-
-/***************************** CONSTANTES ****************************/
-
-// Token utilisé pour démarrer une séquence de commandes.
-const string SCM_OPENING_TOKEN = "<!";
-const string SCM_CLOSING_TOKEN = "!>";
-const string SCM_PARAMETER_TOKEN = " ";
-const string SCM_DEFINITION_TOKEN = ":";
-
-// Messages d'erreur.
-const string SCM_ERROR = "";
-
-// Speech vide.
-const string SCM_EMPTY_SPEECH = "";
-const string SCM_EMPTY_COMMAND_DATAS = "";
-const string SCM_EMPTY_PARAMETER = "";
-const string SCM_EMPTY_RESULT = "";
-
-// Limite du nombre d'imbrication de commande.
-const int MAXIMUM_COMMAND_INTERWEAVING_NUMBER = 5;
-
-/****************************** VARIABLE *****************************/
-
-int SCM_OPENING_TOKEN_LENGTH = GetStringLength(SCM_OPENING_TOKEN);
-int SCM_CLOSING_TOKEN_LENGTH = GetStringLength(SCM_CLOSING_TOKEN);
+#include "scm_constants"
 
 /***************************** PROTOTYPES ****************************/
 
 // DEF IN "scm_utils"
-// Fonction qui renvoie la première commande trouvée dans un chaîne.
+// Fonction qui renvoie la premi‡re commande trouv‚e dans un chaîne.
 //   > string sSpeech - Chaîne à scanner.
 //   > int iRecursionDepth - TODO:Decrire
 //   > int iRecursionScale - TODO:Decrire
@@ -52,48 +25,48 @@ int SCM_CLOSING_TOKEN_LENGTH = GetStringLength(SCM_CLOSING_TOKEN);
 struct scm_command_datas scmGetFirstCommand(string sSpeech, int iRecursionDepth = 0, int iRecursionScale = 0);
 
 // DEF IN "scm_utils"
-// Fonction qui défini une structure pour stocker les informations d'une commande.
+// Fonction qui d fini une structure pour stocker les informations d'une commande.
 //   > string sSpeech - Speech d'origine.
-//   > string sCommand - Commande récupérée.
+//   > string sCommand - Commande r‚cup‡re.
 //   > int iOpeningTokenPosition - Position du token d'ouverture.
 //   > int iClosingTokenPosition - Position du token de fermeture.
 //   o struct scm_command_datas - Commande à traîter.
 struct scm_command_datas scmSetStructCommand(string sSpeech = SCM_EMPTY_SPEECH, string sCommand = SCM_EMPTY_COMMAND_DATAS, int iOpeningTokenPosition = TOKEN_POSITION_ERROR, int iClosingTokenPosition = TOKEN_POSITION_ERROR);
 
 // DEF IN "scm_utils"
-// Fonction qui récupère le nom de la commande à exécuter.
+// Fonction qui r‚cup‡re le nom de la commande à ex cuter.
 //   > string sCommand - Commande à traîter.
 //   o string - Nom de la commande.
 string scmGetCommandName(string sCommand);
 
 // DEF IN "scm_utils"
-// Fonction qui récupère la valeur d'un paramètre défini dans la commande.
-//   > string sCommand - Commande à traîter.
-//   > string sName - Nom du paramètre.
-//   o string - Valeur du paramètre.
+// Fonction qui r‚cup‡re la valeur d'un param tre d fini dans la commande.
+//   > string sCommand - Commande à tra ter.
+//   > string sName - Nom du param tre.
+//   o string - Valeur du param tre.
 string scmGetParameterValue(string sCommand, string sName);
 
 // DEF IN "scm_utils"
-// Fonction qui détermine si un paramètre est présent dans la commande ou non.
-//   > string sCommand - Commande à traîter.
-//   > string sName - Nom du paramètre.
-//   o int - FALSE si le paramètre n'est pas présent,
-//           TRUE si le paramètre est présent.
+// Fonction qui d termine si un param tre est pr sent dans la commande ou non.
+//   > string sCommand - Commande à tra ter.
+//   > string sName - Nom du param tre.
+//   o int - FALSE si le param tre n'est pas pr sent,
+//           TRUE si le param tre est pr sent.
 int scmIsParameterDefined(string sCommand, string sName);
 
 // DEF IN "scm_utils"
 // Fonction qui informe d'une erreur dans la commande.
-//   > object oPC - Personnage à informer.
+//   > object oPC - Personnage   informer.
 //   > string sErrorMessage - Message d'erreur.
 void scmSendCommandErrorMessage(object oPC, string sErrorMessage);
 
 // DEF IN "scm_utils"
-// Détermine la validité d'une commande en fonction de sa structure de donnée.
+// D termine la validit  d'une commande en fonction de sa structure de donnée.
 //   > struct scm_command_datas strCommandDatas - Structure de donnée de la commande.
 //   o int - TRUE si la commande est valide, FALSE sinon.
 int scmIsValidCommand(struct scm_command_datas strCommandDatas);
 
-// Structure contenant les données relatives à une commande.
+// Structure contenant les données relatives   une commande.
 struct scm_command_datas {
     string sSpeech;
     string sCommand;
@@ -101,7 +74,7 @@ struct scm_command_datas {
     int iClosingTokPos;
 };
 
-// Définition d'une structure invalide.
+// D finition d'une structure invalide.
 struct scm_command_datas EMPTY_COMMAND_DATAS = scmSetStructCommand();
 
 /************************** IMPLEMENTATIONS **************************/
@@ -116,7 +89,7 @@ struct scm_command_datas scmSetStructCommand(string sSpeech = SCM_EMPTY_SPEECH, 
 }
 
 struct scm_command_datas scmGetFirstCommand(string sSpeech, int iRecursionDepth = 0, int iRecursionScale = 0) {
-    if (SMC_ENABLED == FALSE || iRecursionDepth++ > MAXIMUM_COMMAND_INTERWEAVING_NUMBER) {
+    if (SCM_ENABLED == FALSE || iRecursionDepth++ > MAXIMUM_COMMAND_INTERWEAVING_NUMBER) {
         return EMPTY_COMMAND_DATAS;
     }
     int iOpenTokPos = usuGetFirstTokenPosition(sSpeech, SCM_OPENING_TOKEN);

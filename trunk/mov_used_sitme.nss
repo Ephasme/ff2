@@ -5,28 +5,11 @@
 /** Créateur :         Peluso Loup
 /***************************** ChangeLog *****************************/
 /** V1.0.0 (par Peluso Loup) :
-/**      Script à faire exécuter par cos_ev_on_used.
+/**      Script qui permet au personne de s'asseoir sur le pla‡able qui le lance.
 /*********************************************************************/
 
-/***************************** INCLUDES ******************************/
-
-// Fichier de configuration.
-#include "cos_config"
-
-/***************************** CONSTANTES ****************************/
-
-const string ON_USED_ACTION_SIT = "ON_USED_ACTION_SIT";
-const string ON_USED_ACTION_ATTACK = "ON_USED_ACTION_ATTACK";
-
-/************************** IMPLEMENTATIONS **************************/
-
 void main() {
-    object oLastUsedBy = GetLocalObject(OBJECT_SELF, F_GET_LAST_USED_BY);
+    object oLastUsedBy = GetLastUsedBy();
     object oUsed = OBJECT_SELF;
-
-    if (GetLocalInt(oUsed, ON_USED_ACTION_SIT)) {
-        AssignCommand(oLastUsedBy, ActionSit(oUsed));
-    } else if (GetLocalInt(oUsed, ON_USED_ACTION_ATTACK)) {
-        AssignCommand(oLastUsedBy, ActionAttack(oUsed));
-    }
+    AssignCommand(oLastUsedBy, ActionSit(oUsed));
 }

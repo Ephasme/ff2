@@ -1,10 +1,3 @@
-const string TAG_WP_WEST_SIDE = "016_bridge_west_side";
-const string TAG_WP_EAST_SIDE = "016_bridge_east_side";
-
-const string TAG_PL_TRACKS_TO_EAST = "016_go_to_east";
-const string TAG_PL_TRACKS_TO_WEST = "016_go_to_west";
-
-
 void pv_Jump(object oPC, string sTag) {
     location lLoc = GetLocation(GetWaypointByTag(sTag));
     float fFacing = GetFacingFromLocation(lLoc);
@@ -21,13 +14,13 @@ void main()
 
     SendMessageToPC(oPC, "On teleporte !!");
 
-    if (sTag == TAG_PL_TRACKS_TO_EAST || sTag == TAG_PL_TRACKS_TO_WEST) {
+    if (sTag == "test" || sTag == "test") {
         FadeToBlack(oPC, FADE_SPEED_FAST);
         SetCutsceneMode(oPC, TRUE);
-        if (sTag == TAG_PL_TRACKS_TO_EAST) {
-            DelayCommand(2.0f, pv_Jump(oPC, TAG_WP_EAST_SIDE));
+        if (sTag == "test") {
+            DelayCommand(2.0f, pv_Jump(oPC, "test"));
         } else {
-            DelayCommand(2.0f, pv_Jump(oPC, TAG_WP_WEST_SIDE));
+            DelayCommand(2.0f, pv_Jump(oPC, "test"));
         }
     }
 }

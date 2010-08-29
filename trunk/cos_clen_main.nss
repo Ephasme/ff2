@@ -10,20 +10,17 @@
 
 /***************************** INCLUDES ******************************/
 
-    // #include "cos_config"
+
+    // #include "cos_constants"
 #include "cos_globalvar"
 
-        // #include "usu_locmanip"
-    // #include "sql_main"
+                // #include "usu_stringtokman"
+            // #include "usu_locmanip"
+            // #include "sql_constants"
+        // #include "sql_main"
+    // #include "sql_charmanips"
+    // #include "cos_constants"
 #include "cos_charmanips"
-
-/***************************** CONSTANTES ****************************/
-
-/* Messages. */
-const string MESS_WELCOME_ONTO_SERVER = "Bienvenue sur le serveur";
-
-// Delay avant d'emmener le personnage quelque part.
-const float DELAY_BEFORE_JUMP = 5.0f;
 
 /************************** IMPLEMENTATIONS **************************/
 

@@ -10,14 +10,7 @@
 
 /***************************** INCLUDES ******************************/
 
-// Fichier de configuration.
-#include "cos_config"
-
-/***************************** CONSTANTES ****************************/
-
-/* TODO: Définir les constantes. */
-int HASHSET_ERROR = FALSE;
-int HASHSET_SUCCESS = TRUE;
+#include "usu_constants"
 
 /***************************** PROTOTYPES ****************************/
 

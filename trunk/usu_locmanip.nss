@@ -10,14 +10,14 @@
 
 /***************************** INCLUDES ******************************/
 
+    // #include "usu_constants"
 #include "usu_stringtokman"
 
-/***************************** CONSTANTES ****************************/
-
-// Token de Location.
-const string LOCATION_TOKEN = "##";
-
 /***************************** PROTOTYPES ****************************/
+
+// TODO:Faire les prototypes
+string usuLocationToString(location lLocation);
+location usuStringToLocation(string sLocation);
 
 /************************** IMPLEMENTATIONS **************************/
 

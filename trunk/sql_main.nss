@@ -1,63 +1,21 @@
 /*********************************************************************/
 /** Nom :              sql_main
-/** Date de création : 12/07/2010
+/** Date de cr ation : 12/07/2010
 /** Version :          1.0.0
 /** Createur :         Loup Peluso
 /***************************** ChangeLog *****************************/
 /** V1.0.0 :
-/**      Mise en place des fonctions de base nécessaires au bon
-/**   fonctionnement des accès à la base de donnée MySQL. Ce script
-/**   contient le strict minimum pour une connection à la BDD.
+/**      Mise en place des fonctions de base n cessaires au bon
+/**   fonctionnement des acc s   la base de donnée MySQL. Ce script
+/**   contient le strict minimum pour une connection   la BDD.
 /*********************************************************************/
 
 /***************************** INCLUDES ******************************/
 
+        // #include "usu_constants"
     // #include "usu_stringtokman"
 #include "usu_locmanip"
-
-/***************************** CONSTANTES ****************************/
-
-/* Nom du Waypoint contenant le buffer. */
-const string SQLWP_TAG = "wpsql";
-const string SQLWP_RESREF = "wpsql";
-
-/* Message de Debug. */
-const string MESS_DEBUG_QUERY = "Requête SQL";
-
-/* Erreurs. */
-const int SQL_ERROR = 0;
-const int SQL_SUCCESS = 1;
-
-/* SQL Quotation. */
-//const string SQL_QUOTE = "&#34";
-const string SQL_QUOTE = "'";
-
-// SQL Config.
-// Tables.
-const string TABLE_ACCOUNTS = "`accounts`";
-const string TABLE_CHARACTERS = "`characters`";
-const string TABLE_CDKEYS = "`cdkeys`";
-const string TABLE_CDKEY_ACCOUNT_LINKS = "`cdkey_account_links`";
-
-// Champs.
-const string ID = "`id`";
-const string ID_ACCOUNT = "`id_account`";
-const string ID_CDKEY = "`id_cdkey`";
-
-const string NAME = "`name`";
-const string STARTING_LOCATION = "`starting_location`";
-const string LAST_CONNEXION = "`last_connexion`";
-const string LEVEL = "`level`";
-const string CREATION = "`creation`";
-const string BAN = "`ban`";
-const string CDKEY = "`cdkey`";
-
-/***************************** VARIABLES *****************************/
-
-/* Waypoint qui servira de réceptacle aux requêtes SQL. */
-object oSQLWP = OBJECT_INVALID;
-/* Variable qui servira de buffer. */
-string S_LOCAL_BUFFER;
+#include "sql_constants"
 
 /***************************** PROTOTYPES ****************************/
 
@@ -71,62 +29,62 @@ void sqlInit();
 object sqlGetWaypoint();
 
 // DEF IN "sql_main"
-// Fonction qui exécute une requête SQL.
+// Fonction qui ex cute une requ te SQL.
 //   > string sQuery - Requête à exécuter.
 void sqlExecDirect(string sQuery);
 
 // DEF IN "sql_main"
-// Fonction qui place le curseur sur la ligne suivante (en commençant par la première).
+// Fonction qui place le curseur sur la ligne suivante (en commen ant par la première).
 //   o int - SQL_SUCCESS si le curseur à été déplacé, SQL_ERROR sinon (fin des lignes).
 int sqlFetch();
 
 // DEF IN "sql_main"
 // Fonction qui permet de récupérer les données préalablement fetchées.
 //   > int iCol - Numéro de la colonne de la ligne actuelle qui contient la valeur à récupérer.
-//   o string - Donnée récupérée.
+//   o string - Donnée récupère.
 string sqlGetData(int iCol);
 
 // DEF IN "sql_main"
-// Fonction qui permet d'exécuter et de récupérer directement la valeur de la requête sous
-// la forme d'un entier unique (à utiliser pour récupérer l'ID d'un personnage par exemple).
+// Fonction qui permet d'exécuter et de récupérer directement la valeur de la requ te sous
+// la forme d'un entier unique (  utiliser pour récupérer l'ID d'un personnage par exemple).
 // EAFD signifie ExecAndFetchDirect.
-//   > string sQuery - Requête à exécuter.
-//   o int - Entier récupéré, résultat de la requête.
+//   > string sQuery - Requ te   ex cuter.
+//   o int - Entier récupéré, r sultat de la requ te.
 int sqlEAFDSingleInt(string sQuery);
 
 // DEF IN "sql_main"
-// Fonction qui permet d'exécuter et de récupérer directement la valeur de la requête
-// sous la forme d'une location (à utiliser pour récupérer le point de départ d'un personnage par exemple).
+// Fonction qui permet d'ex cuter et de récupérer directement la valeur de la requ te
+// sous la forme d'une location (  utiliser pour récupérer le point de d part d'un personnage par exemple).
 // EAFD signifie ExecAndFetchDirect.
-//   > string sQuery - Requête à exécuter.
-//   o location - Location récupérée, résultat de la requête (renvoie le point de départ du module en cas d'erreur).
+//   > string sQuery - Requ te   ex cuter.
+//   o location - Location récupère, r sultat de la requ te (renvoie le point de d part du module en cas d'erreur).
 location sqlEAFDSingleLocation(string sQuery);
 
 // DEF IN "sql_main"
-// Fonction qui permet de récupérer un entier ou, si c'est impossible, d'exécuter une insertion.
+// Fonction qui permet de récupérer un entier ou, si c'est impossible, d'ex cuter une insertion.
 // EAFD signifie ExecAndFetchDirect.
-//   > string sSelectQuery - Requête de sélection à exécuter.
-//   > string sInsertQuery - Insertion dans le cas d'une sélection vide.
-//   > int iDepth - Profondeur de récursivité (à ne pas définir).
-//   o int - Entier récupéré, résultat de la requête.
+//   > string sSelectQuery - Requ te de s lection   ex cuter.
+//   > string sInsertQuery - Insertion dans le cas d'une s lection vide.
+//   > int iDepth - Profondeur de r cursivit  (  ne pas d finir).
+//   o int - Entier récupéré, r sultat de la requ te.
 int sqlEAFDSingleIntOrInsert(string sSelectQuery, string sInsertQuery, int iDepth = 0);
 
 // DEF IN "sql_main"
-// Cette fonction crée une structure sub_query.
-//   > string sQuery - Select correspondant à la sous-requête désirée.
-//   > string sAlias - Alias de la sous-requête.
-//   o struct sub_query - Structure de sous-requête.
+// Cette fonction cr e une structure sub_query.
+//   > string sQuery - Select correspondant   la sous-requ te d sir e.
+//   > string sAlias - Alias de la sous-requ te.
+//   o struct sub_query - Structure de sous-requ te.
 struct sub_query sqlSetSubQuery(string sQuery, string sAlias);
 
 // DEF IN "sql_main"
 // Cette fonction rajoute les caractères de quotation en début et en fin de chaîne.
-//   > string sString - Chaîne à quoter.
-//   o string - Chaîne modifiée.
+//   > string sString - Chaîne   quoter.
+//   o string - Chaîne modifi e.
 string sqlQuote(string sString);
 
 /***************************** STRUCTURES ****************************/
 
-// Structure permettant de gérer les sous-requêtes SQL.
+// Structure permettant de g rer les sous-requêtes SQL.
 struct sub_query {
     string sQuery;
     string sAlias;
@@ -138,11 +96,11 @@ void sqlInit() {
     int i;
     string sStringBuffer;
 
-    // Réservation de 128 bits de mémoire.
+    // R servation de 128 bits de m moire.
     for (i = 0; i < 8; i++) {
         sStringBuffer += "................................................................................................................................";
     }
-    // Laisse de l'espace entre chaque résultat de requêtes.
+    // Laisse de l'espace entre chaque r sultat de requêtes.
     SetLocalString(sqlGetWaypoint(), "NWNX!ODBC!SPACER", sStringBuffer);
 }
 
@@ -155,7 +113,7 @@ object sqlGetWaypoint() {
 }
 
 void sqlExecDirect(string sQuery) {
-    // Envoie la requête au module NWNX pour l'éxécuter.
+    // Envoie la requ te au module NWNX pour l' x cuter.
     SetLocalString(sqlGetWaypoint(), "NWNX!ODBC!EXEC", sQuery);
 }
 
@@ -187,7 +145,7 @@ string sqlGetData(int iCol)
     int iCount = 0;
     string sColValue = "";
 
-    iPos = FindSubString(sResultSet, "¬");
+    iPos = FindSubString(sResultSet, "o");
     if ((iPos == -1) && (iCol == 1))
     {
         // only one column, return value immediately
@@ -209,7 +167,7 @@ string sqlGetData(int iCol)
             else
             {
                 sResultSet = GetStringRight(sResultSet, GetStringLength(sResultSet) - iPos - 1);
-                iPos = FindSubString(sResultSet, "¬");
+                iPos = FindSubString(sResultSet, "o");
             }
 
             // special case: last column in row
@@ -245,7 +203,7 @@ location sqlEAFDSingleLocation(string sQuery) {
 
 int sqlEAFDSingleIntOrInsert(string sSelectQuery, string sInsertQuery, int iDepth = 0) {
     if (iDepth < 2) {
-        // On exécute la requête de récupération de la valeur.
+        // On ex cute la requ te de r cup ration de la valeur.
         sqlExecDirect(sSelectQuery);
 
         sqlFetch();
@@ -254,7 +212,7 @@ int sqlEAFDSingleIntOrInsert(string sSelectQuery, string sInsertQuery, int iDept
             // On extrait la valeur après avoir récupéré les données.
             string sRes = sqlGetData(1);
             if (sRes == "") {
-                // Aucune valeur récupérée, on exécute l'insertion et on augmente d'un la profondeur de récursivité.
+                // Aucune valeur récupère, on ex cute l'insertion et on augmente d'un la profondeur de r cursivit .
                 sqlExecDirect(sInsertQuery);
                 return sqlEAFDSingleIntOrInsert(sSelectQuery, sInsertQuery, ++iDepth);
             } else {
@@ -263,7 +221,7 @@ int sqlEAFDSingleIntOrInsert(string sSelectQuery, string sInsertQuery, int iDept
             }
         }
     }
-    // Impossible d'exécuter les requêtes : base de donnée déconnectée ?
+    // Impossible d'ex cuter les requêtes : base de donnée d connect e ?
     return SQL_ERROR;
 }
 

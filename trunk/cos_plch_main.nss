@@ -1,25 +1,24 @@
 /*********************************************************************/
 /** Nom :              cos_plch_main
-/** Date de création : 12/07/2010
+/** Date de cr ation : 12/07/2010
 /** Version :          1.0.0
-/** Créateur :         Peluso Loup
+/** Cr ateur :         Peluso Loup
 /***************************** ChangeLog *****************************/
 /** V1.0.0 (par Peluso Loup) :
-/**      Script lancé au chargement du module.
+/**      Script lanc‚ au chargement du module.
 /*********************************************************************/
 
 /***************************** INCLUDES ******************************/
 
-            // Donnees de config.
-            // #include "cos_config"
+                    // #include "usu_constants"
+                // #include "usu_stringtokman"
+                // #include "scm_constants"
+            // #include "scm_utils"
 
-            // Fonctions de manipulation des chaînes de caractères.
-            // #include "usu_stringtokman"
-        // Fonctions de manipulation et de traîtement.
-        // #include "scm_utils"
-    // Fonctions d'exécution des commandes.
+                // #include "usu_constants"
+            // #include "usu_movings"
+        // #include "scm_cmmoving"
     // #include "scm_commands"
-// Système de détection et d'analyse de commandes.
 #include "scm_main"
 
 /************************** IMPLEMENTATIONS **************************/

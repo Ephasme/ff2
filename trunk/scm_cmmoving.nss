@@ -1,64 +1,37 @@
 /*********************************************************************/
 /** Nom :              scm_cmmoving
-/** Date de création : 08/08/2010
+/** Date de cr ation : 08/08/2010
 /** Version :          1.0.0
-/** Créateur :         Peluso Loup
+/** Cr ateur :         Peluso Loup
 /***************************** ChangeLog *****************************/
 /** V1.0.0 (par Peluso Loup) :
 /**      Script contenant la liste des commandes relatives aux
-/**    déplacements des personnages.
+/**    d placements des personnages.
 /*********************************************************************/
 
 /***************************** INCLUDES ******************************/
 
-    // Donnees de config.
-    // #include "cos_config"
-
-    // Fonctions de manipulation des chaînes de caractères.
+        // #include "usu_constants"
     // #include "usu_stringtokman"
-// Fonctions de manipulation et de traîtement.
+    // #include "scm_constants"
 #include "scm_utils"
 
-// Fonctions de déplacement.
+    // #include "usu_constants"
 #include "usu_movings"
-
-/***************************** CONSTANTES ****************************/
-
-// Constantes de langue.
-const string L_YOU_SAVED_THIS_POSITION_IN_THE_VARIABLE = "Vous avez sauvegardé cette position dans la variable";
-const string L_YOU_CAN_REUSE_IT_TO_RETURN_THERE_AUTOMATICALLY = "Vous pourrez la réutiliser pour y revenir automatiquement.";
-
-// Nom des commandes.
-const string SCM_CM_MOVE_TO = "moveto";
-const string SCM_CM_SAVE_LOC = "savepos";
-
-// Paramètres des commandes.
-const string SCM_PAR_LOCAL_LOCATION_VARIABLE_NAME = "var";
-const string SCM_PAR_WAYPOINT_TAG = "tag";
-const string SCM_PAR_TO_LOCATION = "loc";
-const string SCM_PAR_TO_WAYPOINT = "wp";
-const string SCM_PAR_RUN = "run";
-const string SCM_PAR_JUMP = "jump";
-
-// Messages d'erreur.
-const string ERR_IMPOSSIBLE_TO_MOVE_TO_WAYPOINT_AND_TO_RENT = "Impossible de se déplacer à la fois vers un Waypoint et vers une Location.";
-const string ERR_VARIABLE_NAME_PARAMETER_NOT_PASSED_ON = "Paramètre de nom de variable non transmit.";
-const string ERR_WAYPOINT_DESTINATION_INVALID = "Le Waypoint de destination est invalide.";
-const string ERR_MOVING_TYPE_NOT_DEFINED = "Le type de déplacement (vers un Waypoint ou vers une Location) n'a pas été défini.";
 
 /***************************** PROTOTYPES ****************************/
 
 // DEF IN "scm_commands"
-// Fonction qui déplace un personnage vers un point du module.
-//   > string sCommand - Commande à traîter.
-//   > object oPC - Source de la requête.
+// Fonction qui d place un personnage vers un point du module.
+//   > string sCommand - Commande   tra ter.
+//   > object oPC - Source de la requ te.
 //   o string - Chaîne vide.
 string scmMoveToCommand(string sCommand, object oPC);
 
 // DEF IN "scm_commands"
 // Fonction qui sauvegarde la position actuelle du personnage.
-//   > string sCommand - Commande à traîter.
-//   > object oPC - Source de la requête.
+//   > string sCommand - Commande   tra ter.
+//   > object oPC - Source de la requ te.
 //   o string - Chaîne vide.
 string scmSaveLocCommand(string sCommand, object oPC);
 
@@ -70,7 +43,7 @@ string scmSaveLocCommand(string sCommand, object oPC) {
     // On récupère la position actuelle du PJ.
     if (GetIsPC(oPC)) {
         location lLoc = GetLocation(oPC);
-        // On sauvegarde la position de façon persistante.
+        // On sauvegarde la position de fa on persistante.
         SetLocalLocation(oPC, sVarName, lLoc);
         SendMessageToPC(oPC, L_YOU_SAVED_THIS_POSITION_IN_THE_VARIABLE+" "+sVarName+".\n"+
                              L_YOU_CAN_REUSE_IT_TO_RETURN_THERE_AUTOMATICALLY);
@@ -84,9 +57,9 @@ string scmMoveToCommand(string sCommand, object oPC) {
         return SCM_EMPTY_RESULT; 
     }
     
-    // Est-ce qu'on se déplace vers une location ?
+    // Est-ce qu'on se d place vers une location ?
     int iToLocation = scmIsParameterDefined(sCommand, SCM_PAR_TO_LOCATION);
-    // Est-ce qu'on se déplace vers un waypoint ?
+    // Est-ce qu'on se d place vers un waypoint ?
     int iToWaypoint = scmIsParameterDefined(sCommand, SCM_PAR_TO_WAYPOINT);
     
     // Impossible de faire les deux.
@@ -95,13 +68,13 @@ string scmMoveToCommand(string sCommand, object oPC) {
         return SCM_EMPTY_RESULT;
     }
   
-    // Au moins un des deux dois être défini.
+    // Au moins un des deux dois  tre d fini.
     if (!(iToLocation || iToWaypoint)) {
         scmSendCommandErrorMessage(oPC, ERR_MOVING_TYPE_NOT_DEFINED);
         return SCM_EMPTY_RESULT;
     } 
     
-    // Variables contenant les informations passées en paramètre de la commande pour déplacer le PJ.
+    // Variables contenant les informations pass es en param tre de la commande pour d placer le PJ.
     location lDest;
     string sWaypointTag;
     string sLocalLocationVarName;
@@ -124,13 +97,13 @@ string scmMoveToCommand(string sCommand, object oPC) {
         lDest = GetLocation(oWP);
     }
     
-    // Est-ce le PJ va se déplacer en courant ?
+    // Est-ce le PJ va se d placer en courant ?
     int iRun = scmIsParameterDefined(sCommand, SCM_PAR_RUN);
 
-    // Est-ce qu'on va déplacer le PJ instantanément ?
+    // Est-ce qu'on va d placer le PJ instantanément ?
     int iJump = scmIsParameterDefined(sCommand, SCM_PAR_JUMP);
 
-    // On déplace le personnage jusqu'à la location sauvée.
+    // On d place le personnage jusqu'à la location sauv e.
     usuMoveToLocation(oPC, lDest, iRun, iJump);
 
     return SCM_EMPTY_RESULT;

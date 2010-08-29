@@ -8,6 +8,8 @@
 /**      Script contenant toutes les fonctions nécessaires aux tests.
 /*********************************************************************/
 
+#include "usu_constants"
+
 /***************************** PROTOTYPES ****************************/
 
 // TODO: Décrire les fonctions.
@@ -20,25 +22,8 @@ void printResult(string sScriptName);
 
 /***************************** VARIABLES *****************************/
 
-/* Variable servant de réceptacle aux informations résultantes des test. */
+/* Variable servant de réceptacle aux informations résultantes des tests. */
 string sFinalString = "";
-
-/***************************** CONSTANTES ****************************/
-
-// Défini si le système de test est activé ou non.
-// Désactiver (FALSE) absolument dans le cadre d'une Release car cela ralenti
-// considérablement les performances du module.
-const int TEST_MODE = TRUE;
-
-/* Constantes de langage. */
-const string L_TESTS_BEGIN = "Début des tests";
-const string L_TESTS_END = "Fin des tests";
-const string L_CORRECT_FUNCTIONING_OF = "Fonctionnement correct de";
-const string L_ABNORMAL_FUNCTIONING_OF = "Fonctionnement anormal de";
-const string L_CASE = "Cas";
-const string L_FOR = "pour";
-const string L_HOUR = "Temps écoulé";
-const string L_SOURCE = "Source";
 
 /************************** IMPLEMENTATIONS **************************/
 

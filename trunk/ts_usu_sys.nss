@@ -11,10 +11,14 @@
 
 /***************************** INCLUDES ******************************/
 
+    // #include "usu_constants"
 #include "usu_testfuncs"
 
-#include "usu_stringtokman"
+    // #include "usu_constants"
 #include "usu_movings"
+
+        // #include "usu_constants"
+    // #include "usu_stringtokman"
 #include "usu_locmanip"
 
 /***************************** CONSTANTES ****************************/
@@ -42,10 +46,10 @@ location pv_SetLocation(object oArea, float x, float y, float z, float facing) {
 
 void ts_usuLocationToString_LocationValid() {
     // Création de la location à tester.
-    location lLoc = pv_SetLocation(GetObjectByTag("area001"), 1.0, 2.0, 3.0, 90.0);
+    location lLoc = pv_SetLocation(GetObjectByTag("cos_ar_00"), 1.0, 2.0, 3.0, 90.0);
 
     string sResult = usuLocationToString(lLoc);
-    addTest("usuLocationToString", "Test avec une Location valide.", sResult == "##area001##1.000##2.000##3.000##90.000##");
+    addTest("usuLocationToString", "Test avec une Location valide.", sResult == "##cos_ar_00##1.000##2.000##3.000##90.000##");
     addTestInfo("Resultat", sResult);
 }
 
@@ -58,13 +62,13 @@ void ts_usuLocationToString_LocationInvalid() {
 }
 
 void ts_usuStringToLocation_StringValid() {
-    string sTestValue = "##area001##1.000##2.000##3.000##90.000##";
+    string sTestValue = "##cos_ar_00##1.000##2.000##3.000##90.000##";
     location lLoc = usuStringToLocation(sTestValue);
     vector v = GetPositionFromLocation(lLoc);
     float fac = GetFacingFromLocation(lLoc);
     object o = GetAreaFromLocation(lLoc);
 
-    int iResult = (v.x == 1.0 && v.y == 2.0 && v.z == 3.0 && fac == 90.0 && GetTag(o) == "area001");
+    int iResult = (v.x == 1.0 && v.y == 2.0 && v.z == 3.0 && fac == 90.0 && GetTag(o) == "cos_ar_00");
 
     addTest("usuLocationToString", "Test avec une chaîne valide.", iResult);
     addTestInfo("Chaîne testée", sTestValue);
