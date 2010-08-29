@@ -1,5 +1,5 @@
 /*********************************************************************/
-/** Nom :              sql_main
+/** Nom :              sqlaf_main
 /** Date de cr ation : 12/07/2010
 /** Version :          1.0.0
 /** Createur :         Loup Peluso
@@ -12,39 +12,39 @@
 
 /***************************** INCLUDES ******************************/
 
-        // #include "usu_constants"
-    // #include "usu_stringtokman"
-#include "usu_locmanip"
-#include "sql_constants"
+        // #include "usuaf_constants"
+    // #include "usuaf_strtokman"
+#include "usuaf_locmanip"
+#include "sqlaf_constants"
 
 /***************************** PROTOTYPES ****************************/
 
-// DEF IN "sql_main"
+// DEF IN "sqlaf_main"
 // Fonction d'initialisation de MySQL.
 void sqlInit();
 
-// DEF IN "sql_main"
+// DEF IN "sqlaf_main"
 // Renvoie l'objet correspondant au Waypoint SQL.
 //   o object - Waypoint SQL.
 object sqlGetWaypoint();
 
-// DEF IN "sql_main"
+// DEF IN "sqlaf_main"
 // Fonction qui ex cute une requ te SQL.
 //   > string sQuery - Requête à exécuter.
 void sqlExecDirect(string sQuery);
 
-// DEF IN "sql_main"
+// DEF IN "sqlaf_main"
 // Fonction qui place le curseur sur la ligne suivante (en commen ant par la première).
 //   o int - SQL_SUCCESS si le curseur à été déplacé, SQL_ERROR sinon (fin des lignes).
 int sqlFetch();
 
-// DEF IN "sql_main"
+// DEF IN "sqlaf_main"
 // Fonction qui permet de récupérer les données préalablement fetchées.
 //   > int iCol - Numéro de la colonne de la ligne actuelle qui contient la valeur à récupérer.
 //   o string - Donnée récupère.
 string sqlGetData(int iCol);
 
-// DEF IN "sql_main"
+// DEF IN "sqlaf_main"
 // Fonction qui permet d'exécuter et de récupérer directement la valeur de la requ te sous
 // la forme d'un entier unique (  utiliser pour récupérer l'ID d'un personnage par exemple).
 // EAFD signifie ExecAndFetchDirect.
@@ -52,7 +52,7 @@ string sqlGetData(int iCol);
 //   o int - Entier récupéré, r sultat de la requ te.
 int sqlEAFDSingleInt(string sQuery);
 
-// DEF IN "sql_main"
+// DEF IN "sqlaf_main"
 // Fonction qui permet d'ex cuter et de récupérer directement la valeur de la requ te
 // sous la forme d'une location (  utiliser pour récupérer le point de d part d'un personnage par exemple).
 // EAFD signifie ExecAndFetchDirect.
@@ -60,7 +60,7 @@ int sqlEAFDSingleInt(string sQuery);
 //   o location - Location récupère, r sultat de la requ te (renvoie le point de d part du module en cas d'erreur).
 location sqlEAFDSingleLocation(string sQuery);
 
-// DEF IN "sql_main"
+// DEF IN "sqlaf_main"
 // Fonction qui permet de récupérer un entier ou, si c'est impossible, d'ex cuter une insertion.
 // EAFD signifie ExecAndFetchDirect.
 //   > string sSelectQuery - Requ te de s lection   ex cuter.
@@ -69,14 +69,14 @@ location sqlEAFDSingleLocation(string sQuery);
 //   o int - Entier récupéré, r sultat de la requ te.
 int sqlEAFDSingleIntOrInsert(string sSelectQuery, string sInsertQuery, int iDepth = 0);
 
-// DEF IN "sql_main"
+// DEF IN "sqlaf_main"
 // Cette fonction cr e une structure sub_query.
 //   > string sQuery - Select correspondant   la sous-requ te d sir e.
 //   > string sAlias - Alias de la sous-requ te.
 //   o struct sub_query - Structure de sous-requ te.
 struct sub_query sqlSetSubQuery(string sQuery, string sAlias);
 
-// DEF IN "sql_main"
+// DEF IN "sqlaf_main"
 // Cette fonction rajoute les caractères de quotation en début et en fin de chaîne.
 //   > string sString - Chaîne   quoter.
 //   o string - Chaîne modifi e.

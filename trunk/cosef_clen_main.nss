@@ -1,5 +1,5 @@
 /*********************************************************************/
-/** Nom :              cos_clen_main
+/** Nom :              cosef_clen_main
 /** Date de création : 12/07/2010
 /** Version :          1.0.0
 /** Créateur :         Peluso Loup
@@ -11,16 +11,16 @@
 /***************************** INCLUDES ******************************/
 
 
-    // #include "cos_constants"
-#include "cos_globalvar"
+    // #include "cosaf_constants"
+#include "cosaf_globalvar"
 
-                // #include "usu_stringtokman"
-            // #include "usu_locmanip"
-            // #include "sql_constants"
-        // #include "sql_main"
-    // #include "sql_charmanips"
-    // #include "cos_constants"
-#include "cos_charmanips"
+                // #include "usuaf_strtokman"
+            // #include "usuaf_locmanip"
+            // #include "sqlaf_constants"
+        // #include "sqlaf_main"
+    // #include "sqlaf_charmanips"
+    // #include "cosaf_constants"
+#include "cosaf_pcmanips"
 
 /************************** IMPLEMENTATIONS **************************/
 
@@ -32,7 +32,7 @@ void main() {
     oPC = GetEnteringObject();
 
     // On vérifie que le module est bien initialisé et que le personnage est valide.
-    if (!(cosGetGlobalInt(COS_MODULE_IS_INIT) &&
+    if (!(cosGetGlobalInt(COS_MOD_IS_INIT_VARNAME) &&
           GetIsObjectValid(oPC) &&
           GetIsPC(oPC) &&
           (GetPCPublicCDKey(oPC) != ""))) {
@@ -61,9 +61,10 @@ void main() {
     cosLoadPCStartingLocation(oPC);
     if (cosPCStartingLocationValid(oPC)) {
         // On y expédie le personnage.
-        DelayCommand(DELAY_BEFORE_JUMP, cosJumpToPCStartingLocation(oPC));
+        DelayCommand(COS_JUMP_DELAY, cosJumpToPCStartingLocation(oPC));
     }
 
+    // Exécution des scripts de test.
     ExecuteScript("ts_cos_sys", oPC);
     ExecuteScript("ts_usu_sys", oPC);
     ExecuteScript("ts_scm_sys", oPC);

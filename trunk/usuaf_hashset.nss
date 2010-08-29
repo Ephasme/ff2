@@ -1,5 +1,5 @@
 /*********************************************************************/
-/** Nom :              usu_hashset
+/** Nom :              usuaf_hashset
 /** Date de création : 18/12/2003
 /** Version :          1.0.0
 /** Créateur :         Ingmar Stieger
@@ -10,79 +10,79 @@
 
 /***************************** INCLUDES ******************************/
 
-#include "usu_constants"
+#include "usuaf_constants"
 
 /***************************** PROTOTYPES ****************************/
 
 /* TODO: Traduire les descriptions de prototypes. */
 
-// DEF IN "usu_hashset"
+// DEF IN "usuaf_hashset"
 // create a new hash on oObject with name sHashSetName.
 int usuHashCreate(string sHashSetName, int iSize = 500);
 
-// DEF IN "usu_hashset"
+// DEF IN "usuaf_hashset"
 // Clear and delete sHashSetName on oObject
 void usuHashDestroy(string sHashSetName);
 
-// DEF IN "usu_hashset"
+// DEF IN "usuaf_hashset"
 // return true if hashset sHashSet is valid
 int usuHashValid(string sHashSetName);
 
-// DEF IN "usu_hashset"
+// DEF IN "usuaf_hashset"
 // return true if hashset sHashSet contains key sKey
 int usuHashKeyExists(string sHashSetName, string sKey);
 
-// DEF IN "usu_hashset"
+// DEF IN "usuaf_hashset"
 // Set key sKey of sHashset to string sValue
 int usuHashSetLocalString(string sHashSetName, string sKey, string sValue);
 
-// DEF IN "usu_hashset"
+// DEF IN "usuaf_hashset"
 // Retrieve string value of sKey in sHashset
 string usuHashGetLocalString(string sHashSetName, string sKey);
 
-// DEF IN "usu_hashset"
+// DEF IN "usuaf_hashset"
 // Set key sKey of sHashset to integer iValue
 int usuHashSetLocalInt(string sHashSetName, string sKey, int iValue);
 
-// DEF IN "usu_hashset"
+// DEF IN "usuaf_hashset"
 // Retrieve integer value of sKey in sHashset
 int usuHashGetLocalInt(string sHashSetName, string sKey);
 
-// DEF IN "usu_hashset"
+// DEF IN "usuaf_hashset"
 // Delete sKey in sHashset
 int usuHashDeleteVariable(string sHashSetName, string sKey);
 
-// DEF IN "usu_hashset"
+// DEF IN "usuaf_hashset"
 // Return the n-th key in sHashset
 // note: this returns the KEY, not the value of the key;
 string usuHashGetNthKey(string sHashSetName, int i);
 
-// DEF IN "usu_hashset"
+// DEF IN "usuaf_hashset"
 // Return the first key in sHashset
 // note: this returns the KEY, not the value of the key;
 string usuHashGetFirstKey(string sHashSetName);
 
-// DEF IN "usu_hashset"
+// DEF IN "usuaf_hashset"
 // Return the next key in sHashset
 // note: this returns the KEY, not the value of the key;
 string usuHashGetNextKey(string sHashSetName);
 
-// DEF IN "usu_hashset"
+// DEF IN "usuaf_hashset"
 // Return the current key in sHashset
 // note: this returns the KEY, not the value of the key;
 string usuHashGetCurrentKey(string sHashSetName);
 
-// DEF IN "usu_hashset"
+// DEF IN "usuaf_hashset"
 // Return the number of elements in sHashset
 int usuHashGetSize(string sHashSetName);
 
-// DEF IN "usu_hashset"
+// DEF IN "usuaf_hashset"
 // Return TRUE if the current key is not the last one, FALSE otherwise
 int usuHashHasNext(string sHashSetName);
 
 /* TODO: Decrire la fonction usuHashGetWaypoint. */
 
-// DEF IN "usu_hashset"
+// DEF IN "usuaf_hashset"
 object usuHashGetWaypoint();
 
 /************************** IMPLEMENTATIONS **************************/

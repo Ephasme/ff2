@@ -1,5 +1,5 @@
 /*********************************************************************/
-/** Nom :              usu_stringtokman
+/** Nom :              usuaf_strtokman
 /** Date de cr ation : 21/07/2010
 /** Version :          1.0.0
 /** Cr ateur :         Peluso Loup
@@ -11,25 +11,25 @@
 
 /***************************** INCLUDES ******************************/
 
-#include "usu_constants"
+#include "usuaf_constants"
 
 /***************************** PROTOTYPES ****************************/
 
-// DEF IN "usu_stringtokman"
+// DEF IN "usuaf_strtokman"
 // Fonction qui renvoie la position du dernier Délimiteur dans une chaine.
 //   > string sStr - Chaîne à scanner.
 //   > string sTok - Délimiteur.
 //   o int - Position du dernier Délimiteur trouvé ou TOKEN_POSITION_ERROR si rien n'a été trouvé.
 int usuGetLastTokenPosition(string sStr, string sTok);
 
-// DEF IN "usu_stringtokman"
+// DEF IN "usuaf_strtokman"
 // Fonction qui renvoie la position du dernier Délimiteur dans une chaine.
 //   > string sStr - Chaîne à scanner.
 //   > string sTok - Délimiteur.
 //   o int - Position du dernier Délimiteur trouvé ou TOKEN_POSITION_ERROR si rien n'a été trouvé.
 int usuGetFirstTokenPosition(string sStr, string sTok);
 
-// DEF IN "usu_stringtokman"
+// DEF IN "usuaf_strtokman"
 // Fonction qui renvoie tous les caractères d'une chaîne qui sont situés après un Délimiteur.
 //   > string sStr - Chaîne à scanner.
 //   > int iTokLgth - Taille du Délimiteur.
@@ -37,14 +37,14 @@ int usuGetFirstTokenPosition(string sStr, string sTok);
 //   o string - chaîne situ e après la position du Délimiteur donn .
 string usuGetStringAfterToken(string sStr, int iTokLgth, int iTokPos);
 
-// DEF IN "usu_stringtokman"
+// DEF IN "usuaf_strtokman"
 // Fonction qui renvoie tous les caractères d'une chaîne qui sont situés avant un Délimiteur.
 //   > string sStr - Chaîne à scanner.
 //   > int iTokPos - Position de d part.
 //   o string - chaîne situ e avant la position du Délimiteur donn .
 string usuGetStringBeforeToken(string sStr, int iTokPos);
 
-// DEF IN "usu_stringtokman"
+// DEF IN "usuaf_strtokman"
 // Fonction qui renvoie tous les caractères d'une chaîne qui sont situés entre deux Délimiteurs.
 //   > string sStr - Chaîne à scanner.
 //   > int iOpenTokPos - Position du Délimiteur d'ouverture.
@@ -54,7 +54,7 @@ string usuGetStringBeforeToken(string sStr, int iTokPos);
 //              la position du token d'ouverture est situ e après celle de celui de fermeture.
 string usuGetStringBetweenTokens(string sStr, int iOpenTokPos, int iOpenTokLength, int iCloseTokPos);
 
-// DEF IN "usu_stringtokman"
+// DEF IN "usuaf_strtokman"
 // Fonction qui renvoie la position du premier Délimiteur trouvé précédant une position donnée.
 //   > string sStr - Chaîne à scanner.
 //   > string sTokToFind - Délimiteur dont la position est à trouver.
@@ -63,7 +63,7 @@ string usuGetStringBetweenTokens(string sStr, int iOpenTokPos, int iOpenTokLengt
 //   o int - Position trouvée ou TOKEN_POSITION_ERROR si rien n'a été trouvé.
 int usuGetPreviousTokenPosition(string sStr, string sTokToFind, string sTokSource, int iPosTokSource);
 
-// DEF IN "usu_stringtokman"
+// DEF IN "usuaf_strtokman"
 // Fonction qui renvoie tous les caractères d'une chaîne qui sont situés après un Délimiteur.
 //   > string sStr - Chaîne à scanner.
 //   > string sTokToFind - Délimiteur dont la position est à trouver.
@@ -72,19 +72,19 @@ int usuGetPreviousTokenPosition(string sStr, string sTokToFind, string sTokSourc
 //   o int - Position trouvée ou TOKEN_POSITION_ERROR si rien n'a été trouvé.
 int usuGetNextTokenPosition(string sStr, string sTokToFind, string sTokSource, int iPosTokSource);
 
-// DEF IN "usu_stringtokman"
+// DEF IN "usuaf_strtokman"
 // Fonction qui supprime tous les espaces de début de chaîne.
 //   > string sString - Chaîne à modifier.
 //   o string - chaîne identique mais d pourvue d'espaces au début.
 string usuTrimLeftSpaces(string sStr);
 
-// DEF IN "usu_stringtokman"
+// DEF IN "usuaf_strtokman"
 // Fonction qui supprime tous les espaces de fin de chaîne.
 //   > string sStr - Chaîne à modifier.
 //   o string - chaîne identique mais d pourvue d'espaces à la fin.
 string usuTrimRightSpaces(string sStr);
 
-// DEF IN "usu_stringtokman"
+// DEF IN "usuaf_strtokman"
 // Fonction supprimant les espaces en début et en fin de chaine.
 //   > string sStr - Chaîne à modifier.
 //   o string - chaîne identique mais d pourvue d'espaces au début et   la fin.

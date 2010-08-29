@@ -1,5 +1,5 @@
 /*********************************************************************/
-/** Nom :              scm_cmmoving
+/** Nom :              scmaf_cmmoving
 /** Date de cr ation : 08/08/2010
 /** Version :          1.0.0
 /** Cr ateur :         Peluso Loup
@@ -11,24 +11,24 @@
 
 /***************************** INCLUDES ******************************/
 
-        // #include "usu_constants"
-    // #include "usu_stringtokman"
-    // #include "scm_constants"
-#include "scm_utils"
+        // #include "usuaf_constants"
+    // #include "usuaf_strtokman"
+    // #include "scmaf_constants"
+#include "scmaf_utils"
 
-    // #include "usu_constants"
-#include "usu_movings"
+    // #include "usuaf_constants"
+#include "usuaf_movings"
 
 /***************************** PROTOTYPES ****************************/
 
-// DEF IN "scm_commands"
+// DEF IN "scmaf_commands"
 // Fonction qui d place un personnage vers un point du module.
 //   > string sCommand - Commande   tra ter.
 //   > object oPC - Source de la requ te.
 //   o string - Chaîne vide.
 string scmMoveToCommand(string sCommand, object oPC);
 
-// DEF IN "scm_commands"
+// DEF IN "scmaf_commands"
 // Fonction qui sauvegarde la position actuelle du personnage.
 //   > string sCommand - Commande   tra ter.
 //   > object oPC - Source de la requ te.

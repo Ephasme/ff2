@@ -1,5 +1,5 @@
 /*********************************************************************/
-/** Nom :              cos_plch_main
+/** Nom :              cosef_plch_main
 /** Date de cr ation : 12/07/2010
 /** Version :          1.0.0
 /** Cr ateur :         Peluso Loup
@@ -10,16 +10,16 @@
 
 /***************************** INCLUDES ******************************/
 
-                    // #include "usu_constants"
-                // #include "usu_stringtokman"
-                // #include "scm_constants"
-            // #include "scm_utils"
+                    // #include "usuaf_constants"
+                // #include "usuaf_strtokman"
+                // #include "scmaf_constants"
+            // #include "scmaf_utils"
 
-                // #include "usu_constants"
-            // #include "usu_movings"
-        // #include "scm_cmmoving"
-    // #include "scm_commands"
-#include "scm_main"
+                // #include "usuaf_constants"
+            // #include "usuaf_movings"
+        // #include "scmaf_cmmoving"
+    // #include "scmaf_commands"
+#include "scmaf_main"
 
 /************************** IMPLEMENTATIONS **************************/
 

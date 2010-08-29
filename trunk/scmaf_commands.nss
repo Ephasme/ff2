@@ -1,5 +1,5 @@
 /*********************************************************************/
-/** Nom :              scm_commands
+/** Nom :              scmaf_commands
 /** Date de cr ation : 08/08/2010
 /** Version :          1.0.0
 /** Cr ateur :         Peluso Loup
@@ -11,11 +11,11 @@
 
 /***************************** INCLUDES ******************************/
 
-            // #include "usu_constants"
-        // #include "usu_stringtokman"
-        // #include "scm_constants"
-    // #include "scm_utils"
+            // #include "usuaf_constants"
+        // #include "usuaf_strtokman"
+        // #include "scmaf_constants"
+    // #include "scmaf_utils"
 
-        // #include "usu_constants"
-    // #include "usu_movings"
-#include "scm_cmmoving"
+        // #include "usuaf_constants"
+    // #include "usuaf_movings"
+#include "scmaf_cmmoving"

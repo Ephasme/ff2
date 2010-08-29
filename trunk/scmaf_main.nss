@@ -1,5 +1,5 @@
 /*********************************************************************/
-/** Nom :              scm_main
+/** Nom :              scmaf_main
 /** Date de cr ation : 21/07/2010
 /** Version :          1.0.0
 /** Cr ateur :         Peluso Loup
@@ -8,33 +8,33 @@
 /**      Script principal d'ex cution des commandes.
 /*********************************************************************/
 
-                // #include "usu_constants"
-            // #include "usu_stringtokman"
-            // #include "scm_constants"
-        // #include "scm_utils"
+                // #include "usuaf_constants"
+            // #include "usuaf_strtokman"
+            // #include "scmaf_constants"
+        // #include "scmaf_utils"
 
-            // #include "usu_constants"
-        // #include "usu_movings"
-    // #include "scm_cmmoving"
-#include "scm_commands"
+            // #include "usuaf_constants"
+        // #include "usuaf_movings"
+    // #include "scmaf_cmmoving"
+#include "scmaf_commands"
 
 /***************************** PROTOTYPES ****************************/
 
-// DEF IN "scm_main"
+// DEF IN "scmaf_main"
 // Fonction qui ex cute une commande et renvoie le r sultat sous forme de chaîne.
 //   > string sCommand - Commande   tra ter.
 //   > object oPC - Personnage qui a lanc  la requ te.
 //   o string - R sultat de la commande (renvoie une chaîne vide si aucun r sultat n'est trouvé).
 string scmExecuteCommand(string sCommand, object oPC);
 
-// DEF IN "scm_main"
+// DEF IN "scmaf_main"
 // Renvoie un speech int grant le r sultat d'une commande.
 //   > struct scm_command_datas strScmCommandDatas - Structure de la commande.
 //   > string sResult - R sultat   int grer.
 //   o string - R sultat de la commande (renvoie une chaîne vide si aucun r sultat n'est trouvé).
 string scmFetchCommand(struct scm_command_datas strScmCommandDatas, string sResult);
 
-// DEF IN "scm_main"
+// DEF IN "scmaf_main"
 // Fonction qui ex cute une commande et la remplace par son r sultat dans le speech d'origine.
 //   > struct scm_command_datas strScmCommandDatas - Structure de la commande.
 //   > object oPC - Personnage qui a lanc  la requ te.

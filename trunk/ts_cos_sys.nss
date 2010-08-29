@@ -12,16 +12,16 @@
 
 /***************************** INCLUDES ******************************/
 
-                // #include "usu_stringtokman"
-            // #include "usu_locmanip"
-            // #include "sql_constants"
-        // #include "sql_main"
-    // #include "sql_charmanips"
-    // #include "cos_constants"
-#include "cos_charmanips"
+                // #include "usuaf_strtokman"
+            // #include "usuaf_locmanip"
+            // #include "sqlaf_constants"
+        // #include "sqlaf_main"
+    // #include "sqlaf_charmanips"
+    // #include "cosaf_constants"
+#include "cosaf_pcmanips"
 
-    // #include "usu_constants"
-#include "usu_testfuncs"
+    // #include "usuaf_constants"
+#include "usuaf_testfuncs"
 
 /************************** IMPLEMENTATIONS **************************/
 
@@ -169,10 +169,10 @@ void ts_cosGetStringFromPC(object oPC) {
 void ts_cosLoadPCIdentifiers(object oPC) {
     cosLoadPCIdentifiers(oPC);
 
-    int iId = cosGetIntFromPC(oPC, PC_ID);
-    int iIdAccount = cosGetIntFromPC(oPC, PC_ACCOUNT_ID);
-    int iIdKey = cosGetIntFromPC(oPC, PC_KEY_ID);
-    int iIdLinkKeyAccount = cosGetIntFromPC(oPC, PC_KEY_ACCOUNT_LINK_ID);
+    int iId = cosGetIntFromPC(oPC, COS_PC_ID);
+    int iIdAccount = cosGetIntFromPC(oPC, COS_PC_ACCOUNT_ID);
+    int iIdKey = cosGetIntFromPC(oPC, COS_PC_KEY_ID);
+    int iIdLinkKeyAccount = cosGetIntFromPC(oPC, COS_PC_KEY_ACCOUNT_LINK_ID);
 
     addTest(
         "cosLoadPCIdentifiers",
@@ -188,10 +188,10 @@ void ts_cosLoadPCIdentifiers(object oPC) {
 void ts_cosIsPCIdentifiersValid(object oPC) {
     cosLoadPCIdentifiers(oPC);
 
-    int iId = cosGetIntFromPC(oPC, PC_ID);
-    int iIdAccount = cosGetIntFromPC(oPC, PC_ACCOUNT_ID);
-    int iIdKey = cosGetIntFromPC(oPC, PC_KEY_ID);
-    int iIdLinkKeyAccount = cosGetIntFromPC(oPC, PC_KEY_ACCOUNT_LINK_ID);
+    int iId = cosGetIntFromPC(oPC, COS_PC_ID);
+    int iIdAccount = cosGetIntFromPC(oPC, COS_PC_ACCOUNT_ID);
+    int iIdKey = cosGetIntFromPC(oPC, COS_PC_KEY_ID);
+    int iIdLinkKeyAccount = cosGetIntFromPC(oPC, COS_PC_KEY_ACCOUNT_LINK_ID);
 
     int iResA = (iId != SQL_ERROR && iIdAccount != SQL_ERROR && iIdKey != SQL_ERROR && iIdLinkKeyAccount != SQL_ERROR);
     int iResB = cosIsPCIdentifiersValid(oPC);
@@ -207,16 +207,16 @@ void ts_cosIsPCIdentifiersValid(object oPC) {
 void ts_cosIsPCIdentifiersValid_WrongAccount(object oPC) {
     cosLoadPCIdentifiers(oPC);
 
-    int iId = cosGetIntFromPC(oPC, PC_ID);
+    int iId = cosGetIntFromPC(oPC, COS_PC_ID);
 
     // On change temporairement l'id de compte du personnage.
-    int iSave = cosGetIntFromPC(oPC, PC_ACCOUNT_ID);
+    int iSave = cosGetIntFromPC(oPC, COS_PC_ACCOUNT_ID);
     int iIdWrongAccount = iSave + 5;
-    cosSaveIntOnPC(oPC, PC_ACCOUNT_ID, iIdWrongAccount);
-    iIdWrongAccount = cosGetIntFromPC(oPC, PC_ACCOUNT_ID);
+    cosSaveIntOnPC(oPC, COS_PC_ACCOUNT_ID, iIdWrongAccount);
+    iIdWrongAccount = cosGetIntFromPC(oPC, COS_PC_ACCOUNT_ID);
 
-    int iIdKey = cosGetIntFromPC(oPC, PC_KEY_ID);
-    int iIdLinkKeyAccount = cosGetIntFromPC(oPC, PC_KEY_ACCOUNT_LINK_ID);
+    int iIdKey = cosGetIntFromPC(oPC, COS_PC_KEY_ID);
+    int iIdLinkKeyAccount = cosGetIntFromPC(oPC, COS_PC_KEY_ACCOUNT_LINK_ID);
 
     int iResA = (iId != SQL_ERROR && iIdWrongAccount != SQL_ERROR && iIdKey != SQL_ERROR && iIdLinkKeyAccount != SQL_ERROR);
     int iResB = cosIsPCIdentifiersValid(oPC);
@@ -229,11 +229,11 @@ void ts_cosIsPCIdentifiersValid_WrongAccount(object oPC) {
     addTestInfo("cosIsPCIdentifiersValid == TRUE ?", IntToString(iResB));
 
     // On rétablit l'identifiant du compte joueur originel.
-    cosSaveIntOnPC(oPC, PC_ACCOUNT_ID, iSave);
+    cosSaveIntOnPC(oPC, COS_PC_ACCOUNT_ID, iSave);
 }
 
 void ts_cosIsBan_PCIsBan(object oPC) {
-    string sId = IntToString(cosGetIntFromPC(oPC, PC_ID));
+    string sId = IntToString(cosGetIntFromPC(oPC, COS_PC_ID));
 
     // On banni temporairement le personnage.
     int iBan = sqlEAFDSingleInt("SELECT "+BAN+" FROM "+TABLE_CHARACTERS+" WHERE "+ID+" = "+sId+";");

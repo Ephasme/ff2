@@ -9,18 +9,18 @@
 /**   commandes.
 /**************************************************************************************************/
 
-                    // #include "usu_constants"
-                // #include "usu_stringtokman"
-                // #include "scm_constants"
-            // #include "scm_utils"
+                    // #include "usuaf_constants"
+                // #include "usuaf_strtokman"
+                // #include "scmaf_constants"
+            // #include "scmaf_utils"
 
-                // #include "usu_constants"
-            // #include "usu_movings"
-        // #include "scm_cmmoving"
-    // #include "scm_commands"
-#include "scm_main"
-    // #include "usu_constants"
-#include "usu_testfuncs"
+                // #include "usuaf_constants"
+            // #include "usuaf_movings"
+        // #include "scmaf_cmmoving"
+    // #include "scmaf_commands"
+#include "scmaf_main"
+    // #include "usuaf_constants"
+#include "usuaf_testfuncs"
 #include "x0_i0_position"
 
 /**************************************** IMPLEMENTATIONS *****************************************/

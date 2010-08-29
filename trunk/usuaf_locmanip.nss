@@ -1,5 +1,5 @@
 /*********************************************************************/
-/** Nom :              usu_locmanip
+/** Nom :              usuaf_locmanip
 /** Date de création : 15/08/2010
 /** Version :          1.0.0
 /** Créateur :         Peluso Loup
@@ -10,8 +10,8 @@
 
 /***************************** INCLUDES ******************************/
 
-    // #include "usu_constants"
-#include "usu_stringtokman"
+    // #include "usuaf_constants"
+#include "usuaf_strtokman"
 
 /***************************** PROTOTYPES ****************************/
 

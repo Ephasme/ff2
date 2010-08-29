@@ -1,5 +1,5 @@
 /*********************************************************************/
-/** Nom :              usu_testfuncs
+/** Nom :              usuaf_testfuncs
 /** Date de création : 01/08/2010
 /** Version :          1.0.0
 /** Créateur :         Peluso Loup
@@ -8,7 +8,7 @@
 /**      Script contenant toutes les fonctions nécessaires aux tests.
 /*********************************************************************/
 
-#include "usu_constants"
+#include "usuaf_constants"
 
 /***************************** PROTOTYPES ****************************/
 

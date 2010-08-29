@@ -1,5 +1,5 @@
 /*********************************************************************/
-/** Nom :              cos_globalvar
+/** Nom :              cosaf_globalvar
 /** Date de cr ation : 15/07/2010
 /** Version :          1.0.0
 /** Cr ateur :         Peluso Loup
@@ -11,34 +11,34 @@
 
 /***************************** INCLUDES ******************************/
 
-#include "cos_constants"
+#include "cosaf_constants"
 
 /***************************** PROTOTYPES ****************************/
 
-// DEF IN "cos_globalvar"
+// DEF IN "cosaf_globalvar"
 // Fonction qui renvoie le Waypoint qui stocke les variables globales du module.
 //   o object - Waypoint de stockage des variables globales.
 object cosGetGlobalVarWaypoint();
 
-// DEF IN "cos_globalvar"
+// DEF IN "cosaf_globalvar"
 // Fonction qui stocke une variable globale de type int.
 //   > string sGlobalVarName - Nom de la variable globale.
 //   > int iValue - Valeur de cette variable.
 void cosSetGlobalInt(string sGlobalVarName, int iValue);
 
-// DEF IN "cos_globalvar"
+// DEF IN "cosaf_globalvar"
 // Fonction qui stocke une variable globale de type object.
 //   > string sGlobalVarName - Nom de la variable globale.
 //   > object oObject - Valeur de cette variable.
 void cosSetGlobalObject(string sGlobalVarName, object oObject);
 
-// DEF IN "cos_globalvar"
+// DEF IN "cosaf_globalvar"
 // Fonction qui renvoie une variable globale de type int stock e.
 //   > string sGlobalVarName - Nom de la variable globale.
 //   o int - Variable stock e globalement.
 int cosGetGlobalInt(string sGlobalVarName);
 
-// DEF IN "cos_globalvar"
+// DEF IN "cosaf_globalvar"
 // Fonction qui renvoie une variable globale de type object stock e.
 //   > string sGlobalVarName - Nom de la variable globale.
 //   o object - Objet stock  globalement.

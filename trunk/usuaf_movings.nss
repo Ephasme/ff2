@@ -1,5 +1,5 @@
 /*********************************************************************/
-/** Nom :              usu_movings
+/** Nom :              usuaf_movings
 /** Date de cr ation : 21/07/2010
 /** Version :          1.0.0
 /** Cr ateur :         Peluso Loup
@@ -13,11 +13,11 @@
 
 /***************************** INCLUDES ******************************/
 
-#include "usu_constants"
+#include "usuaf_constants"
 
 /***************************** PROTOTYPES ****************************/
 
-// DEF IN "usu_movings"
+// DEF IN "usuaf_movings"
 // Fonction qui ram‡ne le personnage à un endroit défini.
 //   > object oPC - PJ que l'on projette de déplacer.
 //   > location lLoc - Localisation o– le PJ doit être déplacé.

@@ -11,15 +11,15 @@
 
 /***************************** INCLUDES ******************************/
 
-    // #include "usu_constants"
-#include "usu_testfuncs"
+    // #include "usuaf_constants"
+#include "usuaf_testfuncs"
 
-    // #include "usu_constants"
-#include "usu_movings"
+    // #include "usuaf_constants"
+#include "usuaf_movings"
 
-        // #include "usu_constants"
-    // #include "usu_stringtokman"
-#include "usu_locmanip"
+        // #include "usuaf_constants"
+    // #include "usuaf_strtokman"
+#include "usuaf_locmanip"
 
 /************************** IMPLEMENTATIONS **************************/
 

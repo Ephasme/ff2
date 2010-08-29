@@ -11,20 +11,20 @@
 
 /***************************** INCLUDES ******************************/
 
-            // #include "usu_constants"
-        // #include "usu_stringtokman"
-    // #include "usu_locmanip"
-    // #include "sql_constants"
-#include "sql_main"
+            // #include "usuaf_constants"
+        // #include "usuaf_strtokman"
+    // #include "usuaf_locmanip"
+    // #include "sqlaf_constants"
+#include "sqlaf_main"
 
-            // #include "usu_stringtokman"
-        // #include "usu_locmanip"
-        // #include "sql_constants"
-    // #include "sql_main"
-#include "sql_charmanips"
+            // #include "usuaf_strtokman"
+        // #include "usuaf_locmanip"
+        // #include "sqlaf_constants"
+    // #include "sqlaf_main"
+#include "sqlaf_charmanips"
 
-    // #include "usu_constants"
-#include "usu_testfuncs"
+    // #include "usuaf_constants"
+#include "usuaf_testfuncs"
 
 /***************************** VARIABLES *****************************/
 

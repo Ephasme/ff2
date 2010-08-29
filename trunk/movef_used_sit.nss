@@ -1,5 +1,5 @@
 /*********************************************************************/
-/** Nom :              mov_used_sit_me
+/** Nom :              movef_used_sit
 /** Date de création : 12/08/2010
 /** Version :          1.0.0
 /** Créateur :         Peluso Loup
