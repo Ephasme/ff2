@@ -10,7 +10,6 @@
 
 /***************************** INCLUDES ******************************/
 
-
     // #include "cosaf_constants"
 #include "cosaf_globalvar"
 
@@ -56,6 +55,9 @@ void main() {
         BootPC(oPC);
         return;
     }
+
+    // On exécute les scripts de systèmes éventuels.
+    ExecuteScript(COS_TCT_ON_CLIENT_ENTER, oPC);
 
     // On charge sa position de départ.
     cosLoadPCStartingLocation(oPC);

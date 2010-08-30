@@ -34,3 +34,7 @@ const string COS_PC_ACCOUNT_ID          = "COS_PC_ACCOUNT_ID";
 const string COS_PC_KEY_ID              = "COS_PC_KEY_ID";
 const string COS_PC_KEY_ACCOUNT_LINK_ID = "COS_PC_KEY_ACCOUNT_LINK_ID";
 const string COS_PC_STARTLOC            = "COS_PC_STARTLOC";
+
+/****************************** NOMS DES SCRIPTS SYSTEME A EXECUTER *******************************/
+
+const string COS_TCT_ON_CLIENT_ENTER = "tctef_clen_main";
