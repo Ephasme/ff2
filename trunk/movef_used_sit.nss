@@ -11,5 +11,7 @@
 void main() {
     object oLastUsedBy = GetLastUsedBy();
     object oUsed = OBJECT_SELF;
-    AssignCommand(oLastUsedBy, ActionSit(oUsed));
+    if (!GetIsObjectValid(GetSittingCreature(oUsed))) {
+        AssignCommand(oLastUsedBy, ActionSit(oUsed));
+    }
 }
