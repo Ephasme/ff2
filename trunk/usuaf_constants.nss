@@ -32,13 +32,13 @@ const int TEST_MODE = TRUE;
 
 const int TS_USU_SYS = TRUE;
 const int TS_SQL_SYS = TRUE;
-const int TS_SCM_SYS = TRUE;
+const int TS_CMD_SYS = TRUE;
 const int TS_COS_SYS = TRUE;
 
 const int TS_LOOP_MAX = 10;
 const float TS_LOOP_DELAY = 2.0f;
 
-const string TS_SCM_TITLE = "SCM_SYSTEM";
+const string TS_CMD_TITLE = "CMD_SYSTEM";
 const string TS_USU_TITLE = "USU_SYSTEM";
 const string TS_SQL_TITLE = "SQL_SYSTEM";
 const string TS_COS_TITLE = "COS_SYSTEM";

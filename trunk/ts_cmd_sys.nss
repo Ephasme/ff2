@@ -1,5 +1,5 @@
 /**************************************************************************************************/
-/** Nom :              ts_scm_sys
+/** Nom :              ts_CMD_sys
 /** Date de création : 02/08/2010
 /** Version :          1.0.0
 /** Créateur :         Peluso Loup
@@ -11,30 +11,30 @@
 
                     // #include "usuaf_constants"
                 // #include "usuaf_strtokman"
-                // #include "scmaf_constants"
-            // #include "scmaf_utils"
+                // #include "cmdaf_constants"
+            // #include "cmdaf_utils"
 
                 // #include "usuaf_constants"
             // #include "usuaf_movings"
-        // #include "scmaf_cmmoving"
-    // #include "scmaf_commands"
-#include "scmaf_main"
+        // #include "cmdaf_cmmoving"
+    // #include "cmdaf_commands"
+#include "cmdaf_main"
     // #include "usuaf_constants"
 #include "usuaf_testfuncs"
 #include "x0_i0_position"
 
 /**************************************** IMPLEMENTATIONS *****************************************/
 
-void ts_scmGetFirstCommand_TestCommand(string sSpeech, string sExpRes, int iRecursive) {
+void ts_cmdGetFirstCommand_TestCommand(string sSpeech, string sExpRes, int iRecursive) {
     string sType;
     if (iRecursive) {
         sType = "(récursive)";
     } else {
         sType = "(non récursive)";
     }
-    struct scm_command_datas srtRes = scmGetFirstCommand(sSpeech);
+    struct cmd_data_str srtRes = cmdGetFirstCommand(sSpeech);
     addTest(
-              "scmGetFirstCommand",
+              "cmdGetFirstCommand",
               "Test de la commande récupérée "+sType+".",
               srtRes.sCommand == sExpRes
            );
@@ -42,16 +42,16 @@ void ts_scmGetFirstCommand_TestCommand(string sSpeech, string sExpRes, int iRecu
     addTestInfo("Commande récupérée", srtRes.sCommand);
 }
 
-void ts_scmGetFirstCommand_TestTokenPositions(string sSpeech, int iOExpPos, int iCExpPos, int iRecursive) {
+void ts_cmdGetFirstCommand_TestTokenPositions(string sSpeech, int iOExpPos, int iCExpPos, int iRecursive) {
     string sType;
     if (iRecursive) {
         sType = "(récursive)";
     } else {
         sType = "(non récursive)";
     }
-    struct scm_command_datas srtRes = scmGetFirstCommand(sSpeech);
+    struct cmd_data_str srtRes = cmdGetFirstCommand(sSpeech);
     addTest(
-              "scmGetFirstCommand",
+              "cmdGetFirstCommand",
               "Test des positions des tokens "+sType+".",
               (
                   srtRes.iOpeningTokPos == iOExpPos &&
@@ -63,11 +63,11 @@ void ts_scmGetFirstCommand_TestTokenPositions(string sSpeech, int iOExpPos, int 
     addTestInfo("Position du token de fermeture", IntToString(srtRes.iClosingTokPos));
 }
 
-void ts_scmGetFirstCommand_ImbricatedCommands_BeginWithToken() {
+void ts_cmdGetFirstCommand_ImbricatedCommands_BeginWithToken() {
     string sTest = "<!omJ <!F_ç<!àdsf!>IE!>fj!>fds";
-    struct scm_command_datas srtRes = scmGetFirstCommand(sTest);
+    struct cmd_data_str srtRes = cmdGetFirstCommand(sTest);
     addTest(
-              "scmGetFirstCommand",
+              "cmdGetFirstCommand",
               "Commande récursive et speech commençant par un token d'ouverture.",
               srtRes.sCommand == "àdsf"
            );
@@ -77,11 +77,11 @@ void ts_scmGetFirstCommand_ImbricatedCommands_BeginWithToken() {
     addTestInfo("Position du token de fermeture", IntToString(srtRes.iClosingTokPos));
 }
 
-void ts_scmGetFirstCommand_ImbricatedCommands_EndingWithToken() {
+void ts_cmdGetFirstCommand_ImbricatedCommands_EndingWithToken() {
     string sTest = "fi<!omJ <!F_ç<!àdsf!>IE!>fj!>";
-    struct scm_command_datas srtRes = scmGetFirstCommand(sTest);
+    struct cmd_data_str srtRes = cmdGetFirstCommand(sTest);
     addTest(
-              "scmGetFirstCommand",
+              "cmdGetFirstCommand",
               "Commande récursive et speech terminant par un token de fermeture.",
               srtRes.sCommand == "àdsf"
            );
@@ -91,11 +91,11 @@ void ts_scmGetFirstCommand_ImbricatedCommands_EndingWithToken() {
     addTestInfo("Position du token de fermeture", IntToString(srtRes.iClosingTokPos));
 }
 
-void ts_scmGetFirstCommand_ImbricatedCommands_TwoSidesTokens() {
+void ts_cmdGetFirstCommand_ImbricatedCommands_TwoSidesTokens() {
     string sTest = "<!omJ <!F_ç<!àdsf!>IE!>fj!>";
-    struct scm_command_datas srtRes = scmGetFirstCommand(sTest);
+    struct cmd_data_str srtRes = cmdGetFirstCommand(sTest);
     addTest(
-              "scmGetFirstCommand",
+              "cmdGetFirstCommand",
               "Commande récursive et speech commençant et terminant par des tokens.",
               srtRes.sCommand == "àdsf"
            );
@@ -105,7 +105,7 @@ void ts_scmGetFirstCommand_ImbricatedCommands_TwoSidesTokens() {
     addTestInfo("Position du token de fermeture", IntToString(srtRes.iClosingTokPos));
 }
 
-void ts_scmGetFirstCommand_MaximalRecursionRateExceeded(int iDeep) {
+void ts_cmdGetFirstCommand_MaximalRecursionRateExceeded(int iDeep) {
     string sTest;
     int i;
     for (i=0;i<iDeep;i++) {
@@ -115,58 +115,58 @@ void ts_scmGetFirstCommand_MaximalRecursionRateExceeded(int iDeep) {
     for (i=0;i<iDeep;i++) {
         sTest += "!>00";
     }
-    struct scm_command_datas srtRes = scmGetFirstCommand(sTest);
-    addTest("scmGetFirstCommand", "Profondeur de récursivité dépassée.", srtRes.sCommand == SCM_ERROR);
+    struct cmd_data_str srtRes = cmdGetFirstCommand(sTest);
+    addTest("cmdGetFirstCommand", "Profondeur de récursivité dépassée.", srtRes.sCommand == CMD_ERROR);
     addTestInfo("Chaîne testée", sTest);
-    addTestInfo("Chaîne attendue", SCM_ERROR);
+    addTestInfo("Chaîne attendue", CMD_ERROR);
     addTestInfo("Commande récupérée", srtRes.sCommand);
     addTestInfo("Position du token d'ouverture", IntToString(srtRes.iOpeningTokPos));
     addTestInfo("Position du token de fermeture", IntToString(srtRes.iClosingTokPos));
 }
 
-void ts_scmGetFirstCommand_NoOpeningToken() {
+void ts_cmdGetFirstCommand_NoOpeningToken() {
     string sTest = "000000!>000000!>000000";
-    struct scm_command_datas srtRes = scmGetFirstCommand(sTest);
-    addTest("scmGetFirstCommand", "Aucun jeton d'ouverture trouvé dans la chaîne.", srtRes.sCommand == SCM_ERROR);
+    struct cmd_data_str srtRes = cmdGetFirstCommand(sTest);
+    addTest("cmdGetFirstCommand", "Aucun jeton d'ouverture trouvé dans la chaîne.", srtRes.sCommand == CMD_ERROR);
     addTestInfo("Chaîne testée", sTest);
-    addTestInfo("Chaîne attendue", SCM_ERROR);
+    addTestInfo("Chaîne attendue", CMD_ERROR);
     addTestInfo("Commande récupérée", srtRes.sCommand);
     addTestInfo("Position du token d'ouverture", IntToString(srtRes.iOpeningTokPos));
     addTestInfo("Position du token de fermeture", IntToString(srtRes.iClosingTokPos));
 }
 
-void ts_scmGetFirstCommand_NoClosingToken() {
+void ts_cmdGetFirstCommand_NoClosingToken() {
     string sTest = "000000<!000000<!000000";
-    struct scm_command_datas srtRes = scmGetFirstCommand(sTest);
-    addTest("scmGetFirstCommand", "Aucun jeton de fermeture trouvé dans la chaîne.", srtRes.sCommand == SCM_ERROR);
+    struct cmd_data_str srtRes = cmdGetFirstCommand(sTest);
+    addTest("cmdGetFirstCommand", "Aucun jeton de fermeture trouvé dans la chaîne.", srtRes.sCommand == CMD_ERROR);
     addTestInfo("Chaîne testée", sTest);
-    addTestInfo("Commande attendue", SCM_ERROR);
+    addTestInfo("Commande attendue", CMD_ERROR);
     addTestInfo("Commande récupérée", srtRes.sCommand);
     addTestInfo("Position du token d'ouverture", IntToString(srtRes.iOpeningTokPos));
     addTestInfo("Position du token de fermeture", IntToString(srtRes.iClosingTokPos));
 }
 
-void ts_scmGetParameterValue_Standard() {
+void ts_cmdGetParameterValue_Standard() {
     string sName = "name";
     string sValue = "value";
     string sCommandName = "commandname";
     string sCommand = sCommandName+" "+sName+":"+sValue;
-    string sResult = scmGetParameterValue(sCommand, sName);
-    addTest("scmGetParameterValue", "Fonctionnement standard.", sResult == sValue);
+    string sResult = cmdGetParameterValue(sCommand, sName);
+    addTest("cmdGetParameterValue", "Fonctionnement standard.", sResult == sValue);
     addTestInfo("Commande testée", sCommand);
     addTestInfo("Nom du paramètre", sName);
     addTestInfo("Valeur du paramètre", sValue);
     addTestInfo("Valeur récupérée", sResult);
 }
 
-void ts_scmGetParameterValue_WrongName() {
+void ts_cmdGetParameterValue_WrongName() {
     string sName = "name";
     string sCommandName = "commandname";
     string sWrongName = "wrongname";
     string sValue = "value";
     string sCommand = sCommandName+" "+sName+":"+sValue;
-    string sResult = scmGetParameterValue(sCommand, sWrongName);
-    addTest("scmGetParameterValue", "Nom de paramètre incorrect.", sResult == SCM_ERROR);
+    string sResult = cmdGetParameterValue(sCommand, sWrongName);
+    addTest("cmdGetParameterValue", "Nom de paramètre incorrect.", sResult == CMD_ERROR);
     addTestInfo("Commande testée", sCommand);
     addTestInfo("Nom du paramètre", sName);
     addTestInfo("Nom testé", sWrongName);
@@ -174,103 +174,103 @@ void ts_scmGetParameterValue_WrongName() {
     addTestInfo("Valeur récupérée", sResult);
 }
 
-void ts_scmGetCommandName() {
+void ts_cmdGetCommandName() {
     string sCommandName = "commandname";
     string sCommand = sCommandName+" name:home";
-    string sResult = scmGetCommandName(sCommand);
-    addTest("scmGetCommandName", "Récupération du nom de la commande.", sResult == sCommandName);
+    string sResult = cmdGetCommandName(sCommand);
+    addTest("cmdGetCommandName", "Récupération du nom de la commande.", sResult == sCommandName);
     addTestInfo("Commande testée", sCommand);
     addTestInfo("Nom de la commande", sCommandName);
     addTestInfo("Nom trouvé", sResult);
 }
 
-void ts_scmIsParameterDefined_ParameterDefined() {
+void ts_cmdIsParameterDefined_ParameterDefined() {
     string sParameter = "test";
     string sCommand = "moveto loc "+sParameter+" go and:go toutou:";
-    addTest("scmIsParameterDefined", "Paramètre présent et valide.", scmIsParameterDefined(sCommand, sParameter) == TRUE);
+    addTest("cmdIsParameterDefined", "Paramètre présent et valide.", cmdIsParameterDefined(sCommand, sParameter) == TRUE);
     addTestInfo("Commande testée", sCommand);
     addTestInfo("Paramètre recherché", sParameter);
 }
 
-void ts_scmIsParameterDefined_ParameterNotDefined() {
+void ts_cmdIsParameterDefined_ParameterNotDefined() {
     string sParameter = "test";
     string sCommand = "moveto loc go and:go toutou:";
-    addTest("scmIsParameterDefined", "Paramètre non présent.", scmIsParameterDefined(sCommand, sParameter) == FALSE);
+    addTest("cmdIsParameterDefined", "Paramètre non présent.", cmdIsParameterDefined(sCommand, sParameter) == FALSE);
     addTestInfo("Commande testée", sCommand);
     addTestInfo("Paramètre recherché", sParameter);
 }
 
-void ts_scmExecuteCommand(object oPC) {
+void ts_cmdExecute(object oPC) {
     location lSaved = GetLocation(oPC);
     string sComName = "savepos";
     string sValueVar = "home";
     string sVarPara = "var";
     string sTypePara = "loc";
     string sCommand = sComName+" "+sTypePara+" "+sVarPara+":"+sValueVar;
-    scmExecuteCommand(sCommand, oPC);
+    cmdExecute(sCommand, oPC);
     location lResult = GetLocalLocation(oPC, sValueVar);
-    addTest("scmExecuteCommand", "Sauvegarde d'une position de personnage.", lResult == lSaved);
+    addTest("cmdExecute", "Sauvegarde d'une position de personnage.", lResult == lSaved);
     addTestInfo("Commande testée", sCommand);
     addTestInfo("Nom de la variable", sValueVar);
     addTestInfo("Position sauvée au préalable", LocationToString(lSaved));
     addTestInfo("Position récupérée", LocationToString(lResult));
-    SendMessageToPC(oPC, "Test 'ts_scmExecuteCommand' effectué.");
+    SendMessageToPC(oPC, "Test 'ts_cmdExecute' effectué.");
 }
 
-void ts_scmFetchCommand() {
+void ts_cmdFetch() {
     string sSpeech = "La position de chez moi c'est <!saveloc name:chezmoi!> !!";
-    struct scm_command_datas strScmCommandDatas = scmSetStructCommand(sSpeech, "saveloc name:chezmoi", 30, 52);
-    string sResult = scmFetchCommand(strScmCommandDatas, "[COMMAND_RESULT]");
-    addTest("scmFetchCommand", "Insertion du résultat d'une commande dans un speech.", sResult == "La position de chez moi c'est [COMMAND_RESULT] !!");
+    struct cmd_data_str strCmdData = cmdSetDataStructure(sSpeech, "saveloc name:chezmoi", 30, 52);
+    string sResult = cmdFetch(strCmdData, "[COMMAND_RESULT]");
+    addTest("cmdFetch", "Insertion du résultat d'une commande dans un speech.", sResult == "La position de chez moi c'est [COMMAND_RESULT] !!");
     addTestInfo("Speech testé", sSpeech);
     addTestInfo("Speech modifié", sResult);
 }
 
 /* Private Function */
 void pv_do_OnModuleLoad_Tests() {
-    ts_scmGetFirstCommand_TestCommand("fds<!ji__yf!>fjdiy", "ji__yf", FALSE);
-    ts_scmGetFirstCommand_TestCommand("ezr-__<!WHFuu!>", "WHFuu", FALSE);
-    ts_scmGetFirstCommand_TestCommand("<!dfezzz!>fjdiy", "dfezzz", FALSE);
-    ts_scmGetFirstCommand_TestCommand("<!df_yèèzz!>", "df_yèèzz", FALSE);
-    ts_scmGetFirstCommand_TestTokenPositions("<!fjdklji!>", 0, 9, FALSE);
-    ts_scmGetFirstCommand_TestTokenPositions("fezf<!fjdklji!>", 4, 13, FALSE);
-    ts_scmGetFirstCommand_TestTokenPositions("<!fjdklji!>fezfff", 0, 9, FALSE);
-    ts_scmGetFirstCommand_TestTokenPositions("012345<!8901234!>fezfff", 6, 15, FALSE);
-    ts_scmGetFirstCommand_TestCommand("fds<!ji<!__y!>f!>fjdiy", "__y", TRUE);
-    ts_scmGetFirstCommand_TestCommand("ezr-__<!WH<!fdsii!>Fuu!>", "fdsii", TRUE);
-    ts_scmGetFirstCommand_TestCommand("<!df<!jfiehh!>ezzz!>fjdiy", "jfiehh", TRUE);
-    ts_scmGetFirstCommand_TestCommand("<!df<!_yèuieii!>èzz!>", "_yèuieii", TRUE);
-    ts_scmGetFirstCommand_TestTokenPositions("<!fdkijfiejj<!fjdklji!>fezfff!>", 12, 21, TRUE);
-    ts_scmGetFirstCommand_TestTokenPositions("jkf_d<!fjdk<!fduezhf!>hjfdjkfd!>", 11, 20, TRUE);
-    ts_scmGetFirstCommand_TestTokenPositions("<!fjdk<!fjdkslii!>lji!>dkslfjkds", 6, 16, TRUE);
-    ts_scmGetFirstCommand_TestTokenPositions("fjdkslj<!fjkdiie<!8901234!>fez!>fff", 16, 25, TRUE);
-    
-    ts_scmGetFirstCommand_MaximalRecursionRateExceeded(15);
-    
-    ts_scmGetFirstCommand_NoOpeningToken();
-    ts_scmGetFirstCommand_NoClosingToken();
-    
-    ts_scmGetParameterValue_Standard();
-    ts_scmGetParameterValue_WrongName();
-    
-    ts_scmGetCommandName();
-    
-    ts_scmIsParameterDefined_ParameterDefined();
-    ts_scmIsParameterDefined_ParameterNotDefined();
-    
-    ts_scmFetchCommand();
+    ts_cmdGetFirstCommand_TestCommand("fds<!ji__yf!>fjdiy", "ji__yf", FALSE);
+    ts_cmdGetFirstCommand_TestCommand("ezr-__<!WHFuu!>", "WHFuu", FALSE);
+    ts_cmdGetFirstCommand_TestCommand("<!dfezzz!>fjdiy", "dfezzz", FALSE);
+    ts_cmdGetFirstCommand_TestCommand("<!df_yèèzz!>", "df_yèèzz", FALSE);
+    ts_cmdGetFirstCommand_TestTokenPositions("<!fjdklji!>", 0, 9, FALSE);
+    ts_cmdGetFirstCommand_TestTokenPositions("fezf<!fjdklji!>", 4, 13, FALSE);
+    ts_cmdGetFirstCommand_TestTokenPositions("<!fjdklji!>fezfff", 0, 9, FALSE);
+    ts_cmdGetFirstCommand_TestTokenPositions("012345<!8901234!>fezfff", 6, 15, FALSE);
+    ts_cmdGetFirstCommand_TestCommand("fds<!ji<!__y!>f!>fjdiy", "__y", TRUE);
+    ts_cmdGetFirstCommand_TestCommand("ezr-__<!WH<!fdsii!>Fuu!>", "fdsii", TRUE);
+    ts_cmdGetFirstCommand_TestCommand("<!df<!jfiehh!>ezzz!>fjdiy", "jfiehh", TRUE);
+    ts_cmdGetFirstCommand_TestCommand("<!df<!_yèuieii!>èzz!>", "_yèuieii", TRUE);
+    ts_cmdGetFirstCommand_TestTokenPositions("<!fdkijfiejj<!fjdklji!>fezfff!>", 12, 21, TRUE);
+    ts_cmdGetFirstCommand_TestTokenPositions("jkf_d<!fjdk<!fduezhf!>hjfdjkfd!>", 11, 20, TRUE);
+    ts_cmdGetFirstCommand_TestTokenPositions("<!fjdk<!fjdkslii!>lji!>dkslfjkds", 6, 16, TRUE);
+    ts_cmdGetFirstCommand_TestTokenPositions("fjdkslj<!fjkdiie<!8901234!>fez!>fff", 16, 25, TRUE);
 
-    printResult(TS_SCM_TITLE);
+    ts_cmdGetFirstCommand_MaximalRecursionRateExceeded(15);
+
+    ts_cmdGetFirstCommand_NoOpeningToken();
+    ts_cmdGetFirstCommand_NoClosingToken();
+
+    ts_cmdGetParameterValue_Standard();
+    ts_cmdGetParameterValue_WrongName();
+
+    ts_cmdGetCommandName();
+
+    ts_cmdIsParameterDefined_ParameterDefined();
+    ts_cmdIsParameterDefined_ParameterNotDefined();
+
+    ts_cmdFetch();
+
+    printResult(TS_CMD_TITLE);
 }
 
 /* Private Function */
 void pv_do_OnClientEnter_Tests(object oPC, int iDepth = 0) {
     if (iDepth < TS_LOOP_MAX) {
         if (GetIsObjectValid(GetArea(oPC))) {
-            
-            ts_scmExecuteCommand(oPC);
-            
-            printResult(TS_SCM_TITLE);
+
+            ts_cmdExecute(oPC);
+
+            printResult(TS_CMD_TITLE);
         } else {
             DelayCommand(TS_LOOP_DELAY, pv_do_OnClientEnter_Tests(oPC, iDepth++));
         }
@@ -278,7 +278,7 @@ void pv_do_OnClientEnter_Tests(object oPC, int iDepth = 0) {
 }
 
 void main() {
-    if (TEST_MODE && TS_SCM_SYS) {
+    if (TEST_MODE && TS_CMD_SYS) {
         object oMe = OBJECT_SELF;
         if (oMe == GetModule()) {
             pv_do_OnModuleLoad_Tests();

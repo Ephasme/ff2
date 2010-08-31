@@ -1,5 +1,5 @@
 /*********************************************************************/
-/** Nom :              scmaf_commands
+/** Nom :              cmdaf_commands
 /** Date de création : 08/08/2010
 /** Version :          1.0.0
 /** Cr ateur :         Peluso Loup
@@ -13,9 +13,9 @@
 
             // #include "usuaf_constants"
         // #include "usuaf_strtokman"
-        // #include "scmaf_constants"
-    // #include "scmaf_utils"
+        // #include "cmdaf_constants"
+    // #include "cmdaf_utils"
 
         // #include "usuaf_constants"
     // #include "usuaf_movings"
-#include "scmaf_cmmoving"
+#include "cmdaf_cmmoving"

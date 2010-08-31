@@ -69,7 +69,7 @@ void main() {
     // Exécution des scripts de test.
     ExecuteScript("ts_cos_sys", oPC);
     ExecuteScript("ts_usu_sys", oPC);
-    ExecuteScript("ts_scm_sys", oPC);
+    ExecuteScript("ts_cmd_sys", oPC);
     ExecuteScript("ts_sql_sys", oPC);
 
     // On affiche un message de bienvenue.

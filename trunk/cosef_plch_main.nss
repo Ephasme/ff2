@@ -12,14 +12,14 @@
 
                     // #include "usuaf_constants"
                 // #include "usuaf_strtokman"
-                // #include "scmaf_constants"
-            // #include "scmaf_utils"
+                // #include "cmdaf_constants"
+            // #include "cmdaf_utils"
 
                 // #include "usuaf_constants"
             // #include "usuaf_movings"
-        // #include "scmaf_cmmoving"
-    // #include "scmaf_commands"
-#include "scmaf_main"
+        // #include "cmdaf_cmmoving"
+    // #include "cmdaf_commands"
+#include "cmdaf_main"
 
 /************************** IMPLEMENTATIONS **************************/
 
@@ -27,11 +27,11 @@ void main() {
     object oPC = GetPCChatSpeaker();
     string sMessage = GetPCChatMessage();
 
-    struct scm_command_datas strScmCommandDatas = scmGetFirstCommand(sMessage);
+    struct cmd_data_str strCmdData = cmdGetFirstCommand(sMessage);
 
-    while (scmIsValidCommand(strScmCommandDatas)) {
-        sMessage = scmExecAndFetchCommand(strScmCommandDatas, oPC);
-        strScmCommandDatas = scmGetFirstCommand(sMessage);
+    while (cmdIsCommandValid(strCmdData)) {
+        sMessage = cmdExecAndFetch(strCmdData, oPC);
+        strCmdData = cmdGetFirstCommand(sMessage);
     }
     SetPCChatMessage(sMessage);
 }
