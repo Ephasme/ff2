@@ -19,10 +19,8 @@
 // DEF IN "cmdaf_utils"
 // Fonction qui renvoie la premi‡re commande trouv‚e dans un chaîne.
 //   > string sSpeech - Chaîne à scanner.
-//   > int iRecursionDepth - TODO:Decrire
-//   > int iRecursionScale - TODO:Decrire
 //   o struct cmd_data_str_loc - Structure contenant le speech et la position des tokens de la commande à traîter.
-struct cmd_data_str cmdGetFirstCommand(string sSpeech, int iRecursionDepth = 0, int iRecursionScale = 0);
+struct cmd_data_str cmdGetFirstCommand(string sSpeech, string sOriginalSpeech = "", int iRecursionDepth = 0, int iRecursionScale = 0);
 
 // DEF IN "cmdaf_utils"
 // Fonction qui d fini une structure pour stocker les informations d'une commande.
@@ -88,7 +86,10 @@ struct cmd_data_str cmdSetDataStructure(string sSpeech = CMD_EMPTY_SPEECH, strin
     return srt;
 }
 
-struct cmd_data_str cmdGetFirstCommand(string sSpeech, int iRecursionDepth = 0, int iRecursionScale = 0) {
+struct cmd_data_str cmdGetFirstCommand(string sSpeech, string sOriginalSpeech = "", int iRecursionDepth = 0, int iRecursionScale = 0) {
+    if (iRecursionDepth == 0) {
+        sOriginalSpeech = sSpeech; 
+    }
     if (CMD_ENABLED == FALSE || iRecursionDepth++ > CMD_MAX_DEPTH) {
         return EMPTY_COMMAND_DATAS;
     }
@@ -102,14 +103,13 @@ struct cmd_data_str cmdGetFirstCommand(string sSpeech, int iRecursionDepth = 0, 
         if (iClosTokPos > iNextOpenTokPos) {
             string sStringAfterToken = usuGetStringAfterToken(sSpeech, CMD_OPENING_TOKEN_LENGTH, iOpenTokPos);
             iRecursionScale += (iOpenTokPos + CMD_OPENING_TOKEN_LENGTH);
-            return cmdGetFirstCommand(sStringAfterToken, iRecursionDepth, iRecursionScale);
+            return cmdGetFirstCommand(sStringAfterToken, sOriginalSpeech, iRecursionDepth, iRecursionScale);
         }
     }
     string sCommand = usuGetStringBetweenTokens(sSpeech, iOpenTokPos, CMD_OPENING_TOKEN_LENGTH, iClosTokPos);
     sCommand = usuTrimAllSpaces(sCommand);
-    return cmdSetDataStructure(sSpeech, sCommand, iRecursionScale+iOpenTokPos, iRecursionScale+iClosTokPos);
+    return cmdSetDataStructure(sOriginalSpeech, sCommand, iRecursionScale+iOpenTokPos, iRecursionScale+iClosTokPos);
 }
-
 string cmdGetCommandName(string sCommand) {
     return usuTrimAllSpaces(usuGetStringBeforeToken(sCommand, usuGetFirstTokenPosition(sCommand, CMD_PARAMETER_TOKEN)));
 }
