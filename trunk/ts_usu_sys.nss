@@ -34,10 +34,10 @@ location pv_SetLocation(object oArea, float x, float y, float z, float facing) {
 
 void ts_usuLocationToString_LocationValid() {
     // Création de la location à tester.
-    location lLoc = pv_SetLocation(GetObjectByTag("cos_ar_00"), 1.0, 2.0, 3.0, 90.0);
+    location lLoc = pv_SetLocation(GetObjectByTag("sys_ar_00"), 1.0, 2.0, 3.0, 90.0);
 
     string sResult = usuLocationToString(lLoc);
-    addTest("usuLocationToString", "Test avec une Location valide.", sResult == "##cos_ar_00##1.000##2.000##3.000##90.000##");
+    addTest("usuLocationToString", "Test avec une Location valide.", sResult == "##sys_ar_00##1.000##2.000##3.000##90.000##");
     addTestInfo("Resultat", sResult);
 }
 
@@ -50,13 +50,13 @@ void ts_usuLocationToString_LocationInvalid() {
 }
 
 void ts_usuStringToLocation_StringValid() {
-    string sTestValue = "##cos_ar_00##1.000##2.000##3.000##90.000##";
+    string sTestValue = "##sys_ar_00##1.000##2.000##3.000##90.000##";
     location lLoc = usuStringToLocation(sTestValue);
     vector v = GetPositionFromLocation(lLoc);
     float fac = GetFacingFromLocation(lLoc);
     object o = GetAreaFromLocation(lLoc);
 
-    int iResult = (v.x == 1.0 && v.y == 2.0 && v.z == 3.0 && fac == 90.0 && GetTag(o) == "cos_ar_00");
+    int iResult = (v.x == 1.0 && v.y == 2.0 && v.z == 3.0 && fac == 90.0 && GetTag(o) == "sys_ar_00");
 
     addTest("usuLocationToString", "Test avec une chaîne valide.", iResult);
     addTestInfo("Chaîne testée", sTestValue);
@@ -127,9 +127,9 @@ void ts_usuGetStringBetweenTokens_TokenPositionOK() {
 
 void ts_usuGetStringBetweenTokens_TokenPositionError() {
     string sRes = usuGetStringBetweenTokens(TS_CMD_STRING, 28, 1, 13);
-    addTest("usuGetStringBetweenTokens", "Récupération d'une chaîne entre deux tokens, les tokens sont mal placés.", sRes == STRING_RESULT_ERROR);
+    addTest("usuGetStringBetweenTokens", "Récupération d'une chaîne entre deux tokens, les tokens sont mal placés.", sRes == USU_STRING_RESULT_ERROR);
     addTestInfo("Chaîne testée", TS_CMD_STRING);
-    addTestInfo("Résultat attendu", STRING_RESULT_ERROR);
+    addTestInfo("Résultat attendu", USU_STRING_RESULT_ERROR);
     addTestInfo("Résultat", sRes);
 }
 
@@ -186,10 +186,10 @@ void ts_usuGetNextTokenPosition_NotExists() {
     //                         1
     //                  4      1
     int iRes = usuGetNextTokenPosition(sTest, "!>", "<!", 4);
-    addTest("usuGetNextTokenPosition", "Le token suivant n'existe pas.", iRes == TOKEN_POSITION_ERROR);
+    addTest("usuGetNextTokenPosition", "Le token suivant n'existe pas.", iRes == USU_TOKEN_POSITION_ERROR);
     addTestInfo("Chaîne testée", sTest);
     addTestInfo("Position du premier token", IntToString(4));
-    addTestInfo("Résultat espéré", IntToString(TOKEN_POSITION_ERROR));
+    addTestInfo("Résultat espéré", IntToString(USU_TOKEN_POSITION_ERROR));
     addTestInfo("Résultat", IntToString(iRes));
 }
 
@@ -198,10 +198,10 @@ void ts_usuGetPreviousTokenPosition_NotExists() {
     //                         1
     //                  4      1
     int iRes = usuGetPreviousTokenPosition(sTest, "<!", "!>", 11);
-    addTest("usuGetPreviousTokenPosition", "Le token précédent n'existe pas.", iRes == TOKEN_POSITION_ERROR);
+    addTest("usuGetPreviousTokenPosition", "Le token précédent n'existe pas.", iRes == USU_TOKEN_POSITION_ERROR);
     addTestInfo("Chaîne testée", sTest);
     addTestInfo("Position du premier token", IntToString(11));
-    addTestInfo("Résultat espéré", IntToString(TOKEN_POSITION_ERROR));
+    addTestInfo("Résultat espéré", IntToString(USU_TOKEN_POSITION_ERROR));
     addTestInfo("Résultat", IntToString(iRes));
 }
 
@@ -229,7 +229,7 @@ void ts_usuGetNextTokenPosition_TokenSize(int iSize = 5) {
 
 /* Private Function */
 void pv_do_OnModuleLoad_Tests() {
-    
+
     ts_usuLocationToString_LocationValid();
     ts_usuLocationToString_LocationInvalid();
     ts_usuStringToLocation_StringValid();
@@ -253,7 +253,7 @@ void pv_do_OnModuleLoad_Tests() {
     ts_usuGetPreviousTokenPosition_TokenSize(3);
     ts_usuGetPreviousTokenPosition_IdenticalTokens("/!%*");
     ts_usuGetPreviousTokenPosition_NotExists();
-    
+
     printResult(TS_USU_TITLE);
 }
 
@@ -261,9 +261,9 @@ void pv_do_OnModuleLoad_Tests() {
 void pv_do_OnClientEnter_Tests(object oPC, int iDepth = 0) {
     if (iDepth < TS_LOOP_MAX) {
         if (GetIsObjectValid(GetArea(oPC))) {
-            
+
             /* INSERER LES TESTS A FAIRE SUR UN PC ICI */
-                        
+
             printResult(TS_USU_TITLE);
         } else {
             DelayCommand(TS_LOOP_DELAY, pv_do_OnClientEnter_Tests(oPC, iDepth++));
@@ -272,7 +272,7 @@ void pv_do_OnClientEnter_Tests(object oPC, int iDepth = 0) {
 }
 
 void main() {
-    if (TEST_MODE && TS_USU_SYS) {
+    if (TS_TEST_MODE && TS_USU_SYS) {
         object oMe = OBJECT_SELF;
         if (oMe == GetModule()) {
             pv_do_OnModuleLoad_Tests();

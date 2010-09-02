@@ -1,4 +1,12 @@
-/***************************** CONSTANTES ****************************/
+/**************************************************************************************************/
+/** Nom :              cmdaf_constants
+/** Date de cr‚ation : 29/08/2010
+/** Version :          1.0.0
+/** Cr‚ateur :         Peluso Loup
+/******************************************* ChangeLog ********************************************/
+/** V1.0.0 (par Peluso Loup) :
+/**      Fichier contenant toutes les constantes du système de commandes.
+/**************************************************************************************************/
 const int CMD_ENABLED = TRUE;
 
 // Token utilisé pour démarrer une séquence de commandes.

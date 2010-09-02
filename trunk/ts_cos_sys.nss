@@ -236,9 +236,9 @@ void ts_cosIsBan_PCIsBan(object oPC) {
     string sId = IntToString(cosGetIntFromPC(oPC, COS_PC_ID));
 
     // On banni temporairement le personnage.
-    int iBan = sqlEAFDSingleInt("SELECT "+BAN+" FROM "+TABLE_CHARACTERS+" WHERE "+ID+" = "+sId+";");
+    int iBan = sqlEAFDSingleInt("SELECT "+SQL_F_BAN+" FROM "+SQL_T_CHARS+" WHERE "+SQL_F_ID+" = "+sId+";");
     if (iBan == FALSE) {
-        sqlExecDirect("UPDATE "+TABLE_CHARACTERS+" SET "+BAN+" = 1 WHERE "+ID+" = "+sId+";");
+        sqlExecDirect("UPDATE "+SQL_T_CHARS+" SET "+SQL_F_BAN+" = 1 WHERE "+SQL_F_ID+" = "+sId+";");
     }
 
     int iRes = cosIsBan(oPC);
@@ -246,7 +246,7 @@ void ts_cosIsBan_PCIsBan(object oPC) {
 
     // On revient à la normale.
     if (iBan == FALSE) {
-        sqlExecDirect("UPDATE "+TABLE_CHARACTERS+" SET "+BAN+" = 0 WHERE "+ID+" = "+sId+";");
+        sqlExecDirect("UPDATE "+SQL_T_CHARS+" SET "+SQL_F_BAN+" = 0 WHERE "+SQL_F_ID+" = "+sId+";");
     }
 }
 
@@ -288,7 +288,7 @@ void pv_do_OnClientEnter_Tests(object oPC, int iDepth = 0) {
 }
 
 void main() {
-    if (TEST_MODE && TS_COS_SYS) {
+    if (TS_TEST_MODE && TS_COS_SYS) {
         object oMe = OBJECT_SELF;
         if (oMe == GetModule()) {
             pv_do_OnModuleLoad_Tests();

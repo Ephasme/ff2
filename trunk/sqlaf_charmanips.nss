@@ -96,23 +96,23 @@ int sqlPCStartingLocationValid(int iPCId);
 
 int sqlGetAccountId(string sAccountName) {
     return sqlEAFDSingleIntOrInsert(
-        "SELECT "+ID+" FROM "+TABLE_ACCOUNTS+" WHERE "+NAME+" = "+sqlQuote(sAccountName)+";",
-        "INSERT INTO "+TABLE_ACCOUNTS+" ("+NAME+", "+CREATION+", "+LAST_CONNEXION+") VALUES ("+sqlQuote(sAccountName)+", NOW(), NOW());"
+        "SELECT "+SQL_F_ID+" FROM "+SQL_T_ACCOUNTS+" WHERE "+SQL_F_NAME+" = "+sqlQuote(sAccountName)+";",
+        "INSERT INTO "+SQL_T_ACCOUNTS+" ("+SQL_F_NAME+", "+SQL_F_CREATION+", "+SQL_F_LAST_CNX+") VALUES ("+sqlQuote(sAccountName)+", NOW(), NOW());"
     );
 }
 
 int sqlGetPCId(string sPCName, int iAccountId) {
     string sAccountId = IntToString(iAccountId);
     return sqlEAFDSingleIntOrInsert(
-        "SELECT "+ID+" FROM "+TABLE_CHARACTERS+" WHERE "+NAME+" = "+sqlQuote(sPCName)+";",
-        "INSERT INTO "+TABLE_CHARACTERS+" ("+ID_ACCOUNT+", "+NAME+", "+CREATION+", "+LAST_CONNEXION+") VALUES ("+sAccountId+", "+sqlQuote(sPCName)+", NOW(), NOW());"
+        "SELECT "+SQL_F_ID+" FROM "+SQL_T_CHARS+" WHERE "+SQL_F_NAME+" = "+sqlQuote(sPCName)+";",
+        "INSERT INTO "+SQL_T_CHARS+" ("+SQL_F_ID_ACCOUNT+", "+SQL_F_NAME+", "+SQL_F_CREATION+", "+SQL_F_LAST_CNX+") VALUES ("+sAccountId+", "+sqlQuote(sPCName)+", NOW(), NOW());"
     );
 }
 
 int sqlGetKeyId(string sKey, int iAccountId) {
     return sqlEAFDSingleIntOrInsert(
-        "SELECT "+ID+" FROM "+TABLE_CDKEYS+" WHERE "+CDKEY+" = '"+sKey+"';",
-        "INSERT INTO "+TABLE_CDKEYS+" ("+CDKEY+") VALUES ('"+sKey+"');"
+        "SELECT "+SQL_F_ID+" FROM "+SQL_T_CDKEYS+" WHERE "+SQL_F_CDKEY+" = '"+sKey+"';",
+        "INSERT INTO "+SQL_T_CDKEYS+" ("+SQL_F_CDKEY+") VALUES ('"+sKey+"');"
     );
 }
 
@@ -120,43 +120,43 @@ int sqlGetCDKeyAccountLinkId(int iKeyId, int iAccountId) {
     string sKeyId = IntToString(iKeyId);
     string sAccountId = IntToString(iAccountId);
     return sqlEAFDSingleIntOrInsert(
-        "SELECT "+ID+" FROM "+TABLE_CDKEY_ACCOUNT_LINKS+" WHERE "+ID_CDKEY+" = "+sKeyId+" AND "+ID_ACCOUNT+" = "+sAccountId+";",
-        "INSERT INTO "+TABLE_CDKEY_ACCOUNT_LINKS+" ("+ID_ACCOUNT+", "+ID_CDKEY+") VALUES ("+sAccountId+", "+sKeyId+")"
+        "SELECT "+SQL_F_ID+" FROM "+SQL_T_CDKEY_ACCOUNT_LINKS+" WHERE "+SQL_F_ID_CDKEY+" = "+sKeyId+" AND "+SQL_F_ID_ACCOUNT+" = "+sAccountId+";",
+        "INSERT INTO "+SQL_T_CDKEY_ACCOUNT_LINKS+" ("+SQL_F_ID_ACCOUNT+", "+SQL_F_ID_CDKEY+") VALUES ("+sAccountId+", "+sKeyId+")"
     );
 }
 
 int sqlGetAccountIdFromPCId(int iPCId) {
-    return sqlEAFDSingleInt("SELECT "+ID_ACCOUNT+" FROM "+TABLE_CHARACTERS+" WHERE "+ID+" = "+IntToString(iPCId)+";");
+    return sqlEAFDSingleInt("SELECT "+SQL_F_ID_ACCOUNT+" FROM "+SQL_T_CHARS+" WHERE "+SQL_F_ID+" = "+IntToString(iPCId)+";");
 }
 
 void sqlUpdateLastConnexion(int iPCId, int iAccountId) {
-    sqlExecDirect("UPDATE "+TABLE_CHARACTERS+" SET "+LAST_CONNEXION+" = NOW() WHERE "+ID+" = "+IntToString(iPCId)+";");
-    sqlExecDirect("UPDATE "+TABLE_ACCOUNTS+" SET "+LAST_CONNEXION+" = NOW() WHERE "+ID+" = "+IntToString(iAccountId)+";");
+    sqlExecDirect("UPDATE "+SQL_T_CHARS+" SET "+SQL_F_LAST_CNX+" = NOW() WHERE "+SQL_F_ID+" = "+IntToString(iPCId)+";");
+    sqlExecDirect("UPDATE "+SQL_T_ACCOUNTS+" SET "+SQL_F_LAST_CNX+" = NOW() WHERE "+SQL_F_ID+" = "+IntToString(iAccountId)+";");
 }
 
 /* Private function */
 int pv_sqlIsBan(string sTable, int iId) {
-    return sqlEAFDSingleInt("SELECT "+BAN+" FROM "+sTable+" WHERE "+ID+" = "+IntToString(iId)+";");
+    return sqlEAFDSingleInt("SELECT "+SQL_F_BAN+" FROM "+sTable+" WHERE "+SQL_F_ID+" = "+IntToString(iId)+";");
 }
 
 int sqlIsAccountBan(int iAccountId) {
-    return pv_sqlIsBan(TABLE_ACCOUNTS, iAccountId);
+    return pv_sqlIsBan(SQL_T_ACCOUNTS, iAccountId);
 }
 
 int sqlIsPCBan(int iPCId) {
-    return pv_sqlIsBan(TABLE_CHARACTERS, iPCId);
+    return pv_sqlIsBan(SQL_T_CHARS, iPCId);
 }
 
 int sqlIsKeyBan(int iKeyId) {
-    return pv_sqlIsBan(TABLE_CDKEYS, iKeyId);
+    return pv_sqlIsBan(SQL_T_CDKEYS, iKeyId);
 }
 
 location sqlGetPCStartingLocation(int iPCId) {
-    return sqlEAFDSingleLocation("SELECT "+STARTING_LOCATION+" FROM "+TABLE_CHARACTERS+" WHERE "+ID+" = "+IntToString(iPCId)+";");
+    return sqlEAFDSingleLocation("SELECT "+SQL_F_START_LOC+" FROM "+SQL_T_CHARS+" WHERE "+SQL_F_ID+" = "+IntToString(iPCId)+";");
 }
 
 int sqlPCStartingLocationValid(int iPCId) {
-    sqlExecDirect("SELECT "+STARTING_LOCATION+" FROM "+TABLE_CHARACTERS+" WHERE "+ID+" = "+IntToString(iPCId)+";");
+    sqlExecDirect("SELECT "+SQL_F_START_LOC+" FROM "+SQL_T_CHARS+" WHERE "+SQL_F_ID+" = "+IntToString(iPCId)+";");
     sqlFetch();
     string sRes = sqlGetData(1);
     return (sRes != ""); 

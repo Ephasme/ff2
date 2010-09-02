@@ -278,7 +278,7 @@ void pv_do_OnClientEnter_Tests(object oPC, int iDepth = 0) {
 }
 
 void main() {
-    if (TEST_MODE && TS_CMD_SYS) {
+    if (TS_TEST_MODE && TS_CMD_SYS) {
         object oMe = OBJECT_SELF;
         if (oMe == GetModule()) {
             pv_do_OnModuleLoad_Tests();

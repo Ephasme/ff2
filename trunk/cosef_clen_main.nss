@@ -73,5 +73,5 @@ void main() {
     ExecuteScript("ts_sql_sys", oPC);
 
     // On affiche un message de bienvenue.
-    FloatingTextStringOnCreature(MESS_WELCOME_ONTO_SERVER+" "+GetName(oPC)+" !", oPC);
+    FloatingTextStringOnCreature(COS_M_WELCOME_ONTO_SERVER+" "+GetName(oPC)+" !", oPC);
 }

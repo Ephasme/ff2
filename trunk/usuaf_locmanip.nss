@@ -25,24 +25,24 @@ string usuLocationToString(location lLocation) {
     string sAreaTag = GetTag(GetAreaFromLocation(lLocation));
     vector vVect = GetPositionFromLocation(lLocation);
     float fFacing = GetFacingFromLocation(lLocation);
-    string sResult = LOCATION_TOKEN+sAreaTag+
-                     LOCATION_TOKEN+FloatToString(vVect.x, 0, 3)+
-                     LOCATION_TOKEN+FloatToString(vVect.y, 0, 3)+
-                     LOCATION_TOKEN+FloatToString(vVect.z, 0, 3)+
-                     LOCATION_TOKEN+FloatToString(fFacing, 0, 3)+
-                     LOCATION_TOKEN;
+    string sResult = USU_LOCATION_TOKEN+sAreaTag+
+                     USU_LOCATION_TOKEN+FloatToString(vVect.x, 0, 3)+
+                     USU_LOCATION_TOKEN+FloatToString(vVect.y, 0, 3)+
+                     USU_LOCATION_TOKEN+FloatToString(vVect.z, 0, 3)+
+                     USU_LOCATION_TOKEN+FloatToString(fFacing, 0, 3)+
+                     USU_LOCATION_TOKEN;
     return sResult;
 }
 
 location usuStringToLocation(string sLocation) {
-    int iTokLength = GetStringLength(LOCATION_TOKEN);
+    int iTokLength = GetStringLength(USU_LOCATION_TOKEN);
 
-    int iAreaTagPos = usuGetFirstTokenPosition(sLocation, LOCATION_TOKEN);
-    int iXPos = usuGetNextTokenPosition(sLocation, LOCATION_TOKEN, LOCATION_TOKEN, iAreaTagPos);
-    int iYPos = usuGetNextTokenPosition(sLocation, LOCATION_TOKEN, LOCATION_TOKEN, iXPos);
-    int iZPos = usuGetNextTokenPosition(sLocation, LOCATION_TOKEN, LOCATION_TOKEN, iYPos);
-    int iFacingPos = usuGetNextTokenPosition(sLocation, LOCATION_TOKEN, LOCATION_TOKEN, iZPos);
-    int iEndPos = usuGetNextTokenPosition(sLocation, LOCATION_TOKEN, LOCATION_TOKEN, iFacingPos);
+    int iAreaTagPos = usuGetFirstTokenPosition(sLocation, USU_LOCATION_TOKEN);
+    int iXPos = usuGetNextTokenPosition(sLocation, USU_LOCATION_TOKEN, USU_LOCATION_TOKEN, iAreaTagPos);
+    int iYPos = usuGetNextTokenPosition(sLocation, USU_LOCATION_TOKEN, USU_LOCATION_TOKEN, iXPos);
+    int iZPos = usuGetNextTokenPosition(sLocation, USU_LOCATION_TOKEN, USU_LOCATION_TOKEN, iYPos);
+    int iFacingPos = usuGetNextTokenPosition(sLocation, USU_LOCATION_TOKEN, USU_LOCATION_TOKEN, iZPos);
+    int iEndPos = usuGetNextTokenPosition(sLocation, USU_LOCATION_TOKEN, USU_LOCATION_TOKEN, iFacingPos);
 
     // On récupère le tag de l'aire.
     string sTag = usuGetStringBetweenTokens(sLocation, iAreaTagPos, iTokLength, iXPos);

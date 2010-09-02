@@ -1,34 +1,35 @@
-/* Constantes de langage. */
-const string L_TESTS_BEGIN = "Début des tests";
-const string L_TESTS_END = "Fin des tests";
-const string L_CORRECT_FUNCTIONING_OF = "Fonctionnement correct de";
-const string L_ABNORMAL_FUNCTIONING_OF = "Fonctionnement anormal de";
-const string L_CASE = "Cas";
-const string L_FOR = "pour";
-const string L_HOUR = "Temps écoulé";
-const string L_SOURCE = "Source";
+/**************************************************************************************************/
+/** Nom :              usuaf_constants
+/** Date de création : 29/08/2010
+/** Version :          1.0.0
+/** Créateur :         Peluso Loup
+/******************************************* ChangeLog ********************************************/
+/** V1.0.0 (par Peluso Loup) :
+/**      Fichier contenant toutes les constantes de la bibliothèque de fonctions.
+/**************************************************************************************************/
 
-const int TOKEN_POSITION_ERROR = -1;
-const string STRING_RESULT_ERROR = "ERR";
+// Erreurs des fonctions de détection des tokens.
+const int USU_TOKEN_POSITION_ERROR = -1;
+const string USU_STRING_RESULT_ERROR = "ERR";
 
 // Contantes de langue.
-const string L_AUTOMATIC_MOVEMENT_UP_TO_THE_MAP = "Déplacement automatique jusqu'à la map";
-const string L_INSTANT_MOVING                   = "Mouvement instantané";
-const string L_TO_THE_POSITION                  = "A la position";
+const string USU_L_AUTOMATIC_MOVEMENT_UP_TO_THE_MAP = "Déplacement automatique jusqu'à la map";
+const string USU_L_INSTANT_MOVING                   = "Mouvement instantané";
+const string USU_L_TO_THE_POSITION                  = "A la position";
 
 // Token de Location.
-const string LOCATION_TOKEN = "##";
+const string USU_LOCATION_TOKEN = "##";
 
-const int HASHSET_ERROR = FALSE;
-const int HASHSET_SUCCESS = TRUE;
+const int USU_HASHSET_ERROR = FALSE;
+const int USU_HASHSET_SUCCESS = TRUE;
 
 // Tag de l'objet contenant les HashSet du module.
-const string COS_WP_GVHASH_TAG = "cos_wpHashSet";
-const string COS_WP_GVHASH_RESREF = "nw_waypoint001";
+const string USU_WP_HASHSET_TAG = "cos_wpHashSet";
+const string USU_WP_HASHSET_RESREF = "nw_waypoint001";
 
 // ********************** TESTS ************************* //
 
-const int TEST_MODE = TRUE;
+const int TS_TEST_MODE = TRUE;
 
 const int TS_USU_SYS = TRUE;
 const int TS_SQL_SYS = TRUE;
@@ -46,5 +47,15 @@ const string TS_COS_TITLE = "COS_SYSTEM";
 /* Chaîne utilisée pour tester les fonctions de manipulation de chaîne. */
 const string TS_CMD_STRING = "jfi<omJ  F IE!>fj <JKFMDio  <  uhuaibj!> k lru<jeuirez!> f5kdsmHB<uohe>!!!";
 const string TS_CMD_TRIM_SPACES = "    testme    ";
+
+/* Constantes de langage. */
+const string TS_L_TESTS_BEGIN = "Début des tests";
+const string TS_L_TESTS_END = "Fin des tests";
+const string TS_L_CORRECT_FUNCTIONING_OF = "Fonctionnement correct de";
+const string TS_L_ABNORMAL_FUNCTIONING_OF = "Fonctionnement anormal de";
+const string TS_L_CASE = "Cas";
+const string TS_L_FOR = "pour";
+const string TS_L_HOUR = "Temps écoulé";
+const string TS_L_SOURCE = "Source";
 
 // ********************** TESTS ************************* //

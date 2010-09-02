@@ -34,12 +34,12 @@ void addTestInfo(string sTitle, string sValue) {
 void addTest(string sFunction, string sCase, int iTest) {
     string sResult;
     if (iTest) {
-        sResult = "V OK -> "+L_CORRECT_FUNCTIONING_OF;
+        sResult = "V OK -> "+TS_L_CORRECT_FUNCTIONING_OF;
     } else {
-        sResult = "X ER -> "+L_ABNORMAL_FUNCTIONING_OF;
+        sResult = "X ER -> "+TS_L_ABNORMAL_FUNCTIONING_OF;
     }
     addToFinalString(sResult+" "+sFunction+". ");
-    addTestNext(L_CASE+" : "+sCase);
+    addTestNext(TS_L_CASE+" : "+sCase);
 }
 
 void addTestNext(string sString) {
@@ -51,9 +51,9 @@ void addToFinalString(string sStringToAdd) {
 }
 
 void printResult(string sScriptName) {
-    PrintString("\n*************** "+L_TESTS_BEGIN+" "+L_FOR+" "+sScriptName+" ***************"
-                +"\n**    X "+L_HOUR+" : "+IntToString(GetTimeMillisecond())
-                +"\n**    X "+L_SOURCE+" : "+GetName(OBJECT_SELF)+"\n"
+    PrintString("\n*************** "+TS_L_TESTS_BEGIN+" "+TS_L_FOR+" "+sScriptName+" ***************"
+                +"\n**    X "+TS_L_HOUR+" : "+IntToString(GetTimeMillisecond())
+                +"\n**    X "+TS_L_SOURCE+" : "+GetName(OBJECT_SELF)+"\n"
                 +sFinalString+
-                "*************** "+L_TESTS_END+" "+L_FOR+" "+sScriptName+" ***************\n");
+                "*************** "+TS_L_TESTS_END+" "+TS_L_FOR+" "+sScriptName+" ***************\n");
 }

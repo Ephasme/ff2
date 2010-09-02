@@ -100,7 +100,7 @@ string cmdMoveToCommand(string sCommand, object oPC) {
     // Est-ce le PJ va se déplacer en courant ?
     int iRun = cmdIsParameterDefined(sCommand, CMD_PAR_RUN);
 
-    // Est-ce qu'on va déplacer le PJ instantanément ?
+    // Est-ce que l'on va déplacer le PJ instantanément ?
     int iJump = cmdIsParameterDefined(sCommand, CMD_PAR_JUMP);
 
     // On déplace le personnage jusqu'à la location sauv e.

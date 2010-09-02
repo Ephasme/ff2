@@ -33,9 +33,9 @@ void usuMoveToLocation(object oPC, location lLoc, int iRun = FALSE, int iJump = 
     string sPos = "("+FloatToString(vVect.x, 0, 2)+", "+
                       FloatToString(vVect.y, 0, 2)+", "+
                       FloatToString(vVect.z, 0, 2)+")";
-    string sMess = L_AUTOMATIC_MOVEMENT_UP_TO_THE_MAP+" "+sAreaName+".\n"+L_TO_THE_POSITION+" :\n"+sPos+".";
+    string sMess = USU_L_AUTOMATIC_MOVEMENT_UP_TO_THE_MAP+" "+sAreaName+".\n"+USU_L_TO_THE_POSITION+" :\n"+sPos+".";
     if (iJump) {
-        sMess += L_INSTANT_MOVING+".";
+        sMess += USU_L_INSTANT_MOVING+".";
         AssignCommand(oPC, ActionJumpToLocation(lLoc));
     } else {
         // TODO: Fonction à terminer.

@@ -46,7 +46,7 @@ string sqlGetData(int iCol);
 
 // DEF IN "sqlaf_main"
 // Fonction qui permet d'exécuter et de récupérer directement la valeur de la requ te sous
-// la forme d'un entier unique (  utiliser pour récupérer l'ID d'un personnage par exemple).
+// la forme d'un entier unique (à utiliser pour récupérer l'Identifiant d'un personnage par exemple).
 // EAFD signifie ExecAndFetchDirect.
 //   > string sQuery - Requ te   ex cuter.
 //   o int - Entier récupéré, résultat de la requ te.
@@ -105,9 +105,9 @@ void sqlInit() {
 }
 
 object sqlGetWaypoint() {
-    object oSQLWP = GetWaypointByTag(SQLWP_TAG);
+    object oSQLWP = GetWaypointByTag(SQL_WP_BUFFER_TAG);
     if (oSQLWP == OBJECT_INVALID) {
-        oSQLWP = CreateObject(OBJECT_TYPE_WAYPOINT, SQLWP_RESREF, GetStartingLocation(), FALSE, SQLWP_TAG);
+        oSQLWP = CreateObject(OBJECT_TYPE_WAYPOINT, SQL_WP_BUFFER_RESREF, GetStartingLocation(), FALSE, SQL_WP_BUFFER_TAG);
     }
     return oSQLWP;
 }

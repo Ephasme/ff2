@@ -91,7 +91,7 @@ int usuHashCreate(string sHashSetName, int iSize = 500)
 {
     object oWP = usuHashGetWaypoint();
     SetLocalString(oWP, "NWNX!HASHSET!CREATE", sHashSetName + "!" + IntToString(iSize) + "!");
-    return HASHSET_SUCCESS;
+    return USU_HASHSET_SUCCESS;
 }
 
 void usuHashDestroy(string sHashSetName)
@@ -118,7 +118,7 @@ int usuHashSetLocalString(string sHashSetName, string sKey, string sValue)
 {
     object oWP = usuHashGetWaypoint();
     SetLocalString(oWP, "NWNX!HASHSET!INSERT", sHashSetName + "!" + sKey + "!" + sValue);
-    return HASHSET_SUCCESS;
+    return USU_HASHSET_SUCCESS;
 }
 
 string usuHashGetLocalString(string sHashSetName, string sKey)
@@ -133,7 +133,7 @@ string usuHashGetLocalString(string sHashSetName, string sKey)
 int usuHashSetLocalInt(string sHashSetName, string sKey, int iValue)
 {
     usuHashSetLocalString(sHashSetName, sKey, IntToString(iValue));
-    return HASHSET_SUCCESS;
+    return USU_HASHSET_SUCCESS;
 }
 
 int usuHashGetLocalInt(string sHashSetName, string sKey)
@@ -149,7 +149,7 @@ int usuHashDeleteVariable(string sHashSetName, string sKey)
 {
     object oWP = usuHashGetWaypoint();
     SetLocalString(oWP, "NWNX!HASHSET!DELETE", sHashSetName + "!" + sKey + "!");
-    return HASHSET_SUCCESS;
+    return USU_HASHSET_SUCCESS;
 }
 
 string usuHashGetNthKey(string sHashSetName, int i)
@@ -196,14 +196,14 @@ int usuHashHasNext(string sHashSetName)
 
 object usuHashGetWaypoint() {
     // On tente de récupérer le Waypoint (s'il existe, l'objet sera valide.)
-    object oWP = GetObjectByTag(COS_WP_GVHASH_TAG);
+    object oWP = GetObjectByTag(USU_WP_HASHSET_TAG);
     if (!GetIsObjectValid(oWP)) {
         // Sinon on le crée.
         oWP = CreateObject(OBJECT_TYPE_WAYPOINT,
-                           COS_WP_GVHASH_RESREF,
+                           USU_WP_HASHSET_RESREF,
                            GetStartingLocation(),
                            FALSE,
-                           COS_WP_GVHASH_TAG);
+                           USU_WP_HASHSET_TAG);
     }
     // Dans tous les cas, on renvoie l'objet sus-créé.
     return oWP;

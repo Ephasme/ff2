@@ -19,14 +19,14 @@
 // Fonction qui renvoie la position du dernier Délimiteur dans une chaine.
 //   > string sStr - Chaîne à scanner.
 //   > string sTok - Délimiteur.
-//   o int - Position du dernier Délimiteur trouvé ou TOKEN_POSITION_ERROR si rien n'a été trouvé.
+//   o int - Position du dernier Délimiteur trouvé ou USU_TOKEN_POSITION_ERROR si rien n'a été trouvé.
 int usuGetLastTokenPosition(string sStr, string sTok);
 
 // DEF IN "usuaf_strtokman"
 // Fonction qui renvoie la position du dernier Délimiteur dans une chaine.
 //   > string sStr - Chaîne à scanner.
 //   > string sTok - Délimiteur.
-//   o int - Position du dernier Délimiteur trouvé ou TOKEN_POSITION_ERROR si rien n'a été trouvé.
+//   o int - Position du dernier Délimiteur trouvé ou USU_TOKEN_POSITION_ERROR si rien n'a été trouvé.
 int usuGetFirstTokenPosition(string sStr, string sTok);
 
 // DEF IN "usuaf_strtokman"
@@ -50,7 +50,7 @@ string usuGetStringBeforeToken(string sStr, int iTokPos);
 //   > int iOpenTokPos - Position du Délimiteur d'ouverture.
 //   > int iOpenTokLength - Taille du Délimiteur d'ouverture.
 //   > int iCloseTokPos - Position du Délimiteur de fermeture.
-//   o string - chaîne situ e entre les deux Délimiteurs donn s ou TOKEN_POSITION_ERROR si
+//   o string - chaîne situ e entre les deux Délimiteurs donn s ou USU_TOKEN_POSITION_ERROR si
 //              la position du token d'ouverture est situ e après celle de celui de fermeture.
 string usuGetStringBetweenTokens(string sStr, int iOpenTokPos, int iOpenTokLength, int iCloseTokPos);
 
@@ -60,7 +60,7 @@ string usuGetStringBetweenTokens(string sStr, int iOpenTokPos, int iOpenTokLengt
 //   > string sTokToFind - Délimiteur dont la position est à trouver.
 //   > string sTokSource - Délimiteur à partir duquel le scan commence.
 //   > int iPosTokSource - Position du Délimiteur de d part du scan.
-//   o int - Position trouvée ou TOKEN_POSITION_ERROR si rien n'a été trouvé.
+//   o int - Position trouvée ou USU_TOKEN_POSITION_ERROR si rien n'a été trouvé.
 int usuGetPreviousTokenPosition(string sStr, string sTokToFind, string sTokSource, int iPosTokSource);
 
 // DEF IN "usuaf_strtokman"
@@ -69,7 +69,7 @@ int usuGetPreviousTokenPosition(string sStr, string sTokToFind, string sTokSourc
 //   > string sTokToFind - Délimiteur dont la position est à trouver.
 //   > string sTokSource - Délimiteur à partir duquel le scan commence.
 //   > int iPosTokSource - Position du Délimiteur de d part du scan.
-//   o int - Position trouvée ou TOKEN_POSITION_ERROR si rien n'a été trouvé.
+//   o int - Position trouvée ou USU_TOKEN_POSITION_ERROR si rien n'a été trouvé.
 int usuGetNextTokenPosition(string sStr, string sTokToFind, string sTokSource, int iPosTokSource);
 
 // DEF IN "usuaf_strtokman"
@@ -94,7 +94,7 @@ string usuTrimAllSpaces(string sStr);
 
 int usuGetLastTokenPosition(string sStr, string sTok) {
     // On stocke la dernière position valide, initialisée à une valeur d'erreur.
-    int iResult = TOKEN_POSITION_ERROR;
+    int iResult = USU_TOKEN_POSITION_ERROR;
 
     // Compteur et longueur de chaîne.
     int iLength = GetStringLength(sStr);
@@ -114,7 +114,7 @@ int usuGetLastTokenPosition(string sStr, string sTok) {
 
 int usuGetFirstTokenPosition(string sStr, string sTok) {
     // On stocke la dernière position valide, initialisée à 0.
-    int iResult = TOKEN_POSITION_ERROR;
+    int iResult = USU_TOKEN_POSITION_ERROR;
 
     // Compteur et longueur de chaîne.
     int iLength = GetStringLength(sStr);
@@ -145,7 +145,7 @@ string usuGetStringBeforeToken(string sStr, int iTokPos) {
 string usuGetStringBetweenTokens(string sStr, int iOpenTokPos, int iOpenTokLength, int iCloseTokPos) {
     string sRes = sStr;
     if (iOpenTokPos > iCloseTokPos) {
-        return STRING_RESULT_ERROR;
+        return USU_STRING_RESULT_ERROR;
     } else {
         sRes = usuGetStringBeforeToken(sRes, iCloseTokPos);
         sRes = usuGetStringAfterToken(sRes, iOpenTokLength, iOpenTokPos);
@@ -160,8 +160,8 @@ int usuGetNextTokenPosition(string sStr, string sTokToFind, string sTokSource, i
     // Ensuite on cherche le dernier Délimiteur dans cette chaîne divis e.
     int iResult = usuGetFirstTokenPosition(sPart, sTokToFind);
     // Si rien n'a été trouvé, on renvoie une erreur.
-    if (iResult == TOKEN_POSITION_ERROR) {
-        return TOKEN_POSITION_ERROR;
+    if (iResult == USU_TOKEN_POSITION_ERROR) {
+        return USU_TOKEN_POSITION_ERROR;
     }
     // On ajoute alors la position originelle + la taille du Délimiteur r f rence.
     iResult += iPosTokSource + iTokSourceLgth;

@@ -1,8 +1,8 @@
 /**************************************************************************************************/
 /** Nom :              cosaf_constants
-/** Date de cr‚ation : 29/08/2010
+/** Date de création : 29/08/2010
 /** Version :          1.0.0
-/** Cr‚ateur :         Peluso Loup
+/** Créateur :         Peluso Loup
 /******************************************* ChangeLog ********************************************/
 /** V1.0.0 (par Peluso Loup) :
 /**      Fichier contenant toutes les constantes du système central.
@@ -20,20 +20,20 @@ const string COS_WP_CHARDATA_RESREF  = "nw_waypoint001";
 
 /******************************************** MESSAGES ********************************************/
 
-const string MESS_WELCOME_ONTO_SERVER = "Bienvenue sur le serveur";
+const string COS_M_WELCOME_ONTO_SERVER = "Bienvenue sur le serveur";
 
 /************************************** CONSTANTES DIVERSES ***************************************/
 
 // Delay avant d'emmener le personnage quelque part.
 const float  COS_JUMP_DELAY          = 5.0f;
-const string COS_MOD_IS_INIT_VARNAME = "ModuleIsInit";
+const string COS_MOD_IS_INIT_VARNAME = "COS_ModuleIsInit";
 
 // Variables stockant les données du personnage.
-const string COS_PC_ID                  = "COS_PC_ID";
-const string COS_PC_ACCOUNT_ID          = "COS_PC_ACCOUNT_ID";
-const string COS_PC_KEY_ID              = "COS_PC_KEY_ID";
-const string COS_PC_KEY_ACCOUNT_LINK_ID = "COS_PC_KEY_ACCOUNT_LINK_ID";
-const string COS_PC_STARTLOC            = "COS_PC_STARTLOC";
+const string COS_PC_ID                  = "COS_PCId";
+const string COS_PC_ACCOUNT_ID          = "COS_PCAccountId";
+const string COS_PC_KEY_ID              = "COS_PCKeyId";
+const string COS_PC_KEY_ACCOUNT_LINK_ID = "COS_PCKeyAccountLinkId";
+const string COS_PC_STARTLOC            = "COS_PCStartLoc";
 
 /****************************** NOMS DES SCRIPTS SYSTEME A EXECUTER *******************************/
 

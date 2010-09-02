@@ -36,7 +36,7 @@ string sRand = IntToString(GetTimeMillisecond());
 // (Fonction privée)
 void pvCreateInsert(string sSalt) {
     sqlExecDirect(
-        "INSERT INTO "+TABLE_ACCOUNTS+" ("+NAME+", "+CREATION+", "+LAST_CONNEXION+")" +
+        "INSERT INTO "+SQL_T_ACCOUNTS+" ("+SQL_F_NAME+", "+SQL_F_CREATION+", "+SQL_F_LAST_CNX+")" +
         " VALUES ('DELETE_ME_"+sSalt+"', NOW(), NOW());"
     );
 }
@@ -44,7 +44,7 @@ void pvCreateInsert(string sSalt) {
 // (Fonction privée)
 void pvDeleteInserts() {
     sqlExecDirect(
-        "DELETE FROM "+TABLE_ACCOUNTS+" WHERE "+NAME+" LIKE '%DELETE_ME%';"
+        "DELETE FROM "+SQL_T_ACCOUNTS+" WHERE "+SQL_F_NAME+" LIKE '%DELETE_ME%';"
     );
 }
 
@@ -56,12 +56,12 @@ void ts_sqlEAFDSingleInt() {
 }
 
 void ts_sqlEAFDSingleLocation() {
-    string sQuery = "SELECT '##area002##5.4##3.2##1.0##90.0##';";
+    string sQuery = "SELECT '##sys_ar_00##5.4##3.2##1.0##90.0##';";
     sqlExecDirect(sQuery);
     sqlFetch();
     string sResQue = sqlGetData(1);
     location lLoc = sqlEAFDSingleLocation(sQuery);
-    int iResA = (GetTag(GetAreaFromLocation(lLoc)) == "area002");
+    int iResA = (GetTag(GetAreaFromLocation(lLoc)) == "sys_ar_00");
     vector v = GetPositionFromLocation(lLoc);
     int iResB = ((v.x == 5.4) && (v.y == 3.2) && (v.z == 1.0));
     int iResC = (GetFacingFromLocation(lLoc) == 90.0);
@@ -78,8 +78,8 @@ void ts_sqlEAFDSingleIntOrInsert() {
     string sSalt = "sqlEAFDSingleIntOrInsert";
     pvCreateInsert(sSalt);
     int iRes = sqlEAFDSingleIntOrInsert(
-        "SELECT "+ID+" FROM "+TABLE_ACCOUNTS+" WHERE "+NAME+" = "+sqlQuote("DELETE_ME_"+sSalt)+";",
-        "INSERT INTO "+TABLE_ACCOUNTS+" ("+NAME+") VALUES ("+sqlQuote("DELETE_ME_"+sSalt)+");"
+        "SELECT "+SQL_F_ID+" FROM "+SQL_T_ACCOUNTS+" WHERE "+SQL_F_NAME+" = "+sqlQuote("DELETE_ME_"+sSalt)+";",
+        "INSERT INTO "+SQL_T_ACCOUNTS+" ("+SQL_F_NAME+") VALUES ("+sqlQuote("DELETE_ME_"+sSalt)+");"
     );
 
     addTest(
@@ -101,7 +101,7 @@ void ts_sqlFetch() {
     string sSalt = IntToString(GetTimeMillisecond());
     pvCreateInsert(sSalt);
     sqlExecDirect(
-        "SELECT "+ID+" FROM "+TABLE_ACCOUNTS+" WHERE "+NAME+" LIKE '%DELETE_ME_"+sSalt+"%'"
+        "SELECT "+SQL_F_ID+" FROM "+SQL_T_ACCOUNTS+" WHERE "+SQL_F_NAME+" LIKE '%DELETE_ME_"+sSalt+"%'"
     );
     addTest("sqlFetch", "Récupération des résultats d'une exécution.", sqlFetch());
     pvDeleteInserts();
@@ -186,7 +186,7 @@ void pv_do_OnClientEnter_Tests(object oPC, int iDepth = 0) {
 }
 
 void main() {
-    if (TEST_MODE && TS_SQL_SYS) {
+    if (TS_TEST_MODE && TS_SQL_SYS) {
         object oMe = OBJECT_SELF;
         if (oMe == GetModule()) {
             pv_do_OnModuleLoad_Tests();
