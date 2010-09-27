@@ -1,0 +1,521 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<struct Class="root">
+  <childs>
+    <list Index="0">
+      <label Index="0">Creature List</label>
+      <childs>
+        <struct Class="listed" Index="1" StructType="4">
+          <childs>
+            <field Index="1" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>
+              </value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="2" StructType="4">
+          <childs>
+            <field Index="2" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>
+              </value>
+            </field>
+          </childs>
+        </struct>
+      </childs>
+    </list>
+    <list Index="3">
+      <label Index="2">Door List</label>
+      <childs>
+        <struct Class="listed" Index="3" StructType="8">
+          <childs>
+            <field Index="4" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>44726177627269646765</value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="4" StructType="8">
+          <childs>
+            <field Index="5" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>57616C6C20312047617465</value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="5" StructType="8">
+          <childs>
+            <field Index="6" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>5374726F6E6720446F6F72</value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="6" StructType="8">
+          <childs>
+            <field Index="7" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>5374726F6E6720446F6F72</value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="7" StructType="8">
+          <childs>
+            <field Index="8" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>5374726F6E6720446F6F72</value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="8" StructType="8">
+          <childs>
+            <field Index="9" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>5374726F6E6720446F6F72</value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="9" StructType="8">
+          <childs>
+            <field Index="10" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>5374726F6E6720446F6F72</value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="10" StructType="8">
+          <childs>
+            <field Index="11" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>5374726F6E6720446F6F72</value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="11" StructType="8">
+          <childs>
+            <field Index="12" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>5374726F6E6720446F6F72</value>
+            </field>
+          </childs>
+        </struct>
+      </childs>
+    </list>
+    <list Index="13">
+      <label Index="3">Encounter List</label>
+      <childs />
+    </list>
+    <list Index="14">
+      <label Index="4">List</label>
+      <childs />
+    </list>
+    <list Index="15">
+      <label Index="5">SoundList</label>
+      <childs />
+    </list>
+    <list Index="16">
+      <label Index="6">StoreList</label>
+      <childs />
+    </list>
+    <list Index="17">
+      <label Index="7">TriggerList</label>
+      <childs />
+    </list>
+    <list Index="18">
+      <label Index="8">WaypointList</label>
+      <childs />
+    </list>
+    <list Index="19">
+      <label Index="9">Placeable List</label>
+      <childs>
+        <struct Class="listed" Index="12" StructType="9">
+          <childs>
+            <field Index="20" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>
+              </value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="13" StructType="9">
+          <childs>
+            <field Index="21" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>4665726E</value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="14" StructType="9">
+          <childs>
+            <field Index="22" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>4665726E</value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="15" StructType="9">
+          <childs>
+            <field Index="23" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>4665726E</value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="16" StructType="9">
+          <childs>
+            <field Index="24" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>
+              </value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="17" StructType="9">
+          <childs>
+            <field Index="25" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>536F757263653A20466C6F776572205061636B206279204164616D204D696C6C6572</value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="18" StructType="9">
+          <childs>
+            <field Index="26" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>536F757263653A20546972204E61204F672054726565205061636B20312076322E3031204279204D617274696E2045</value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="19" StructType="9">
+          <childs>
+            <field Index="27" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>536F757263653A205368656420506C61636561626C65206279204963652D4368696C64</value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="20" StructType="9">
+          <childs>
+            <field Index="28" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>
+              </value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="21" StructType="9">
+          <childs>
+            <field Index="29" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>
+              </value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="22" StructType="9">
+          <childs>
+            <field Index="30" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>
+              </value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="23" StructType="9">
+          <childs>
+            <field Index="31" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>446F6F6D206F662044616767657264616C652076312E312028526172290D0A6279204963652D4368696C64202620537565646F6D7361</value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="24" StructType="9">
+          <childs>
+            <field Index="32" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>536F757263653A20736F6D655F75782773204361726176656C732056342E320D0A41637469766174656420616E696D2069732066756C6C206F662077617465722C20646561637469766174656420616E696D20697320656D7074792C206F6E326F666620616E64206F6666326F6E20636175736520746865207761746572206C6576656C20746F2064726F70206F7220726973652C20726573706563746976656C792E</value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="25" StructType="9">
+          <childs>
+            <field Index="33" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>536F757263653A20736F6D655F75782773204361726176656C732056342E32</value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="26" StructType="9">
+          <childs>
+            <field Index="34" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>536F757263653A20736F6D655F75782773204361726176656C732056342E32</value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="27" StructType="9">
+          <childs>
+            <field Index="35" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>536F757263653A20342057696E646F7773206279204963652D4368696C64</value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="28" StructType="9">
+          <childs>
+            <field Index="36" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>536F757263653A20342057696E646F7773206279204963652D4368696C64</value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="29" StructType="9">
+          <childs>
+            <field Index="37" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>536F757263653A20342057696E646F7773206279204963652D4368696C64</value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="30" StructType="9">
+          <childs>
+            <field Index="38" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>536F757263653A20342057696E646F7773206279204963652D4368696C64</value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="31" StructType="9">
+          <childs>
+            <field Index="39" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>536F757263653A20342057696E646F7773206279204963652D4368696C64</value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="32" StructType="9">
+          <childs>
+            <field Index="40" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>41204269672063726F7373626F7720616E642043616E6E6F6E2062792073706F6F6E6D65726C696E0D204564697465642062792053426972642E</value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="33" StructType="9">
+          <childs>
+            <field Index="41" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>41204269672063726F7373626F7720616E642043616E6E6F6E2062792073706F6F6E6D65726C696E0D204564697465642062792053426972642E</value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="34" StructType="9">
+          <childs>
+            <field Index="42" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>536F757263653A20527573746963205368656C74657220506C61636561626C65732062792042726F7468657220526F7468</value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="35" StructType="9">
+          <childs>
+            <field Index="43" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>536F757263653A204C4F4B50616B2076332062792044616E6D61722045646974656420627920534269726420666F72204345502E</value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="36" StructType="9">
+          <childs>
+            <field Index="44" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>536F757263653A204C4F4B50616B2076332062792044616E6D61722045646974656420627920534269726420666F72204345502E</value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="37" StructType="9">
+          <childs>
+            <field Index="45" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>536F757263653A204C4F4B50616B2076332062792044616E6D61722045646974656420627920534269726420666F72204345502E</value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="38" StructType="9">
+          <childs>
+            <field Index="46" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>536F757263653A204C4F4B50616B2076332062792044616E6D61722045646974656420627920534269726420666F72204345502E</value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="39" StructType="9">
+          <childs>
+            <field Index="47" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>
+              </value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="40" StructType="9">
+          <childs>
+            <field Index="48" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>766F6C6974696F6E27732042696F20506C61636561626C657320627920766F6C6974696F6E0D0A</value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="41" StructType="9">
+          <childs>
+            <field Index="49" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>766F6C6974696F6E27732042696F20506C61636561626C657320627920766F6C6974696F6E0D0A</value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="42" StructType="9">
+          <childs>
+            <field Index="50" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>
+              </value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="43" StructType="9">
+          <childs>
+            <field Index="51" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>
+              </value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="44" StructType="9">
+          <childs>
+            <field Index="52" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>
+              </value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="45" StructType="9">
+          <childs>
+            <field Index="53" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>
+              </value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="46" StructType="9">
+          <childs>
+            <field Index="54" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>
+              </value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="47" StructType="9">
+          <childs>
+            <field Index="55" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>
+              </value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="48" StructType="9">
+          <childs>
+            <field Index="56" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>
+              </value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="49" StructType="9">
+          <childs>
+            <field Index="57" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>
+              </value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="50" StructType="9">
+          <childs>
+            <field Index="58" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>
+              </value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="51" StructType="9">
+          <childs>
+            <field Index="59" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>
+              </value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="52" StructType="9">
+          <childs>
+            <field Index="60" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>
+              </value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="53" StructType="9">
+          <childs>
+            <field Index="61" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>57656174686572696E67202F2053636F726368204D61726B</value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="54" StructType="9">
+          <childs>
+            <field Index="62" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>57656174686572696E67202F2053636F726368204D61726B</value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="55" StructType="9">
+          <childs>
+            <field Index="63" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>
+              </value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="56" StructType="9">
+          <childs>
+            <field Index="64" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>
+              </value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="57" StructType="9">
+          <childs>
+            <field Index="65" Type="CEXOSTRING">
+              <label Index="1">Comment</label>
+              <value>536F757263653A20342057696E646F7773206279204963652D4368696C64</value>
+            </field>
+          </childs>
+        </struct>
+      </childs>
+    </list>
+  </childs>
+</struct>

@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<struct Class="root">
+  <childs>
+    <list Index="0">
+      <label Index="0">MAIN</label>
+      <childs>
+        <struct Class="listed" Index="1" StructType="0">
+          <childs>
+            <field Index="1" Type="DWORD">
+              <label Index="1">STRREF</label>
+              <value>861A0000</value>
+            </field>
+            <field Index="2" Type="BYTE">
+              <label Index="2">ID</label>
+              <value>06000000</value>
+            </field>
+            <list Index="3">
+              <label Index="3">LIST</label>
+              <childs>
+                <struct Class="listed" Index="2" StructType="0">
+                  <childs>
+                    <field Index="4" Type="CEXOSTRING">
+                      <label Index="4">NAME</label>
+                      <value>416C6C6F7765642052657374696E672054726967676572</value>
+                    </field>
+                    <field Index="5" Type="RESREF">
+                      <label Index="5">RESREF</label>
+                      <value>637270745F616C6C6F775F72657374</value>
+                    </field>
+                  </childs>
+                </struct>
+                <struct Class="listed" Index="3" StructType="0">
+                  <childs>
+                    <field Index="6" Type="CEXOSTRING">
+                      <label Index="4">NAME</label>
+                      <value>4465736372697074696F6E204D657373616765</value>
+                    </field>
+                    <field Index="7" Type="RESREF">
+                      <label Index="5">RESREF</label>
+                      <value>637270745F706C61795F6D7367</value>
+                    </field>
+                  </childs>
+                </struct>
+                <struct Class="listed" Index="4" StructType="0">
+                  <childs>
+                    <field Index="8" Type="CEXOSTRING">
+                      <label Index="4">NAME</label>
+                      <value>4C697374656E696E672054726967676572</value>
+                    </field>
+                    <field Index="9" Type="RESREF">
+                      <label Index="5">RESREF</label>
+                      <value>637270745F6C697374656E</value>
+                    </field>
+                  </childs>
+                </struct>
+                <struct Class="listed" Index="5" StructType="0">
+                  <childs>
+                    <field Index="10" Type="CEXOSTRING">
+                      <label Index="4">NAME</label>
+                      <value>546F67676C6520506C61796572204A756D70696E67</value>
+                    </field>
+                    <field Index="11" Type="RESREF">
+                      <label Index="5">RESREF</label>
+                      <value>637270745F6E6F5F6A756D70696E67</value>
+                    </field>
+                  </childs>
+                </struct>
+              </childs>
+            </list>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="6" StructType="0">
+          <childs>
+            <field Index="12" Type="DWORD">
+              <label Index="1">STRREF</label>
+              <value>A9230000</value>
+            </field>
+            <field Index="13" Type="BYTE">
+              <label Index="2">ID</label>
+              <value>10000000</value>
+            </field>
+            <list Index="14">
+              <label Index="3">LIST</label>
+              <childs>
+                <struct Class="listed" Index="7" StructType="0">
+                  <childs>
+                    <field Index="15" Type="CEXOSTRING">
+                      <label Index="4">NAME</label>
+                      <value>4477617276656E2053746F6E65776F726B204465746563746F72</value>
+                    </field>
+                    <field Index="16" Type="RESREF">
+                      <label Index="5">RESREF</label>
+                      <value>637270745F6477665F6175746F737263</value>
+                    </field>
+                  </childs>
+                </struct>
+                <struct Class="listed" Index="8" StructType="0">
+                  <childs>
+                    <field Index="17" Type="CEXOSTRING">
+                      <label Index="4">NAME</label>
+                      <value>456C76656E204175746F6D617469632053656172636820436865636B</value>
+                    </field>
+                    <field Index="18" Type="RESREF">
+                      <label Index="5">RESREF</label>
+                      <value>637270745F656C665F6175746F737263</value>
+                    </field>
+                  </childs>
+                </struct>
+              </childs>
+            </list>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="9" StructType="0">
+          <childs>
+            <field Index="19" Type="DWORD">
+              <label Index="1">STRREF</label>
+              <value>BB150000</value>
+            </field>
+            <list Index="20">
+              <label Index="3">LIST</label>
+              <childs>
+                <struct Class="listed" Index="10" StructType="0">
+                  <childs>
+                    <field Index="21" Type="DWORD">
+                      <label Index="1">STRREF</label>
+                      <value>BDCF0000</value>
+                    </field>
+                    <field Index="22" Type="BYTE">
+                      <label Index="2">ID</label>
+                      <value>0B000000</value>
+                    </field>
+                    <list Index="23">
+                      <label Index="3">LIST</label>
+                      <childs>
+                        <struct Class="listed" Index="11" StructType="0">
+                          <childs>
+                            <field Index="24" Type="CEXOSTRING">
+                              <label Index="4">NAME</label>
+                              <value>44656570205069742054726170</value>
+                            </field>
+                            <field Index="25" Type="RESREF">
+                              <label Index="5">RESREF</label>
+                              <value>70697474726170727567303031</value>
+                            </field>
+                          </childs>
+                        </struct>
+                        <struct Class="listed" Index="12" StructType="0">
+                          <childs>
+                            <field Index="26" Type="CEXOSTRING">
+                              <label Index="4">NAME</label>
+                              <value>46616C6C696E6720427269636B2054726170</value>
+                            </field>
+                            <field Index="27" Type="RESREF">
+                              <label Index="5">RESREF</label>
+                              <value>66616C6C696E67627269636B74726170</value>
+                            </field>
+                          </childs>
+                        </struct>
+                        <struct Class="listed" Index="13" StructType="0">
+                          <childs>
+                            <field Index="28" Type="CEXOSTRING">
+                              <label Index="4">NAME</label>
+                              <value>5069742054726170202D2045617379</value>
+                            </field>
+                            <field Index="29" Type="RESREF">
+                              <label Index="5">RESREF</label>
+                              <value>637270745F706974747261703031</value>
+                            </field>
+                          </childs>
+                        </struct>
+                        <struct Class="listed" Index="14" StructType="0">
+                          <childs>
+                            <field Index="30" Type="CEXOSTRING">
+                              <label Index="4">NAME</label>
+                              <value>52617A6F7220576972652054726170</value>
+                            </field>
+                            <field Index="31" Type="RESREF">
+                              <label Index="5">RESREF</label>
+                              <value>72617A6F727769726574726170</value>
+                            </field>
+                          </childs>
+                        </struct>
+                        <struct Class="listed" Index="15" StructType="0">
+                          <childs>
+                            <field Index="32" Type="CEXOSTRING">
+                              <label Index="4">NAME</label>
+                              <value>526F6C6C696E6720526F636B2054726170</value>
+                            </field>
+                            <field Index="33" Type="RESREF">
+                              <label Index="5">RESREF</label>
+                              <value>726F6C6C696E67726F636B74726170</value>
+                            </field>
+                          </childs>
+                        </struct>
+                        <struct Class="listed" Index="16" StructType="0">
+                          <childs>
+                            <field Index="34" Type="CEXOSTRING">
+                              <label Index="4">NAME</label>
+                              <value>527567205069742054726170</value>
+                            </field>
+                            <field Index="35" Type="RESREF">
+                              <label Index="5">RESREF</label>
+                              <value>70697474726170727567</value>
+                            </field>
+                          </childs>
+                        </struct>
+                        <struct Class="listed" Index="17" StructType="0">
+                          <childs>
+                            <field Index="36" Type="CEXOSTRING">
+                              <label Index="4">NAME</label>
+                              <value>5377696E67696E6720426C6164652054726170</value>
+                            </field>
+                            <field Index="37" Type="RESREF">
+                              <label Index="5">RESREF</label>
+                              <value>726F6C6C696E67726F636B7472303031</value>
+                            </field>
+                          </childs>
+                        </struct>
+                        <struct Class="listed" Index="18" StructType="0">
+                          <childs>
+                            <field Index="38" Type="CEXOSTRING">
+                              <label Index="4">NAME</label>
+                              <value>5377696E67696E6720526F636B2054726170</value>
+                            </field>
+                            <field Index="39" Type="RESREF">
+                              <label Index="5">RESREF</label>
+                              <value>726F6C6C696E67726F636B7472303032</value>
+                            </field>
+                          </childs>
+                        </struct>
+                      </childs>
+                    </list>
+                  </childs>
+                </struct>
+                <struct Class="listed" Index="19" StructType="0">
+                  <childs>
+                    <field Index="40" Type="DWORD">
+                      <label Index="1">STRREF</label>
+                      <value>CF080000</value>
+                    </field>
+                    <field Index="41" Type="BYTE">
+                      <label Index="2">ID</label>
+                      <value>0C000000</value>
+                    </field>
+                    <list Index="42">
+                      <label Index="3">LIST</label>
+                      <childs>
+                        <struct Class="listed" Index="20" StructType="0">
+                          <childs>
+                            <field Index="43" Type="CEXOSTRING">
+                              <label Index="4">NAME</label>
+                              <value>466C6F6F642054726170</value>
+                            </field>
+                            <field Index="44" Type="RESREF">
+                              <label Index="5">RESREF</label>
+                              <value>666C6F6F6474726170</value>
+                            </field>
+                          </childs>
+                        </struct>
+                        <struct Class="listed" Index="21" StructType="0">
+                          <childs>
+                            <field Index="45" Type="CEXOSTRING">
+                              <label Index="4">NAME</label>
+                              <value>5069742054726170202D2041766572616765</value>
+                            </field>
+                            <field Index="46" Type="RESREF">
+                              <label Index="5">RESREF</label>
+                              <value>637270745F706974747261703032</value>
+                            </field>
+                          </childs>
+                        </struct>
+                        <struct Class="listed" Index="22" StructType="0">
+                          <childs>
+                            <field Index="47" Type="CEXOSTRING">
+                              <label Index="4">NAME</label>
+                              <value>57616C6C20426C6164652054726170</value>
+                            </field>
+                            <field Index="48" Type="RESREF">
+                              <label Index="5">RESREF</label>
+                              <value>77616C6C626C61646574726170</value>
+                            </field>
+                          </childs>
+                        </struct>
+                        <struct Class="listed" Index="23" StructType="0">
+                          <childs>
+                            <field Index="49" Type="CEXOSTRING">
+                              <label Index="4">NAME</label>
+                              <value>576869726C696E6720426C6164652054726170</value>
+                            </field>
+                            <field Index="50" Type="RESREF">
+                              <label Index="5">RESREF</label>
+                              <value>776869726C696E67626C616465747261</value>
+                            </field>
+                          </childs>
+                        </struct>
+                      </childs>
+                    </list>
+                  </childs>
+                </struct>
+                <struct Class="listed" Index="24" StructType="0">
+                  <childs>
+                    <field Index="51" Type="DWORD">
+                      <label Index="1">STRREF</label>
+                      <value>D0080000</value>
+                    </field>
+                    <field Index="52" Type="BYTE">
+                      <label Index="2">ID</label>
+                      <value>0D000000</value>
+                    </field>
+                    <list Index="53">
+                      <label Index="3">LIST</label>
+                      <childs>
+                        <struct Class="listed" Index="25" StructType="0">
+                          <childs>
+                            <field Index="54" Type="CEXOSTRING">
+                              <label Index="4">NAME</label>
+                              <value>5069742054726170202D205374726F6E67</value>
+                            </field>
+                            <field Index="55" Type="RESREF">
+                              <label Index="5">RESREF</label>
+                              <value>637270745F706974747261703033</value>
+                            </field>
+                          </childs>
+                        </struct>
+                      </childs>
+                    </list>
+                  </childs>
+                </struct>
+                <struct Class="listed" Index="26" StructType="0">
+                  <childs>
+                    <field Index="56" Type="DWORD">
+                      <label Index="1">STRREF</label>
+                      <value>D1080000</value>
+                    </field>
+                    <field Index="57" Type="BYTE">
+                      <label Index="2">ID</label>
+                      <value>0E000000</value>
+                    </field>
+                    <list Index="58">
+                      <label Index="3">LIST</label>
+                      <childs>
+                        <struct Class="listed" Index="27" StructType="0">
+                          <childs>
+                            <field Index="59" Type="CEXOSTRING">
+                              <label Index="4">NAME</label>
+                              <value>5069742054726170202D20446561646C79</value>
+                            </field>
+                            <field Index="60" Type="RESREF">
+                              <label Index="5">RESREF</label>
+                              <value>637270745F706974747261703034</value>
+                            </field>
+                          </childs>
+                        </struct>
+                      </childs>
+                    </list>
+                  </childs>
+                </struct>
+                <struct Class="listed" Index="28" StructType="0">
+                  <childs>
+                    <field Index="61" Type="DWORD">
+                      <label Index="1">STRREF</label>
+                      <value>BECF0000</value>
+                    </field>
+                    <field Index="62" Type="BYTE">
+                      <label Index="2">ID</label>
+                      <value>0F000000</value>
+                    </field>
+                    <list Index="63">
+                      <label Index="3">LIST</label>
+                      <childs>
+                        <struct Class="listed" Index="29" StructType="0">
+                          <childs>
+                            <field Index="64" Type="CEXOSTRING">
+                              <label Index="4">NAME</label>
+                              <value>5069742054726170202D20466174616C</value>
+                            </field>
+                            <field Index="65" Type="RESREF">
+                              <label Index="5">RESREF</label>
+                              <value>637270745F706974747261703035</value>
+                            </field>
+                          </childs>
+                        </struct>
+                      </childs>
+                    </list>
+                  </childs>
+                </struct>
+              </childs>
+            </list>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="30" StructType="0">
+          <childs>
+            <field Index="66" Type="DWORD">
+              <label Index="1">STRREF</label>
+              <value>1F1A0000</value>
+            </field>
+            <list Index="67">
+              <label Index="3">LIST</label>
+              <childs>
+                <struct Class="listed" Index="31" StructType="0">
+                  <childs>
+                    <field Index="68" Type="DWORD">
+                      <label Index="1">STRREF</label>
+                      <value>201A0000</value>
+                    </field>
+                    <field Index="69" Type="BYTE">
+                      <label Index="2">ID</label>
+                      <value>00000000</value>
+                    </field>
+                  </childs>
+                </struct>
+                <struct Class="listed" Index="32" StructType="0">
+                  <childs>
+                    <field Index="70" Type="DWORD">
+                      <label Index="1">STRREF</label>
+                      <value>211A0000</value>
+                    </field>
+                    <field Index="71" Type="BYTE">
+                      <label Index="2">ID</label>
+                      <value>01000000</value>
+                    </field>
+                  </childs>
+                </struct>
+                <struct Class="listed" Index="33" StructType="0">
+                  <childs>
+                    <field Index="72" Type="DWORD">
+                      <label Index="1">STRREF</label>
+                      <value>221A0000</value>
+                    </field>
+                    <field Index="73" Type="BYTE">
+                      <label Index="2">ID</label>
+                      <value>02000000</value>
+                    </field>
+                  </childs>
+                </struct>
+                <struct Class="listed" Index="34" StructType="0">
+                  <childs>
+                    <field Index="74" Type="DWORD">
+                      <label Index="1">STRREF</label>
+                      <value>231A0000</value>
+                    </field>
+                    <field Index="75" Type="BYTE">
+                      <label Index="2">ID</label>
+                      <value>03000000</value>
+                    </field>
+                  </childs>
+                </struct>
+                <struct Class="listed" Index="35" StructType="0">
+                  <childs>
+                    <field Index="76" Type="DWORD">
+                      <label Index="1">STRREF</label>
+                      <value>241A0000</value>
+                    </field>
+                    <field Index="77" Type="BYTE">
+                      <label Index="2">ID</label>
+                      <value>04000000</value>
+                    </field>
+                  </childs>
+                </struct>
+              </childs>
+            </list>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="36" StructType="0">
+          <childs>
+            <field Index="78" Type="DWORD">
+              <label Index="1">STRREF</label>
+              <value>3A040000</value>
+            </field>
+            <field Index="79" Type="BYTE">
+              <label Index="2">ID</label>
+              <value>05000000</value>
+            </field>
+          </childs>
+        </struct>
+      </childs>
+    </list>
+  </childs>
+</struct>

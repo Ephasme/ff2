@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<struct Class="root">
+  <childs>
+    <list Index="0">
+      <label Index="0">MAIN</label>
+      <childs>
+        <struct Class="listed" Index="1" StructType="0">
+          <childs>
+            <field Index="1" Type="DWORD">
+              <label Index="1">STRREF</label>
+              <value>261A0000</value>
+            </field>
+            <field Index="2" Type="BYTE">
+              <label Index="2">ID</label>
+              <value>06000000</value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="2" StructType="0">
+          <childs>
+            <field Index="3" Type="DWORD">
+              <label Index="1">STRREF</label>
+              <value>39F70000</value>
+            </field>
+            <field Index="4" Type="BYTE">
+              <label Index="2">ID</label>
+              <value>0D000000</value>
+            </field>
+            <list Index="5">
+              <label Index="3">LIST</label>
+              <childs>
+                <struct Class="listed" Index="3" StructType="0">
+                  <childs>
+                    <field Index="6" Type="CEXOSTRING">
+                      <label Index="4">NAME</label>
+                      <value>506974204F70656E</value>
+                    </field>
+                    <field Index="7" Type="RESREF">
+                      <label Index="5">RESREF</label>
+                      <value>637270735F7069746F70656E</value>
+                    </field>
+                  </childs>
+                </struct>
+              </childs>
+            </list>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="4" StructType="0">
+          <childs>
+            <field Index="8" Type="DWORD">
+              <label Index="1">STRREF</label>
+              <value>17F40000</value>
+            </field>
+            <field Index="9" Type="BYTE">
+              <label Index="2">ID</label>
+              <value>0C000000</value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="5" StructType="0">
+          <childs>
+            <field Index="10" Type="DWORD">
+              <label Index="1">STRREF</label>
+              <value>14F40000</value>
+            </field>
+            <field Index="11" Type="BYTE">
+              <label Index="2">ID</label>
+              <value>08000000</value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="6" StructType="0">
+          <childs>
+            <field Index="12" Type="DWORD">
+              <label Index="1">STRREF</label>
+              <value>13F40000</value>
+            </field>
+            <field Index="13" Type="BYTE">
+              <label Index="2">ID</label>
+              <value>07000000</value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="7" StructType="0">
+          <childs>
+            <field Index="14" Type="DWORD">
+              <label Index="1">STRREF</label>
+              <value>12F40000</value>
+            </field>
+            <field Index="15" Type="BYTE">
+              <label Index="2">ID</label>
+              <value>05000000</value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="8" StructType="0">
+          <childs>
+            <field Index="16" Type="DWORD">
+              <label Index="1">STRREF</label>
+              <value>1F1A0000</value>
+            </field>
+            <list Index="17">
+              <label Index="3">LIST</label>
+              <childs>
+                <struct Class="listed" Index="9" StructType="0">
+                  <childs>
+                    <field Index="18" Type="DWORD">
+                      <label Index="1">STRREF</label>
+                      <value>201A0000</value>
+                    </field>
+                    <field Index="19" Type="BYTE">
+                      <label Index="2">ID</label>
+                      <value>00000000</value>
+                    </field>
+                  </childs>
+                </struct>
+                <struct Class="listed" Index="10" StructType="0">
+                  <childs>
+                    <field Index="20" Type="DWORD">
+                      <label Index="1">STRREF</label>
+                      <value>211A0000</value>
+                    </field>
+                    <field Index="21" Type="BYTE">
+                      <label Index="2">ID</label>
+                      <value>01000000</value>
+                    </field>
+                  </childs>
+                </struct>
+                <struct Class="listed" Index="11" StructType="0">
+                  <childs>
+                    <field Index="22" Type="DWORD">
+                      <label Index="1">STRREF</label>
+                      <value>221A0000</value>
+                    </field>
+                    <field Index="23" Type="BYTE">
+                      <label Index="2">ID</label>
+                      <value>02000000</value>
+                    </field>
+                  </childs>
+                </struct>
+                <struct Class="listed" Index="12" StructType="0">
+                  <childs>
+                    <field Index="24" Type="DWORD">
+                      <label Index="1">STRREF</label>
+                      <value>231A0000</value>
+                    </field>
+                    <field Index="25" Type="BYTE">
+                      <label Index="2">ID</label>
+                      <value>03000000</value>
+                    </field>
+                  </childs>
+                </struct>
+                <struct Class="listed" Index="13" StructType="0">
+                  <childs>
+                    <field Index="26" Type="DWORD">
+                      <label Index="1">STRREF</label>
+                      <value>241A0000</value>
+                    </field>
+                    <field Index="27" Type="BYTE">
+                      <label Index="2">ID</label>
+                      <value>04000000</value>
+                    </field>
+                  </childs>
+                </struct>
+              </childs>
+            </list>
+          </childs>
+        </struct>
+      </childs>
+    </list>
+  </childs>
+</struct>

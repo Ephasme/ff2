@@ -1,0 +1,760 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<struct Class="root">
+  <childs>
+    <struct Class="normal" FieldFrameIndex="0" Index="1" StructType="100">
+      <label Index="0">AreaProperties</label>
+      <childs>
+        <field Index="1" Type="INT">
+          <label Index="1">AmbientSndDay</label>
+          <value>33000000</value>
+        </field>
+        <field Index="2" Type="INT">
+          <label Index="2">AmbientSndNight</label>
+          <value>33000000</value>
+        </field>
+        <field Index="3" Type="INT">
+          <label Index="3">AmbientSndDayVol</label>
+          <value>20000000</value>
+        </field>
+        <field Index="4" Type="INT">
+          <label Index="4">AmbientSndNitVol</label>
+          <value>20000000</value>
+        </field>
+        <field Index="5" Type="INT">
+          <label Index="5">EnvAudio</label>
+          <value>59000000</value>
+        </field>
+        <field Index="6" Type="INT">
+          <label Index="6">MusicBattle</label>
+          <value>22000000</value>
+        </field>
+        <field Index="7" Type="INT">
+          <label Index="7">MusicDay</label>
+          <value>01000000</value>
+        </field>
+        <field Index="8" Type="INT">
+          <label Index="8">MusicNight</label>
+          <value>03000000</value>
+        </field>
+        <field Index="9" Type="INT">
+          <label Index="9">MusicDelay</label>
+          <value>905F0100</value>
+        </field>
+      </childs>
+    </struct>
+    <list Index="10">
+      <label Index="10">Creature List</label>
+      <childs />
+    </list>
+    <list Index="11">
+      <label Index="11">Door List</label>
+      <childs />
+    </list>
+    <list Index="12">
+      <label Index="12">Encounter List</label>
+      <childs />
+    </list>
+    <list Index="13">
+      <label Index="13">List</label>
+      <childs />
+    </list>
+    <list Index="14">
+      <label Index="14">SoundList</label>
+      <childs />
+    </list>
+    <list Index="15">
+      <label Index="15">StoreList</label>
+      <childs />
+    </list>
+    <list Index="16">
+      <label Index="16">TriggerList</label>
+      <childs>
+        <struct Class="listed" Index="2" StructType="1">
+          <childs>
+            <field Index="17" Type="CEXOSTRING">
+              <label Index="17">Tag</label>
+              <value>54525F3031325F544F5F303130</value>
+            </field>
+            <field Index="18" Type="RESREF">
+              <label Index="18">TemplateResRef</label>
+              <value>6E65777472616E736974696F6E</value>
+            </field>
+            <field Index="19" Type="CEXOLOCSTRING">
+              <label Index="19">LocalizedName</label>
+              <value>A839000000000000</value>
+            </field>
+            <field Index="20" Type="BYTE">
+              <label Index="20">AutoRemoveKey</label>
+              <value>00000000</value>
+            </field>
+            <field Index="21" Type="DWORD">
+              <label Index="21">Faction</label>
+              <value>01000000</value>
+            </field>
+            <field Index="22" Type="BYTE">
+              <label Index="22">Cursor</label>
+              <value>01000000</value>
+            </field>
+            <field Index="23" Type="FLOAT">
+              <label Index="23">HighlightHeight</label>
+              <value>00000000</value>
+            </field>
+            <field Index="24" Type="CEXOSTRING">
+              <label Index="24">KeyName</label>
+              <value>
+              </value>
+            </field>
+            <field Index="25" Type="CEXOSTRING">
+              <label Index="25">LinkedTo</label>
+              <value>57505F3031305F46524F4D5F303132</value>
+            </field>
+            <field Index="26" Type="BYTE">
+              <label Index="26">LinkedToFlags</label>
+              <value>02000000</value>
+            </field>
+            <field Index="27" Type="WORD">
+              <label Index="27">LoadScreenID</label>
+              <value>00000000</value>
+            </field>
+            <field Index="28" Type="WORD">
+              <label Index="28">PortraitId</label>
+              <value>00000000</value>
+            </field>
+            <field Index="29" Type="INT">
+              <label Index="29">Type</label>
+              <value>01000000</value>
+            </field>
+            <field Index="30" Type="BYTE">
+              <label Index="30">TrapDetectable</label>
+              <value>01000000</value>
+            </field>
+            <field Index="31" Type="BYTE">
+              <label Index="31">TrapDetectDC</label>
+              <value>00000000</value>
+            </field>
+            <field Index="32" Type="BYTE">
+              <label Index="32">TrapDisarmable</label>
+              <value>01000000</value>
+            </field>
+            <field Index="33" Type="BYTE">
+              <label Index="33">DisarmDC</label>
+              <value>00000000</value>
+            </field>
+            <field Index="34" Type="BYTE">
+              <label Index="34">TrapFlag</label>
+              <value>00000000</value>
+            </field>
+            <field Index="35" Type="BYTE">
+              <label Index="35">TrapOneShot</label>
+              <value>01000000</value>
+            </field>
+            <field Index="36" Type="BYTE">
+              <label Index="36">TrapType</label>
+              <value>00000000</value>
+            </field>
+            <field Index="37" Type="RESREF">
+              <label Index="37">OnDisarm</label>
+              <value>
+              </value>
+            </field>
+            <field Index="38" Type="RESREF">
+              <label Index="38">OnTrapTriggered</label>
+              <value>
+              </value>
+            </field>
+            <field Index="39" Type="RESREF">
+              <label Index="39">OnClick</label>
+              <value>
+              </value>
+            </field>
+            <field Index="40" Type="RESREF">
+              <label Index="40">ScriptHeartbeat</label>
+              <value>
+              </value>
+            </field>
+            <field Index="41" Type="RESREF">
+              <label Index="41">ScriptOnEnter</label>
+              <value>
+              </value>
+            </field>
+            <field Index="42" Type="RESREF">
+              <label Index="42">ScriptOnExit</label>
+              <value>
+              </value>
+            </field>
+            <field Index="43" Type="RESREF">
+              <label Index="43">ScriptUserDefine</label>
+              <value>
+              </value>
+            </field>
+            <field Index="44" Type="FLOAT">
+              <label Index="44">XPosition</label>
+              <value>60B7663E</value>
+            </field>
+            <field Index="45" Type="FLOAT">
+              <label Index="45">YPosition</label>
+              <value>380F0942</value>
+            </field>
+            <field Index="46" Type="FLOAT">
+              <label Index="46">ZPosition</label>
+              <value>00000000</value>
+            </field>
+            <field Index="47" Type="FLOAT">
+              <label Index="47">XOrientation</label>
+              <value>00000000</value>
+            </field>
+            <field Index="48" Type="FLOAT">
+              <label Index="48">YOrientation</label>
+              <value>00000000</value>
+            </field>
+            <field Index="49" Type="FLOAT">
+              <label Index="49">ZOrientation</label>
+              <value>00000000</value>
+            </field>
+            <list Index="50">
+              <label Index="50">Geometry</label>
+              <childs>
+                <struct Class="listed" Index="3" StructType="3">
+                  <childs>
+                    <field Index="51" Type="FLOAT">
+                      <label Index="51">PointX</label>
+                      <value>00000000</value>
+                    </field>
+                    <field Index="52" Type="FLOAT">
+                      <label Index="52">PointY</label>
+                      <value>00000000</value>
+                    </field>
+                    <field Index="53" Type="FLOAT">
+                      <label Index="53">PointZ</label>
+                      <value>CDCCCC3C</value>
+                    </field>
+                  </childs>
+                </struct>
+                <struct Class="listed" Index="4" StructType="3">
+                  <childs>
+                    <field Index="54" Type="FLOAT">
+                      <label Index="51">PointX</label>
+                      <value>C057E33D</value>
+                    </field>
+                    <field Index="55" Type="FLOAT">
+                      <label Index="52">PointY</label>
+                      <value>08DF0BC1</value>
+                    </field>
+                    <field Index="56" Type="FLOAT">
+                      <label Index="53">PointZ</label>
+                      <value>CDCCCC3C</value>
+                    </field>
+                  </childs>
+                </struct>
+                <struct Class="listed" Index="5" StructType="3">
+                  <childs>
+                    <field Index="57" Type="FLOAT">
+                      <label Index="51">PointX</label>
+                      <value>5A178E3F</value>
+                    </field>
+                    <field Index="58" Type="FLOAT">
+                      <label Index="52">PointY</label>
+                      <value>1C3311C1</value>
+                    </field>
+                    <field Index="59" Type="FLOAT">
+                      <label Index="53">PointZ</label>
+                      <value>CDCCCC3C</value>
+                    </field>
+                  </childs>
+                </struct>
+                <struct Class="listed" Index="6" StructType="3">
+                  <childs>
+                    <field Index="60" Type="FLOAT">
+                      <label Index="51">PointX</label>
+                      <value>1C8EF13F</value>
+                    </field>
+                    <field Index="61" Type="FLOAT">
+                      <label Index="52">PointY</label>
+                      <value>40B4C8C0</value>
+                    </field>
+                    <field Index="62" Type="FLOAT">
+                      <label Index="53">PointZ</label>
+                      <value>8DCCCC3C</value>
+                    </field>
+                  </childs>
+                </struct>
+                <struct Class="listed" Index="7" StructType="3">
+                  <childs>
+                    <field Index="63" Type="FLOAT">
+                      <label Index="51">PointX</label>
+                      <value>108EF13E</value>
+                    </field>
+                    <field Index="64" Type="FLOAT">
+                      <label Index="52">PointY</label>
+                      <value>A02AB5C0</value>
+                    </field>
+                    <field Index="65" Type="FLOAT">
+                      <label Index="53">PointZ</label>
+                      <value>CDCCCC3C</value>
+                    </field>
+                  </childs>
+                </struct>
+                <struct Class="listed" Index="8" StructType="3">
+                  <childs>
+                    <field Index="66" Type="FLOAT">
+                      <label Index="51">PointX</label>
+                      <value>90FC063F</value>
+                    </field>
+                    <field Index="67" Type="FLOAT">
+                      <label Index="52">PointY</label>
+                      <value>68736AC0</value>
+                    </field>
+                    <field Index="68" Type="FLOAT">
+                      <label Index="53">PointZ</label>
+                      <value>8DCCCC3C</value>
+                    </field>
+                  </childs>
+                </struct>
+                <struct Class="listed" Index="9" StructType="3">
+                  <childs>
+                    <field Index="69" Type="FLOAT">
+                      <label Index="51">PointX</label>
+                      <value>FE890A40</value>
+                    </field>
+                    <field Index="70" Type="FLOAT">
+                      <label Index="52">PointY</label>
+                      <value>A0414CC0</value>
+                    </field>
+                    <field Index="71" Type="FLOAT">
+                      <label Index="53">PointZ</label>
+                      <value>CDCCCC3C</value>
+                    </field>
+                  </childs>
+                </struct>
+                <struct Class="listed" Index="10" StructType="3">
+                  <childs>
+                    <field Index="72" Type="FLOAT">
+                      <label Index="51">PointX</label>
+                      <value>4A36FC3F</value>
+                    </field>
+                    <field Index="73" Type="FLOAT">
+                      <label Index="52">PointY</label>
+                      <value>000080B6</value>
+                    </field>
+                    <field Index="74" Type="FLOAT">
+                      <label Index="53">PointZ</label>
+                      <value>8DCCCC3C</value>
+                    </field>
+                  </childs>
+                </struct>
+              </childs>
+            </list>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="11" StructType="1">
+          <childs>
+            <field Index="75" Type="CEXOSTRING">
+              <label Index="17">Tag</label>
+              <value>54525F3031325F544F5F303135</value>
+            </field>
+            <field Index="76" Type="RESREF">
+              <label Index="18">TemplateResRef</label>
+              <value>6E65777472616E736974696F6E</value>
+            </field>
+            <field Index="77" Type="CEXOLOCSTRING">
+              <label Index="19">LocalizedName</label>
+              <value>A83900000100000000000000130000004E65772041726561205472616E736974696F6E</value>
+            </field>
+            <field Index="78" Type="BYTE">
+              <label Index="20">AutoRemoveKey</label>
+              <value>00000000</value>
+            </field>
+            <field Index="79" Type="DWORD">
+              <label Index="21">Faction</label>
+              <value>01000000</value>
+            </field>
+            <field Index="80" Type="BYTE">
+              <label Index="22">Cursor</label>
+              <value>01000000</value>
+            </field>
+            <field Index="81" Type="FLOAT">
+              <label Index="23">HighlightHeight</label>
+              <value>00000000</value>
+            </field>
+            <field Index="82" Type="CEXOSTRING">
+              <label Index="24">KeyName</label>
+              <value>
+              </value>
+            </field>
+            <field Index="83" Type="CEXOSTRING">
+              <label Index="25">LinkedTo</label>
+              <value>57505F3031355F46524F4D5F303132</value>
+            </field>
+            <field Index="84" Type="BYTE">
+              <label Index="26">LinkedToFlags</label>
+              <value>02000000</value>
+            </field>
+            <field Index="85" Type="WORD">
+              <label Index="27">LoadScreenID</label>
+              <value>00000000</value>
+            </field>
+            <field Index="86" Type="WORD">
+              <label Index="28">PortraitId</label>
+              <value>00000000</value>
+            </field>
+            <field Index="87" Type="INT">
+              <label Index="29">Type</label>
+              <value>01000000</value>
+            </field>
+            <field Index="88" Type="BYTE">
+              <label Index="30">TrapDetectable</label>
+              <value>01000000</value>
+            </field>
+            <field Index="89" Type="BYTE">
+              <label Index="31">TrapDetectDC</label>
+              <value>00000000</value>
+            </field>
+            <field Index="90" Type="BYTE">
+              <label Index="32">TrapDisarmable</label>
+              <value>01000000</value>
+            </field>
+            <field Index="91" Type="BYTE">
+              <label Index="33">DisarmDC</label>
+              <value>00000000</value>
+            </field>
+            <field Index="92" Type="BYTE">
+              <label Index="34">TrapFlag</label>
+              <value>00000000</value>
+            </field>
+            <field Index="93" Type="BYTE">
+              <label Index="35">TrapOneShot</label>
+              <value>01000000</value>
+            </field>
+            <field Index="94" Type="BYTE">
+              <label Index="36">TrapType</label>
+              <value>00000000</value>
+            </field>
+            <field Index="95" Type="RESREF">
+              <label Index="37">OnDisarm</label>
+              <value>
+              </value>
+            </field>
+            <field Index="96" Type="RESREF">
+              <label Index="38">OnTrapTriggered</label>
+              <value>
+              </value>
+            </field>
+            <field Index="97" Type="RESREF">
+              <label Index="39">OnClick</label>
+              <value>
+              </value>
+            </field>
+            <field Index="98" Type="RESREF">
+              <label Index="40">ScriptHeartbeat</label>
+              <value>
+              </value>
+            </field>
+            <field Index="99" Type="RESREF">
+              <label Index="41">ScriptOnEnter</label>
+              <value>
+              </value>
+            </field>
+            <field Index="100" Type="RESREF">
+              <label Index="42">ScriptOnExit</label>
+              <value>
+              </value>
+            </field>
+            <field Index="101" Type="RESREF">
+              <label Index="43">ScriptUserDefine</label>
+              <value>
+              </value>
+            </field>
+            <field Index="102" Type="FLOAT">
+              <label Index="44">XPosition</label>
+              <value>B3BA0E42</value>
+            </field>
+            <field Index="103" Type="FLOAT">
+              <label Index="45">YPosition</label>
+              <value>A2D68A42</value>
+            </field>
+            <field Index="104" Type="FLOAT">
+              <label Index="46">ZPosition</label>
+              <value>00000000</value>
+            </field>
+            <field Index="105" Type="FLOAT">
+              <label Index="47">XOrientation</label>
+              <value>00000000</value>
+            </field>
+            <field Index="106" Type="FLOAT">
+              <label Index="48">YOrientation</label>
+              <value>00000000</value>
+            </field>
+            <field Index="107" Type="FLOAT">
+              <label Index="49">ZOrientation</label>
+              <value>00000000</value>
+            </field>
+            <list Index="108">
+              <label Index="50">Geometry</label>
+              <childs>
+                <struct Class="listed" Index="12" StructType="3">
+                  <childs>
+                    <field Index="109" Type="FLOAT">
+                      <label Index="51">PointX</label>
+                      <value>00000000</value>
+                    </field>
+                    <field Index="110" Type="FLOAT">
+                      <label Index="52">PointY</label>
+                      <value>00000000</value>
+                    </field>
+                    <field Index="111" Type="FLOAT">
+                      <label Index="53">PointZ</label>
+                      <value>CDCFB83C</value>
+                    </field>
+                  </childs>
+                </struct>
+                <struct Class="listed" Index="13" StructType="3">
+                  <childs>
+                    <field Index="112" Type="FLOAT">
+                      <label Index="51">PointX</label>
+                      <value>004FEA3E</value>
+                    </field>
+                    <field Index="113" Type="FLOAT">
+                      <label Index="52">PointY</label>
+                      <value>00A5F6BF</value>
+                    </field>
+                    <field Index="114" Type="FLOAT">
+                      <label Index="53">PointZ</label>
+                      <value>CDCFB83C</value>
+                    </field>
+                  </childs>
+                </struct>
+                <struct Class="listed" Index="14" StructType="3">
+                  <childs>
+                    <field Index="115" Type="FLOAT">
+                      <label Index="51">PointX</label>
+                      <value>90E23A40</value>
+                    </field>
+                    <field Index="116" Type="FLOAT">
+                      <label Index="52">PointY</label>
+                      <value>A0DF01C0</value>
+                    </field>
+                    <field Index="117" Type="FLOAT">
+                      <label Index="53">PointZ</label>
+                      <value>4DD0B83C</value>
+                    </field>
+                  </childs>
+                </struct>
+                <struct Class="listed" Index="15" StructType="3">
+                  <childs>
+                    <field Index="118" Type="FLOAT">
+                      <label Index="51">PointX</label>
+                      <value>80C37240</value>
+                    </field>
+                    <field Index="119" Type="FLOAT">
+                      <label Index="52">PointY</label>
+                      <value>00180ABE</value>
+                    </field>
+                    <field Index="120" Type="FLOAT">
+                      <label Index="53">PointZ</label>
+                      <value>CDCFB83C</value>
+                    </field>
+                  </childs>
+                </struct>
+                <struct Class="listed" Index="16" StructType="3">
+                  <childs>
+                    <field Index="121" Type="FLOAT">
+                      <label Index="51">PointX</label>
+                      <value>7861A840</value>
+                    </field>
+                    <field Index="122" Type="FLOAT">
+                      <label Index="52">PointY</label>
+                      <value>001E59BE</value>
+                    </field>
+                    <field Index="123" Type="FLOAT">
+                      <label Index="53">PointZ</label>
+                      <value>8DCCCC3C</value>
+                    </field>
+                  </childs>
+                </struct>
+                <struct Class="listed" Index="17" StructType="3">
+                  <childs>
+                    <field Index="124" Type="FLOAT">
+                      <label Index="51">PointX</label>
+                      <value>D8BDBA40</value>
+                    </field>
+                    <field Index="125" Type="FLOAT">
+                      <label Index="52">PointY</label>
+                      <value>602601C0</value>
+                    </field>
+                    <field Index="126" Type="FLOAT">
+                      <label Index="53">PointZ</label>
+                      <value>CDCCCC3C</value>
+                    </field>
+                  </childs>
+                </struct>
+                <struct Class="listed" Index="18" StructType="3">
+                  <childs>
+                    <field Index="127" Type="FLOAT">
+                      <label Index="51">PointX</label>
+                      <value>6802FF40</value>
+                    </field>
+                    <field Index="128" Type="FLOAT">
+                      <label Index="52">PointY</label>
+                      <value>40CB03C0</value>
+                    </field>
+                    <field Index="129" Type="FLOAT">
+                      <label Index="53">PointZ</label>
+                      <value>CDCCCC3C</value>
+                    </field>
+                  </childs>
+                </struct>
+                <struct Class="listed" Index="19" StructType="3">
+                  <childs>
+                    <field Index="130" Type="FLOAT">
+                      <label Index="51">PointX</label>
+                      <value>9CDC0641</value>
+                    </field>
+                    <field Index="131" Type="FLOAT">
+                      <label Index="52">PointY</label>
+                      <value>00DE943E</value>
+                    </field>
+                    <field Index="132" Type="FLOAT">
+                      <label Index="53">PointZ</label>
+                      <value>CDCCCC3C</value>
+                    </field>
+                  </childs>
+                </struct>
+              </childs>
+            </list>
+          </childs>
+        </struct>
+      </childs>
+    </list>
+    <list Index="133">
+      <label Index="54">WaypointList</label>
+      <childs>
+        <struct Class="listed" Index="20" StructType="5">
+          <childs>
+            <field Index="134" Type="BYTE">
+              <label Index="55">Appearance</label>
+              <value>01000000</value>
+            </field>
+            <field Index="135" Type="CEXOSTRING">
+              <label Index="25">LinkedTo</label>
+              <value>
+              </value>
+            </field>
+            <field Index="136" Type="RESREF">
+              <label Index="18">TemplateResRef</label>
+              <value>6E775F776179706F696E74303031</value>
+            </field>
+            <field Index="137" Type="CEXOSTRING">
+              <label Index="17">Tag</label>
+              <value>57505F3031325F46524F4D5F303130</value>
+            </field>
+            <field Index="138" Type="CEXOLOCSTRING">
+              <label Index="19">LocalizedName</label>
+              <value>E139000000000000</value>
+            </field>
+            <field Index="139" Type="CEXOLOCSTRING">
+              <label Index="56">Description</label>
+              <value>FFFFFFFF00000000</value>
+            </field>
+            <field Index="140" Type="BYTE">
+              <label Index="57">HasMapNote</label>
+              <value>00000000</value>
+            </field>
+            <field Index="141" Type="CEXOLOCSTRING">
+              <label Index="58">MapNote</label>
+              <value>FFFFFFFF00000000</value>
+            </field>
+            <field Index="142" Type="BYTE">
+              <label Index="59">MapNoteEnabled</label>
+              <value>01000000</value>
+            </field>
+            <field Index="143" Type="FLOAT">
+              <label Index="44">XPosition</label>
+              <value>6805AE3F</value>
+            </field>
+            <field Index="144" Type="FLOAT">
+              <label Index="45">YPosition</label>
+              <value>B6B3EE41</value>
+            </field>
+            <field Index="145" Type="FLOAT">
+              <label Index="46">ZPosition</label>
+              <value>0000A8B6</value>
+            </field>
+            <field Index="146" Type="FLOAT">
+              <label Index="47">XOrientation</label>
+              <value>0000803F</value>
+            </field>
+            <field Index="147" Type="FLOAT">
+              <label Index="48">YOrientation</label>
+              <value>2D445435</value>
+            </field>
+          </childs>
+        </struct>
+        <struct Class="listed" Index="21" StructType="5">
+          <childs>
+            <field Index="148" Type="BYTE">
+              <label Index="55">Appearance</label>
+              <value>01000000</value>
+            </field>
+            <field Index="149" Type="CEXOSTRING">
+              <label Index="25">LinkedTo</label>
+              <value>
+              </value>
+            </field>
+            <field Index="150" Type="RESREF">
+              <label Index="18">TemplateResRef</label>
+              <value>6E775F776179706F696E74303031</value>
+            </field>
+            <field Index="151" Type="CEXOSTRING">
+              <label Index="17">Tag</label>
+              <value>57505F3031325F46524F4D5F303135</value>
+            </field>
+            <field Index="152" Type="CEXOLOCSTRING">
+              <label Index="19">LocalizedName</label>
+              <value>E139000000000000</value>
+            </field>
+            <field Index="153" Type="CEXOLOCSTRING">
+              <label Index="56">Description</label>
+              <value>FFFFFFFF00000000</value>
+            </field>
+            <field Index="154" Type="BYTE">
+              <label Index="57">HasMapNote</label>
+              <value>00000000</value>
+            </field>
+            <field Index="155" Type="CEXOLOCSTRING">
+              <label Index="58">MapNote</label>
+              <value>FFFFFFFF00000000</value>
+            </field>
+            <field Index="156" Type="BYTE">
+              <label Index="59">MapNoteEnabled</label>
+              <value>01000000</value>
+            </field>
+            <field Index="157" Type="FLOAT">
+              <label Index="44">XPosition</label>
+              <value>98CB2042</value>
+            </field>
+            <field Index="158" Type="FLOAT">
+              <label Index="45">YPosition</label>
+              <value>1FFD8842</value>
+            </field>
+            <field Index="159" Type="FLOAT">
+              <label Index="46">ZPosition</label>
+              <value>0000A8B6</value>
+            </field>
+            <field Index="160" Type="FLOAT">
+              <label Index="47">XOrientation</label>
+              <value>2D44B435</value>
+            </field>
+            <field Index="161" Type="FLOAT">
+              <label Index="48">YOrientation</label>
+              <value>000080BF</value>
+            </field>
+          </childs>
+        </struct>
+      </childs>
+    </list>
+    <list Index="162">
+      <label Index="60">Placeable List</label>
+      <childs />
+    </list>
+  </childs>
+</struct>

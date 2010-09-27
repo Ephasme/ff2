@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<struct Class="root">
+  <childs>
+    <struct Class="normal" FieldFrameIndex="0" Index="1" StructType="100">
+      <label Index="0">AreaProperties</label>
+      <childs>
+        <field Index="1" Type="INT">
+          <label Index="1">AmbientSndDay</label>
+          <value>5A000000</value>
+        </field>
+        <field Index="2" Type="INT">
+          <label Index="2">AmbientSndNight</label>
+          <value>5B000000</value>
+        </field>
+        <field Index="3" Type="INT">
+          <label Index="3">AmbientSndDayVol</label>
+          <value>20000000</value>
+        </field>
+        <field Index="4" Type="INT">
+          <label Index="4">AmbientSndNitVol</label>
+          <value>20000000</value>
+        </field>
+        <field Index="5" Type="INT">
+          <label Index="5">EnvAudio</label>
+          <value>59000000</value>
+        </field>
+        <field Index="6" Type="INT">
+          <label Index="6">MusicBattle</label>
+          <value>3C000000</value>
+        </field>
+        <field Index="7" Type="INT">
+          <label Index="7">MusicDay</label>
+          <value>3B000000</value>
+        </field>
+        <field Index="8" Type="INT">
+          <label Index="8">MusicNight</label>
+          <value>3B000000</value>
+        </field>
+        <field Index="9" Type="INT">
+          <label Index="9">MusicDelay</label>
+          <value>905F0100</value>
+        </field>
+      </childs>
+    </struct>
+    <list Index="10">
+      <label Index="10">Creature List</label>
+      <childs />
+    </list>
+    <list Index="11">
+      <label Index="11">Door List</label>
+      <childs>
+        <struct Class="listed" Index="2" StructType="8">
+          <childs>
+            <field Index="12" Type="CEXOSTRING">
+              <label Index="12">Tag</label>
+              <value>4361766545786974</value>
+            </field>
+            <field Index="13" Type="CEXOLOCSTRING">
+              <label Index="13">LocName</label>
+              <value>E514000000000000</value>
+            </field>
+            <field Index="14" Type="CEXOLOCSTRING">
+              <label Index="14">Description</label>
+              <value>FFFFFFFF00000000</value>
+            </field>
+            <field Index="15" Type="RESREF">
+              <label Index="15">TemplateResRef</label>
+              <value>6E775F646F6F725F7474725F3132</value>
+            </field>
+            <field Index="16" Type="BYTE">
+              <label Index="16">AutoRemoveKey</label>
+              <value>00000000</value>
+            </field>
+            <field Index="17" Type="BYTE">
+              <label Index="17">CloseLockDC</label>
+              <value>00000000</value>
+            </field>
+            <field Index="18" Type="RESREF">
+              <label Index="18">Conversation</label>
+              <value>
+              </value>
+            </field>
+            <field Index="19" Type="BYTE">
+              <label Index="19">Interruptable</label>
+              <value>01000000</value>
+            </field>
+            <field Index="20" Type="DWORD">
+              <label Index="20">Faction</label>
+              <value>01000000</value>
+            </field>
+            <field Index="21" Type="BYTE">
+              <label Index="21">Plot</label>
+              <value>00000000</value>
+            </field>
+            <field Index="22" Type="BYTE">
+              <label Index="22">KeyRequired</label>
+              <value>00000000</value>
+            </field>
+            <field Index="23" Type="BYTE">
+              <label Index="23">Lockable</label>
+              <value>00000000</value>
+            </field>
+            <field Index="24" Type="BYTE">
+              <label Index="24">Locked</label>
+              <value>00000000</value>
+            </field>
+            <field Index="25" Type="BYTE">
+              <label Index="25">OpenLockDC</label>
+              <value>12000000</value>
+            </field>
+            <field Index="26" Type="WORD">
+              <label Index="26">PortraitId</label>
+              <value>00000000</value>
+            </field>
+            <field Index="27" Type="BYTE">
+              <label Index="27">TrapDetectable</label>
+              <value>01000000</value>
+            </field>
+            <field Index="28" Type="BYTE">
+              <label Index="28">TrapDetectDC</label>
+              <value>00000000</value>
+            </field>
+            <field Index="29" Type="BYTE">
+              <label Index="29">TrapDisarmable</label>
+              <value>01000000</value>
+            </field>
+            <field Index="30" Type="BYTE">
+              <label Index="30">DisarmDC</label>
+              <value>0F000000</value>
+            </field>
+            <field Index="31" Type="BYTE">
+              <label Index="31">TrapFlag</label>
+              <value>00000000</value>
+            </field>
+            <field Index="32" Type="BYTE">
+              <label Index="32">TrapOneShot</label>
+              <value>01000000</value>
+            </field>
+            <field Index="33" Type="BYTE">
+              <label Index="33">TrapType</label>
+              <value>00000000</value>
+            </field>
+            <field Index="34" Type="CEXOSTRING">
+              <label Index="34">KeyName</label>
+              <value>
+              </value>
+            </field>
+            <field Index="35" Type="BYTE">
+              <label Index="35">AnimationState</label>
+              <value>01000000</value>
+            </field>
+            <field Index="36" Type="DWORD">
+              <label Index="36">Appearance</label>
+              <value>5C000000</value>
+            </field>
+            <field Index="37" Type="SHORT">
+              <label Index="37">HP</label>
+              <value>50000000</value>
+            </field>
+            <field Index="38" Type="SHORT">
+              <label Index="38">CurrentHP</label>
+              <value>50000000</value>
+            </field>
+            <field Index="39" Type="BYTE">
+              <label Index="39">Hardness</label>
+              <value>05000000</value>
+            </field>
+            <field Index="40" Type="BYTE">
+              <label Index="40">Fort</label>
+              <value>10000000</value>
+            </field>
+            <field Index="41" Type="BYTE">
+              <label Index="41">Ref</label>
+              <value>00000000</value>
+            </field>
+            <field Index="42" Type="BYTE">
+              <label Index="42">Will</label>
+              <value>00000000</value>
+            </field>
+            <field Index="43" Type="RESREF">
+              <label Index="43">OnClosed</label>
+              <value>
+              </value>
+            </field>
+            <field Index="44" Type="RESREF">
+              <label Index="44">OnDamaged</label>
+              <value>
+              </value>
+            </field>
+            <field Index="45" Type="RESREF">
+              <label Index="45">OnDeath</label>
+              <value>78325F646F6F725F6465617468</value>
+            </field>
+            <field Index="46" Type="RESREF">
+              <label Index="46">OnDisarm</label>
+              <value>
+              </value>
+            </field>
+            <field Index="47" Type="RESREF">
+              <label Index="47">OnHeartbeat</label>
+              <value>
+              </value>
+            </field>
+            <field Index="48" Type="RESREF">
+              <label Index="48">OnLock</label>
+              <value>
+              </value>
+            </field>
+            <field Index="49" Type="RESREF">
+              <label Index="49">OnMeleeAttacked</label>
+              <value>
+              </value>
+            </field>
+            <field Index="50" Type="RESREF">
+              <label Index="50">OnOpen</label>
+              <value>
+              </value>
+            </field>
+            <field Index="51" Type="RESREF">
+              <label Index="51">OnSpellCastAt</label>
+              <value>
+              </value>
+            </field>
+            <field Index="52" Type="RESREF">
+              <label Index="52">OnTrapTriggered</label>
+              <value>
+              </value>
+            </field>
+            <field Index="53" Type="RESREF">
+              <label Index="53">OnUnlock</label>
+              <value>
+              </value>
+            </field>
+            <field Index="54" Type="RESREF">
+              <label Index="54">OnUserDefined</label>
+              <value>
+              </value>
+            </field>
+            <field Index="55" Type="RESREF">
+              <label Index="55">OnClick</label>
+              <value>
+              </value>
+            </field>
+            <field Index="56" Type="CEXOSTRING">
+              <label Index="56">LinkedTo</label>
+              <value>
+              </value>
+            </field>
+            <field Index="57" Type="BYTE">
+              <label Index="57">LinkedToFlags</label>
+              <value>00000000</value>
+            </field>
+            <field Index="58" Type="WORD">
+              <label Index="58">LoadScreenID</label>
+              <value>00000000</value>
+            </field>
+            <field Index="59" Type="DWORD">
+              <label Index="59">GenericType_New</label>
+              <value>00000000</value>
+            </field>
+            <field Index="60" Type="RESREF">
+              <label Index="60">OnFailToOpen</label>
+              <value>
+              </value>
+            </field>
+            <field Index="61" Type="FLOAT">
+              <label Index="61">X</label>
+              <value>3D0A5A42</value>
+            </field>
+            <field Index="62" Type="FLOAT">
+              <label Index="62">Y</label>
+              <value>7B14CA41</value>
+            </field>
+            <field Index="63" Type="FLOAT">
+              <label Index="63">Z</label>
+              <value>C3F51841</value>
+            </field>
+            <field Index="64" Type="FLOAT">
+              <label Index="64">Bearing</label>
+              <value>D80FC9BF</value>
+            </field>
+          </childs>
+        </struct>
+      </childs>
+    </list>
+    <list Index="65">
+      <label Index="65">Encounter List</label>
+      <childs />
+    </list>
+    <list Index="66">
+      <label Index="66">List</label>
+      <childs />
+    </list>
+    <list Index="67">
+      <label Index="67">SoundList</label>
+      <childs />
+    </list>
+    <list Index="68">
+      <label Index="68">StoreList</label>
+      <childs />
+    </list>
+    <list Index="69">
+      <label Index="69">TriggerList</label>
+      <childs />
+    </list>
+    <list Index="70">
+      <label Index="70">WaypointList</label>
+      <childs />
+    </list>
+    <list Index="71">
+      <label Index="71">Placeable List</label>
+      <childs />
+    </list>
+  </childs>
+</struct>

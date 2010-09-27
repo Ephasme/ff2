@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<struct Class="root">
+  <childs>
+    <list Index="0">
+      <label Index="0">Creature List</label>
+      <childs />
+    </list>
+    <list Index="1">
+      <label Index="1">Door List</label>
+      <childs />
+    </list>
+    <list Index="2">
+      <label Index="2">Encounter List</label>
+      <childs />
+    </list>
+    <list Index="3">
+      <label Index="3">List</label>
+      <childs />
+    </list>
+    <list Index="4">
+      <label Index="4">SoundList</label>
+      <childs />
+    </list>
+    <list Index="5">
+      <label Index="5">StoreList</label>
+      <childs />
+    </list>
+    <list Index="6">
+      <label Index="6">TriggerList</label>
+      <childs />
+    </list>
+    <list Index="7">
+      <label Index="7">WaypointList</label>
+      <childs />
+    </list>
+    <list Index="8">
+      <label Index="8">Placeable List</label>
+      <childs />
+    </list>
+  </childs>
+</struct>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<struct Class="root">
+  <childs>
+    <list Index="0">
+      <label Index="0">Creature List</label>
+      <childs />
+    </list>
+    <list Index="1">
+      <label Index="1">Door List</label>
+      <childs>
+        <struct Class="listed" Index="1" StructType="8">
+          <childs>
+            <field Index="2" Type="CEXOSTRING">
+              <label Index="2">Comment</label>
+              <value>466F7265737445786974</value>
+            </field>
+          </childs>
+        </struct>
+      </childs>
+    </list>
+    <list Index="3">
+      <label Index="3">Encounter List</label>
+      <childs />
+    </list>
+    <list Index="4">
+      <label Index="4">List</label>
+      <childs />
+    </list>
+    <list Index="5">
+      <label Index="5">SoundList</label>
+      <childs />
+    </list>
+    <list Index="6">
+      <label Index="6">StoreList</label>
+      <childs />
+    </list>
+    <list Index="7">
+      <label Index="7">TriggerList</label>
+      <childs />
+    </list>
+    <list Index="8">
+      <label Index="8">WaypointList</label>
+      <childs />
+    </list>
+    <list Index="9">
+      <label Index="9">Placeable List</label>
+      <childs />
+    </list>
+  </childs>
+</struct>
