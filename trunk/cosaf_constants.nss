@@ -38,3 +38,20 @@ const string COS_PC_STARTLOC            = "COS_PCStartLoc";
 /****************************** NOMS DES SCRIPTS SYSTEME A EXECUTER *******************************/
 
 const string COS_TCT_ON_CLIENT_ENTER = "tctef_clen_main";
+
+/*************************************** SQL CONFIGURATION ****************************************/
+// Tables.
+const string COS_SQLT_ACCOUNT = "`cos_account`";
+const string COS_SQLT_CHAR = "`cos_char`";
+const string COS_SQLT_CDKEY = "`cos_cdkey`";
+const string COS_SQLT_CDKEY_TO_ACCOUNT = "`cos_cdkey_to_account`";
+// Champs.
+const string COS_SQLF_ID = "`id`";
+const string COS_SQLF_ID_ACCOUNT = "`id_account`";
+const string COS_SQLF_ID_CDKEY = "`id_cdkey`";
+const string COS_SQLF_NAME = "`name`";
+const string COS_SQLF_START_LOC = "`starting_location`";
+const string COS_SQLF_LAST_CNX = "`last_connexion`";
+const string COS_SQLF_CREATION = "`creation`";
+const string COS_SQLF_BAN = "`ban`";
+const string COS_SQLF_CDKEY = "`cdkey`";
