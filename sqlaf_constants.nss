@@ -20,22 +20,3 @@ const int SQL_SUCCESS = 1;
 //const string SQL_QUOTE = "&#34";
 const string SQL_QUOTE = "'";
 
-// SQL Config.
-// Tables.
-const string SQL_T_ACCOUNTS = "`accounts`";
-const string SQL_T_CHARS = "`characters`";
-const string SQL_T_CDKEYS = "`cdkeys`";
-const string SQL_T_CDKEY_ACCOUNT_LINKS = "`cdkey_account_links`";
-
-// Champs.
-const string SQL_F_ID = "`id`";
-const string SQL_F_ID_ACCOUNT = "`id_account`";
-const string SQL_F_ID_CDKEY = "`id_cdkey`";
-
-const string SQL_F_NAME = "`name`";
-const string SQL_F_START_LOC = "`starting_location`";
-const string SQL_F_LAST_CNX = "`last_connexion`";
-const string SQL_F_CREATION = "`creation`";
-const string SQL_F_BAN = "`ban`";
-const string SQL_F_CDKEY = "`cdkey`";
-

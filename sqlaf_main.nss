@@ -34,7 +34,7 @@ object sqlGetWaypoint();
 void sqlExecDirect(string sQuery);
 
 // DEF IN "sqlaf_main"
-// Fonction qui place le curseur sur la ligne suivante (en commen ant par la première).
+// Fonction qui place le curseur sur la ligne suivante (en commençant par la première).
 //   o int - SQL_SUCCESS si le curseur à été déplacé, SQL_ERROR sinon (fin des lignes).
 int sqlFetch();
 

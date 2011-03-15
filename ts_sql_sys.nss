@@ -9,6 +9,9 @@
 /**    toutes les fonctionnalités SQL.
 /*********************************************************************/
 
+// TODO : Refaire les tests pour SQL, créer une table temporaire, exécuter des
+// manipulations dessus et la détruire.
+
 /***************************** INCLUDES ******************************/
 
             // #include "usuaf_constants"
@@ -16,12 +19,6 @@
     // #include "usuaf_locmanip"
     // #include "sqlaf_constants"
 #include "sqlaf_main"
-
-            // #include "usuaf_strtokman"
-        // #include "usuaf_locmanip"
-        // #include "sqlaf_constants"
-    // #include "sqlaf_main"
-#include "sqlaf_charmanips"
 
     // #include "usuaf_constants"
 #include "usuaf_testfuncs"
@@ -33,10 +30,11 @@ string sRand = IntToString(GetTimeMillisecond());
 
 /************************** IMPLEMENTATIONS **************************/
 
+/*
 // (Fonction privée)
 void pvCreateInsert(string sSalt) {
     sqlExecDirect(
-        "INSERT INTO "+SQL_T_ACCOUNTS+" ("+SQL_F_NAME+", "+SQL_F_CREATION+", "+SQL_F_LAST_CNX+")" +
+        "INSERT INTO "+COS_SQLT_ACCOUNT+" ("+COS_SQLF_NAME+", "+COS_SQLF_CREATION+", "+COS_SQLF_LAST_CNX+")" +
         " VALUES ('DELETE_ME_"+sSalt+"', NOW(), NOW());"
     );
 }
@@ -44,7 +42,7 @@ void pvCreateInsert(string sSalt) {
 // (Fonction privée)
 void pvDeleteInserts() {
     sqlExecDirect(
-        "DELETE FROM "+SQL_T_ACCOUNTS+" WHERE "+SQL_F_NAME+" LIKE '%DELETE_ME%';"
+        "DELETE FROM "+COS_SQLT_ACCOUNT+" WHERE "+COS_SQLF_NAME+" LIKE '%DELETE_ME%';"
     );
 }
 
@@ -78,8 +76,8 @@ void ts_sqlEAFDSingleIntOrInsert() {
     string sSalt = "sqlEAFDSingleIntOrInsert";
     pvCreateInsert(sSalt);
     int iRes = sqlEAFDSingleIntOrInsert(
-        "SELECT "+SQL_F_ID+" FROM "+SQL_T_ACCOUNTS+" WHERE "+SQL_F_NAME+" = "+sqlQuote("DELETE_ME_"+sSalt)+";",
-        "INSERT INTO "+SQL_T_ACCOUNTS+" ("+SQL_F_NAME+") VALUES ("+sqlQuote("DELETE_ME_"+sSalt)+");"
+        "SELECT "+COS_SQLF_ID+" FROM "+COS_SQLT_ACCOUNT+" WHERE "+COS_SQLF_NAME+" = "+sqlQuote("DELETE_ME_"+sSalt)+";",
+        "INSERT INTO "+COS_SQLT_ACCOUNT+" ("+COS_SQLF_NAME+") VALUES ("+sqlQuote("DELETE_ME_"+sSalt)+");"
     );
 
     addTest(
@@ -89,6 +87,7 @@ void ts_sqlEAFDSingleIntOrInsert() {
     );
     pvDeleteInserts();
 }
+*/
 
 void ts_sqlGetWaypoint() {
     // Est-ce que la fonction sqlGetWaypoint() fonctionne correctement ?
@@ -97,65 +96,22 @@ void ts_sqlGetWaypoint() {
     addTest("sqlGetWaypoint", sCase, oWP != OBJECT_INVALID);
 }
 
+/*
 void ts_sqlFetch() {
     string sSalt = IntToString(GetTimeMillisecond());
     pvCreateInsert(sSalt);
     sqlExecDirect(
-        "SELECT "+SQL_F_ID+" FROM "+SQL_T_ACCOUNTS+" WHERE "+SQL_F_NAME+" LIKE '%DELETE_ME_"+sSalt+"%'"
+        "SELECT "+COS_SQLF_ID+" FROM "+COS_SQLT_ACCOUNT+" WHERE "+COS_SQLF_NAME+" LIKE '%DELETE_ME_"+sSalt+"%'"
     );
     addTest("sqlFetch", "Récupération des résultats d'une exécution.", sqlFetch());
     pvDeleteInserts();
 }
-
-void ts_sqlGetAccountId(object oPC) {
-    int iRes = sqlGetAccountId(GetPCPlayerName(oPC));
-    addTest("sqlGetAccountId", "Récupération de l'identifiant du compte joueur.", iRes != SQL_ERROR);
-    addTestInfo("Identifiant du compte", IntToString(iRes));
-    addTestInfo("Nom du compte", GetPCPlayerName(oPC));
-}
-
-void ts_sqlGetPCId(object oPC) {
-    string sAccount = GetPCPlayerName(oPC);
-    string sName = GetName(oPC);
-    int iAccountId = sqlGetAccountId(sAccount);
-    int iPCId = sqlGetPCId(sName, iAccountId);
-    addTest("sqlGetPCId", "Récupération de l'identifiant du personnage.", iPCId != SQL_ERROR);
-    addTestInfo("Identifiant du personnage", IntToString(iPCId));
-    addTestInfo("Identifiant du compte", IntToString(iAccountId));
-    addTestInfo("Nom du personnage", sName);
-    addTestInfo("Compte du joueur", sAccount);
-}
-
-void ts_sqlGetKeyId(object oPC) {
-    string sAccount = GetPCPlayerName(oPC);
-    string sKey = GetPCPublicCDKey(oPC);
-    int iAccountId = sqlGetAccountId(sAccount);
-    int iKeyId = sqlGetKeyId(sKey, iAccountId);
-    addTest("sqlGetKeyId", "Récupération de l'identifiant de la clef CD.", iKeyId != SQL_ERROR);
-    addTestInfo("Identifiant de la clef", IntToString(iKeyId));
-    addTestInfo("Identifiant du compte", IntToString(iAccountId));
-    addTestInfo("Clef du joueur", sKey);
-    addTestInfo("Compte du joueur", sAccount);
-}
-
-void ts_sqlGetCDKeyAccountLinkId(object oPC) {
-    string sAccount = GetPCPlayerName(oPC);
-    string sKey = GetPCPublicCDKey(oPC);
-    int iAccountId = sqlGetAccountId(sAccount);
-    int iKeyId = sqlGetKeyId(sKey, iAccountId);
-    int iLinkId = sqlGetCDKeyAccountLinkId(iKeyId, iAccountId);
-    addTest("sqlGetCDKeyAccountLinkId", "Récupération d'un identifiant de couple (clef CD/Compte joueur).", iLinkId != SQL_ERROR);
-    addTestInfo("Identifiant du couple (clef CD/Compte joueur)", IntToString(iLinkId));
-    addTestInfo("Identifiant du compte", IntToString(iAccountId));
-    addTestInfo("Identifiant de la clef", IntToString(iKeyId));
-    addTestInfo("Clef du joueur", sKey);
-    addTestInfo("Compte du joueur", sAccount);
-}
-
+*/
 
 /* Private Function */
 void pv_do_OnModuleLoad_Tests() {
 
+    /*
     ts_sqlGetWaypoint();
     ts_sqlFetch();
 
@@ -163,6 +119,7 @@ void pv_do_OnModuleLoad_Tests() {
     ts_sqlEAFDSingleLocation();
 
     ts_sqlEAFDSingleIntOrInsert();
+    */
 
     printResult(TS_SQL_TITLE);
 }
@@ -171,11 +128,6 @@ void pv_do_OnModuleLoad_Tests() {
 void pv_do_OnClientEnter_Tests(object oPC, int iDepth = 0) {
     if (iDepth < TS_LOOP_MAX) {
         if (GetIsObjectValid(GetArea(oPC))) {
-
-            ts_sqlGetAccountId(oPC);
-            ts_sqlGetPCId(oPC);
-            ts_sqlGetKeyId(oPC);
-            ts_sqlGetCDKeyAccountLinkId(oPC);
 
             printResult(TS_SQL_TITLE);
 

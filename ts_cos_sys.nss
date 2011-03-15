@@ -232,13 +232,60 @@ void ts_cosIsPCIdentifiersValid_WrongAccount(object oPC) {
     cosSaveIntOnPC(oPC, COS_PC_ACCOUNT_ID, iSave);
 }
 
+void ts_cosGetAccountId(object oPC) {
+    int iRes = cosGetAccountId(GetPCPlayerName(oPC));
+    addTest("sqlGetAccountId", "Récupération de l'identifiant du compte joueur.", iRes != SQL_ERROR);
+    addTestInfo("Identifiant du compte", IntToString(iRes));
+    addTestInfo("Nom du compte", GetPCPlayerName(oPC));
+}
+
+void ts_cosGetPCId(object oPC) {
+    string sAccount = GetPCPlayerName(oPC);
+    string sName = GetName(oPC);
+    int iAccountId = cosGetAccountId(sAccount);
+    int iPCId = cosGetPCId(oPC);
+    addTest("cosGetPCId", "Récupération de l'identifiant du personnage.", iPCId != SQL_ERROR);
+    addTestInfo("Identifiant déjà stocké", IntToString(cosGetIntFromPC(oPC, COS_PC_ID)));
+    addTestInfo("Identifiant du personnage", IntToString(iPCId));
+    addTestInfo("Identifiant du compte", IntToString(iAccountId));
+    addTestInfo("Nom du personnage", sName);
+    addTestInfo("Compte du joueur", sAccount);
+}
+
+void ts_cosGetKeyId(object oPC) {
+    string sAccount = GetPCPlayerName(oPC);
+    string sKey = GetPCPublicCDKey(oPC);
+    int iAccountId = cosGetAccountId(sAccount);
+    int iKeyId = cosGetKeyId(sKey, iAccountId);
+    addTest("cosGetKeyId", "Récupération de l'identifiant de la clef CD.", iKeyId != SQL_ERROR);
+    addTestInfo("Identifiant de la clef", IntToString(iKeyId));
+    addTestInfo("Identifiant du compte", IntToString(iAccountId));
+    addTestInfo("Clef du joueur", sKey);
+    addTestInfo("Compte du joueur", sAccount);
+}
+
+void ts_cosGetCDKeyAccountLinkId(object oPC) {
+    string sAccount = GetPCPlayerName(oPC);
+    string sKey = GetPCPublicCDKey(oPC);
+    int iAccountId = cosGetAccountId(sAccount);
+    int iKeyId = cosGetKeyId(sKey, iAccountId);
+    int iLinkId = cosGetCDKeyAccountLinkId(iKeyId, iAccountId);
+    addTest("sqlGetCDKeyAccountLinkId", "Récupération d'un identifiant de couple (clef CD/Compte joueur).", iLinkId != SQL_ERROR);
+    addTestInfo("Identifiant du couple (clef CD/Compte joueur)", IntToString(iLinkId));
+    addTestInfo("Identifiant du compte", IntToString(iAccountId));
+    addTestInfo("Identifiant de la clef", IntToString(iKeyId));
+    addTestInfo("Clef du joueur", sKey);
+    addTestInfo("Compte du joueur", sAccount);
+}
+
+
 void ts_cosIsBan_PCIsBan(object oPC) {
     string sId = IntToString(cosGetIntFromPC(oPC, COS_PC_ID));
 
     // On banni temporairement le personnage.
-    int iBan = sqlEAFDSingleInt("SELECT "+SQL_F_BAN+" FROM "+SQL_T_CHARS+" WHERE "+SQL_F_ID+" = "+sId+";");
+    int iBan = sqlEAFDSingleInt("SELECT "+COS_SQLF_BAN+" FROM "+COS_SQLT_CHAR+" WHERE "+COS_SQLF_ID+" = "+sId+";");
     if (iBan == FALSE) {
-        sqlExecDirect("UPDATE "+SQL_T_CHARS+" SET "+SQL_F_BAN+" = 1 WHERE "+SQL_F_ID+" = "+sId+";");
+        sqlExecDirect("UPDATE "+COS_SQLT_CHAR+" SET "+COS_SQLF_BAN+" = 1 WHERE "+COS_SQLF_ID+" = "+sId+";");
     }
 
     int iRes = cosIsBan(oPC);
@@ -246,7 +293,7 @@ void ts_cosIsBan_PCIsBan(object oPC) {
 
     // On revient à la normale.
     if (iBan == FALSE) {
-        sqlExecDirect("UPDATE "+SQL_T_CHARS+" SET "+SQL_F_BAN+" = 0 WHERE "+SQL_F_ID+" = "+sId+";");
+        sqlExecDirect("UPDATE "+COS_SQLT_CHAR+" SET "+COS_SQLF_BAN+" = 0 WHERE "+COS_SQLF_ID+" = "+sId+";");
     }
 }
 
