@@ -10,19 +10,8 @@
 
 /******************************************** INCLUDES ********************************************/
 
-            // #include "usuaf_constants"
-        // #include "usuaf_strtokman"
-    //#include "usuaf_locmanip"
-    //#include "sqlaf_constants"
 #include "sqlaf_main"
 #include "cosaf_constants"
-
-/******************************************* CONSTANTES *******************************************/
-
-// Limite d'essai de la fonction jump to start location.
-const int JUMP_ATTEMPT_LIMIT = 10;
-// Durée entre chaque essai de jumping.
-const float JUMP_ATTEMPT_DELAY = 2.0f;
 
 /******************************************* PROTOTYPES *******************************************/
 
@@ -39,160 +28,200 @@ object cosGetPCWaypoint(object oPC);
 object cosCreatePCWaypoint(object oPC);
 
 // DEF IN "cosaf_pcmanips"
+// Fonction qui permet de sauver un couple valeur/PJ dans la base de donnée.
+//   > object oPC - Personnage concerné.
+//   > string sVarName - Nom de la variable contenant la valeur à stocker.
+//   > string sValue - Donnée à sauvegarder.
+void cosSaveLocalValue(object oPC, string sVarName, string sValue);
+
+// DEF IN "cosaf_pcmanips"
 // Fonction qui permet de sauver un entier stocké sur un PJ (à travers le Waypoint de donnée).
 //   > object oPC - Personnage concerné.
 //   > string sVarName - Nom de la variable contenant la valeur à récupérer.
+//   > int iPersistant - TRUE par défaut. La valeur est stockée en base de donnée.
 //   > int - Integer à stocker.
-void cosSaveIntOnPC(object oPC, string sVarName, int iValue);
+void cosSetLocalInt(object oPC, string sVarName, int iValue, int iPersistant = TRUE);
 
 // DEF IN "cosaf_pcmanips"
 // Fonction qui permet de récupérer un entier stocké sur un PJ (à travers le Waypoint de donnée).
 //   > object oPC - Personnage concerné.
 //   > string sVarName - Nom de la variable contenant la valeur à récupérer.
+//   > int iPersistant - TRUE par défaut. Si la recherche est infructueuse, la fonction regarde
+//                       dans la base de donnée.
 //   o int - Integer récupéré.
-int cosGetIntFromPC(object oPC, string sVarName);
-
-// DEF IN "cosaf_pcmanips"
-// Fonction qui permet de sauver une location stockée sur un PJ (à travers le Waypoint de donnée).
-//   > object oPC - Personnage concerné.
-//   > string sVarName - Nom de la variable contenant la valeur à stocker.
-//   > location - Location à sauvegarder.
-void cosSaveLocationOnPC(object oPC, string sVarName, location lLocation);
-
-// DEF IN "cosaf_pcmanips"
-// Fonction qui permet de récupérer une location stockée sur un PJ (à travers le Waypoint de donnée).
-//   > object oPC - Personnage concerné.
-//   > string sVarName - Nom de la variable contenant la valeur à récupérer.
-//   o location - Location récupère.
-location cosGetLocationFromPC(object oPC, string sVarName);
+int cosGetLocalInt(object oPC, string sVarName, int iPersistant = TRUE);
 
 // DEF IN "cosaf_pcmanips"
 // Fonction qui permet de sauver une chaîne stockée sur un PJ (à travers le Waypoint de donnée).
 //   > object oPC - Personnage concerné.
 //   > string sVarName - Nom de la variable contenant la valeur à stocker.
+//   > int iPersistant - TRUE par défaut. La valeur est stockée en base de donnée.
 //   > string - Chaîne à stocker.
-void cosSaveStringOnPC(object oPC, string sVarName, string sString);
+void cosSetLocalString(object oPC, string sVarName, string sString, int iPersistant = TRUE);
 
 // DEF IN "cosaf_pcmanips"
 // Fonction qui permet de récupérer une chaîne stockée sur un PJ (à travers le Waypoint de donnée).
 //   > object oPC - Personnage concerné.
 //   > string sVarName - Nom de la variable contenant la valeur à récupérer.
+//   > int iPersistant - TRUE par défaut. Si la recherche est infructueuse, la fonction regarde
+//                       dans la base de donnée.
 //   o string - chaîne récupère.
-string cosGetStringFromPC(object oPC, string sVarName);
+string cosGetLocalString(object oPC, string sVarName, int iPersistant = TRUE);
 
 // DEF IN "cosaf_pcmanips"
-// Fonction qui permet de sauver un objet stocké sur un PJ (à travers le Waypoint de donnée).
+// Fonction qui renvoie l'identifiant du personnage.
 //   > object oPC - Personnage concerné.
-//   > string sVarName - Nom de la variable contenant la valeur à récupérer.
-//   > object - Objet à stocker.
-void cosSaveObjectOnPC(object oPC, string sVarName, object oObject);
-
-// DEF IN "cosaf_pcmanips"
-// Fonction qui permet de récupérer un objet stocké sur un PJ (à travers le Waypoint de donnée).
-//   > object oPC - Personnage concerné.
-//   > string sVarName - Nom de la variable contenant la valeur à récupérer.
-//   o object - Objet récupéré.
-object cosGetObjectFromPC(object oPC, string sVarName);
-
-// DEF IN "cosaf_pcmanips"
-// Cette fonction récupère un identifiant de compte joueur en fonction de son nom.
-// Si le nom de compte est nouveau, elle crée une entrée dans la base de donnée.
-//   > string sAccountName - Nom du compte joueur.
-//   o int - Identifiant de ce compte.
-int cosGetAccountId(string sAccountName);
-
-// DEF IN "cosaf_pcmanips"
-// Cette fonction récupère un identifiant de personnage en fonction de son nom.
-// Si le personnage est nouveau, elle crée une entrée dans la base de donnée.
-//   > object oPC - PJ concern.
-//   o int - Identifiant de ce personnage.
+//   o int - Identifiant.
 int cosGetPCId(object oPC);
 
 // DEF IN "cosaf_pcmanips"
-// Cette fonction récupère un identifiant de clef CD en fonction de son nom.
-// Si le nom de compte est nouveau, elle crée une entr e dans la base de donnée.
-//   > string sKey - Clef CD du joueur.
-//   > int iAccountId - Identifiant du compte associ    ce personnage.
-//   o int - Identifiant de cette clef.
-int cosGetKeyId(string sKey, int iAccountId);
+// Fonction qui teste si le personnage est nouveau sur le serveur.
+//   > object oPC - Personnage concerné.
+//   o int - TRUE s'il est nouveau, FALSE sinon.
+int cosIsNewPC(object oPC);
 
 // DEF IN "cosaf_pcmanips"
-// Cette fonction crée un lien entre une clef CD et un compte joueur.
-//   > int iKeyId - Identifiant de la clef CD.
-//   > int iAccountId - Identifiant du compte associ    ce personnage.
-//   o int - Identifiant du lien clef/compte joueur.
-int cosGetCDKeyAccountLinkId(int iKeyId, int iAccountId);
+// Fonction qui crée un nouvel identifiant de personnage.
+// Si nécessaire elle crée aussi un nouvel identifiant de compte, de clef CD
+// et elle lie le compte avec la clef.
+//   > object oPC - Personnage concerné.
+void cosCreatePCId(object oPC);
 
 // DEF IN "cosaf_pcmanips"
-// Cette fonction récupère un identifiant de compte en fonction d'un
-// identifiant de personnage.
-//   > int iKeyId - Identifiant du personnage.
-//   o int - Identifiant du compte qui lui est associ .
-int cosGetAccountIdFromPCId(int iPCId);
+// Fonction qui renvoie l'identifiant du compte.
+//   > object oPC - Personnage concerné.
+//   o int - Identifiant.
+int cosGetAccountId(object oPC);
 
 // DEF IN "cosaf_pcmanips"
-// Fonction qui charge les identifiants du personnage.
-//   > object oPC - Personnage à traiter.
-void cosLoadPCIdentifiers(object oPC);
+// Fonction qui teste si le compte est nouveau sur le serveur.
+//   > object oPC - Personnage concerné.
+//   o int - TRUE s'il est nouveau, FALSE sinon.
+int cosHasNewAccount(object oPC);
 
 // DEF IN "cosaf_pcmanips"
-// Fonction qui charge la position de départ du personnage.
-//   > object oPC - Personnage à traiter.
-void cosLoadPCStartingLocation(object oPC);
+// Fonction qui crée un nouvel identifiant de compte.
+//   > object oPC - Personnage concerné.
+void cosCreateAccountId(object oPC);
 
 // DEF IN "cosaf_pcmanips"
-// Fonction qui charge les données de la base de donnée vers un Waypoint de donnée correspondant au personnage.
-//   > object oPC - Personnage dont les identifiants sont à vérifier.
-//   o int - TRUE si les identifiants sont valides, FALSE sinon.
-int cosIsPCIdentifiersValid(object oPC);
+// Fonction qui renvoie l'identifiant de la clef CD.
+//   > object oPC - Personnage concerné.
+//   o int - Identifiant.
+int cosGetPublicCDKeyId(object oPC);
 
 // DEF IN "cosaf_pcmanips"
-// Fonction qui ram ne le personnage à la dernière position connue.
-//   > object oPC - Personnage concerné que l'on veut déplacer.
-void cosJumpToPCStartingLocation(object oPC);
+// Fonction qui teste si la clef CD est nouvelle sur le serveur.
+//   > object oPC - Personnage concerné.
+//   o int - TRUE si elle est nouvelle, FALSE sinon.
+int cosHasNewPublicCDKey(object oPC);
 
 // DEF IN "cosaf_pcmanips"
-// Fonction qui d termine si la position de d part est valide ou non.
-//   > object oPC - Personnage dont on veut tester la position de d part.
-//   o int - TRUE si la position de d part est valide, FALSE sinon.
-int cosPCStartingLocationValid(object oPC);
+// Fonction qui crée un nouvel identifiant de clef CD.
+//   > object oPC - Personnage concerné.
+void cosCreatePublicCDKeyId(object oPC);
 
 // DEF IN "cosaf_pcmanips"
-// Fonction qui met   jour la date de la dernière connexion du personnage et du compte joueur.
-//   > object oPC - Personnage concerné par la mise   jour.
+// Fonction qui crée un lien entre la clef CD et le compte du personnage.
+//   > object oPC - Personnage concerné.
+//   o int - Identifiant.
+void cosLinkAccountToKey(object oPC);
+
+// DEF IN "cosaf_pcmanips"
+// Boucle qui sauvegarde la position actuelle du personnage comme sa dernière position connue toute les X secondes.
+//   > object oPC - Personnage concerné.
+void cosSavePCLocationLoop(object oPC);
+
+// DEF IN "cosaf_pcmanips"
+// Déplace le personnage jusqu'à sa dernière position connue.
+//   > object oPC - Personnage concerné.
+void cosMovePCToStartLocation(object oPC);
+
+// DEF IN "cosaf_pcmanips"
+// Met à jour la date de dernière connexion.
+//   > object oPC - Personnage concerné.
 void cosUpdateLastConnexion(object oPC);
 
-// DEF IN "cosaf_pcmanips"
-// Cette fonction d termine si le compte est bloqu .
-//   > int iAccountId - Identifiant du compte.
-//   o int - TRUE si le compte est bloqu , FALSE sinon.
-int cosIsAccountBan(int iAccountId);
-
-// DEF IN "cosaf_pcmanips"
-// Cette fonction d termine si le PC est bloqu .
-//   > int iAccountId - Identifiant du PC.
-//   o int - TRUE si le PC est bloqu , FALSE sinon.
-int cosIsPCBan(int iPCId);
-
-// DEF IN "cosaf_pcmanips"
-// Cette fonction d termine si la clef CD est bloqu e.
-//   > int iKeyId - Identifiant de la clef.
-//   o int - TRUE si la clef est bloqu e, FALSE sinon.
-int cosIsKeyBan(int iKeyId);
-
-// DEF IN "sqlaf_charmanips"
-// Renvoi de la position du PC lors de la dernière déconnexion.
-//   > object oPC - PJ concerné.
-//   o location - Point de départ.
-location cosGetPCStartingLocation(object oPC);
-
-// DEF IN "sqlaf_charmanips"
-// Détermine si la position de départ du PC est valide.
-//   > object oPC - PJ concerné.
-//   o int - TRUE si la position est valide, FALSE sinon.
-int cosPCStartingLocationValid(object oPC);
-
 /**************************************** IMPLEMENTATIONS *****************************************/
+
+int cosGetPCId(object oPC) {
+    int iId = cosGetLocalInt(oPC, COS_PC_ID, FALSE);
+    if (iId == 0) {
+        iId = sqlEAFDSingleInt("SELECT "+COS_SQLF_ID+" FROM "+COS_SQLT_CHAR+" WHERE "+COS_SQLF_NAME+" = "+sqlQuote(GetName(oPC))+";");
+        if (iId != 0) {
+            cosSetLocalInt(oPC, COS_PC_ID, iId, FALSE);
+        }
+    }
+    return iId;
+}
+
+int cosIsNewPC(object oPC) {
+    if (cosGetPCId(oPC) == 0) {
+        return TRUE;
+    }
+    return FALSE;
+}
+
+void cosCreatePCId(object oPC) {
+   if (cosHasNewAccount(oPC)) {
+       cosCreateAccountId(oPC);
+   }
+   if (cosHasNewPublicCDKey(oPC)) {
+       cosCreatePublicCDKeyId(oPC);
+   }
+   cosLinkAccountToKey(oPC);
+   sqlExecDirect("INSERT INTO "+COS_SQLT_CHAR+" ("+COS_SQLF_NAME+","+COS_SQLF_ID_ACCOUNT+","+COS_SQLF_CREATION+") VALUES ("+sqlQuote(GetName(oPC))+","+IntToString(cosGetAccountId(oPC))+", NOW());");
+}
+
+int cosGetAccountId(object oPC) {
+    int iId = cosGetLocalInt(oPC, COS_PC_ACCOUNT_ID, FALSE);
+    if (iId == 0) {
+        iId = sqlEAFDSingleInt("SELECT "+COS_SQLF_ID+" FROM "+COS_SQLT_ACCOUNT+" WHERE "+COS_SQLF_NAME+" = "+sqlQuote(GetPCPlayerName(oPC))+";");
+        if (iId != 0) {
+            cosSetLocalInt(oPC, COS_PC_ACCOUNT_ID, iId, FALSE);
+        }
+    }
+    return iId;
+}
+
+int cosHasNewAccount(object oPC) {
+     if (cosGetAccountId(oPC) == 0) {
+         return TRUE;
+     }
+     return FALSE;
+}
+
+void cosCreateAccountId(object oPC) {
+     sqlExecDirect("INSERT INTO "+COS_SQLT_ACCOUNT+" ("+COS_SQLF_NAME+","+COS_SQLF_CREATION+") VALUES ("+sqlQuote(GetPCPlayerName(oPC))+", NOW());");
+}
+
+int cosGetPublicCDKeyId(object oPC) {
+    int iKey = cosGetLocalInt(oPC, COS_PC_KEY_ID, FALSE);
+    if (iKey == 0) {
+        iKey = sqlEAFDSingleInt("SELECT "+COS_SQLF_ID+" FROM "+COS_SQLT_CDKEY+" WHERE "+COS_SQLF_VALUE+" = "+sqlQuote(GetPCPublicCDKey(oPC))+";");
+        if (iKey != 0) {
+            cosSetLocalInt(oPC, COS_PC_KEY_ID, iKey, FALSE);
+        }
+    }
+    return iKey;
+}
+
+int cosHasNewPublicCDKey(object oPC) {
+     if (sqlEAFDSingleInt("SELECT "+COS_SQLF_ID+" FROM "+COS_SQLT_CDKEY+" WHERE "+COS_SQLF_VALUE+" = "+sqlQuote(GetPCPublicCDKey(oPC))+";") == 0) {
+         return TRUE;
+     }
+     return FALSE;
+}
+
+void cosCreatePublicCDKeyId(object oPC) {
+     sqlExecDirect("INSERT INTO "+COS_SQLT_CDKEY+" ("+COS_SQLF_VALUE+","+COS_SQLF_CREATION+") VALUES ("+sqlQuote(GetPCPublicCDKey(oPC))+", NOW());");
+}
+
+void cosLinkAccountToKey(object oPC) {
+     if (!cosHasNewAccount(oPC) && !cosHasNewPublicCDKey(oPC)) {
+         sqlExecDirect("INSERT IGNORE INTO "+COS_SQLT_CDKEY_TO_ACCOUNT+" ("+COS_SQLF_ID_ACCOUNT+","+COS_SQLF_ID_CDKEY+","+COS_SQLF_CREATION+") VALUES ("+IntToString(cosGetAccountId(oPC))+","+IntToString(cosGetPublicCDKeyId(oPC))+", NOW());");
+     }
+}
 
 object cosGetPCWaypoint(object oPC) {
     object oPCWP = GetLocalObject(oPC, COS_WP_CHARDATA_VARNAME);
@@ -205,207 +234,88 @@ object cosGetPCWaypoint(object oPC) {
     return oPCWP;
 }
 
-void cosSaveIntOnPC(object oPC, string sVarName, int iValue) {
+void cosSaveLocalValue(object oPC, string sVarName, string sValue) {
+    string sSQL = "INSERT INTO "+COS_SQLT_CHAR_DATA+" ("+COS_SQLF_ID_CHAR+","+COS_SQLF_NAME+","+COS_SQLF_VALUE+","+COS_SQLF_CREATION+","+COS_SQLF_LAST_UPDATE+")"+
+                  " VALUES ("+IntToString(cosGetPCId(oPC))+","+sqlQuote(sVarName)+","+sqlQuote(sValue)+",NOW(),NOW()) "+
+                  "ON DUPLICATE KEY UPDATE"+
+                  " "+COS_SQLF_VALUE+"="+sqlQuote(sValue)+","+
+                  " "+COS_SQLF_LAST_UPDATE+"=NOW();";
+    sqlExecDirect(sSQL);
+}
+
+void cosSetLocalInt(object oPC, string sVarName, int iValue, int iPersistant = TRUE) {
     object oPCWP = cosGetPCWaypoint(oPC);
     if (GetIsObjectValid(oPCWP)) {
         SetLocalInt(oPCWP, sVarName, iValue);
+        if (iPersistant) {
+            cosSaveLocalValue(oPC, sVarName, IntToString(iValue));
+        }
     }
 }
 
-int cosGetIntFromPC(object oPC, string sVarName) {
+int cosGetLocalInt(object oPC, string sVarName, int iPersistant = TRUE) {
     int iRes;
     object oPCWP = cosGetPCWaypoint(oPC);
     if (GetIsObjectValid(oPCWP)) {
         iRes = GetLocalInt(oPCWP, sVarName);
+        if (iRes == 0 && iPersistant) {
+            iRes = sqlEAFDSingleInt("SELECT "+COS_SQLF_VALUE+" FROM "+COS_SQLT_CHAR_DATA+" WHERE "+COS_SQLF_ID_CHAR+" = "+IntToString(cosGetPCId(oPC))+" AND "+COS_SQLF_NAME+" = "+sqlQuote(sVarName)+";");
+            if (iRes != 0) {
+                cosSetLocalInt(oPC, sVarName, iRes);
+            }
+        }
     }
     return iRes;
 }
 
-void cosSaveLocationOnPC(object oPC, string sVarName, location lLocation) {
-    object oPCWP = cosGetPCWaypoint(oPC);
-    if (GetIsObjectValid(oPCWP)) {
-        SetLocalLocation(oPCWP, sVarName, lLocation);
-    }
-}
-
-location cosGetLocationFromPC(object oPC, string sVarName) {
-    location lLoc;
-    object oPCWP = cosGetPCWaypoint(oPC);
-    if (GetIsObjectValid(oPCWP)) {
-        lLoc = GetLocalLocation(oPCWP, sVarName);
-    }
-    return lLoc;
-}
-
-void cosSaveStringOnPC(object oPC, string sVarName, string sString) {
+void cosSetLocalString(object oPC, string sVarName, string sString, int iPersistant = TRUE) {
     object oPCWP = cosGetPCWaypoint(oPC);
     if (GetIsObjectValid(oPCWP)) {
         SetLocalString(oPCWP, sVarName, sString);
+        if (iPersistant) {
+            cosSaveLocalValue(oPC, sVarName, sString);
+        }
     }
 }
 
-string cosGetStringFromPC(object oPC, string sVarName) {
+string cosGetLocalString(object oPC, string sVarName, int iPersistant = TRUE) {
     string sRes;
     object oPCWP = cosGetPCWaypoint(oPC);
     if (GetIsObjectValid(oPCWP)) {
         sRes = GetLocalString(oPCWP, sVarName);
+        if (sRes == "" && iPersistant) {
+            sRes = sqlEAFDSingleString("SELECT "+COS_SQLF_VALUE+" FROM "+COS_SQLT_CHAR_DATA+" WHERE "+COS_SQLF_ID_CHAR+" = "+IntToString(cosGetPCId(oPC))+" AND "+COS_SQLF_NAME+" = "+sqlQuote(sVarName)+";");
+            if (sRes != "") {
+                cosSetLocalString(oPC, sVarName, sRes);
+            }
+        }
     }
     return sRes;
 }
 
-void cosSaveObjectOnPC(object oPC, string sVarName, object oObject) {
-    object oPCWP = cosGetPCWaypoint(oPC);
-    if (GetIsObjectValid(oPCWP)) {
-        SetLocalObject(oPCWP, sVarName, oObject);
+/* Private function */
+// Boucle de sauvegarde de la position du personnage.
+void pv_cosSaveLocLoop(object oPC) {
+    if (GetIsPC(oPC) && GetIsObjectValid(oPC)) {
+        cosSetLocalString(oPC, COS_PC_STARTLOC, usuLocationToString(GetLocation(oPC)));
+        // TODO : Ajouter un brin d'aléatoire...
+        DelayCommand(COS_SAVEPOS_DELAY, pv_cosSaveLocLoop(oPC));
     }
 }
 
-object cosGetObjectFromPC(object oPC, string sVarName) {
-    object oRes;
-    object oPCWP = cosGetPCWaypoint(oPC);
-    if (GetIsObjectValid(oPCWP)) {
-        oRes = GetLocalObject(oPCWP, sVarName);
+void cosSavePCLocationLoop(object oPC) {
+    pv_cosSaveLocLoop(oPC);
+}
+
+void cosMovePCToStartLocation(object oPC) {
+    string sLoc = cosGetLocalString(oPC, COS_PC_STARTLOC);
+    if (sLoc == "") {
+        sLoc = COS_DEFAULT_STARTLOC;
     }
-    return oRes;
+    AssignCommand(oPC, ActionJumpToLocation(usuStringToLocation(sLoc)));
 }
 
-int cosGetAccountId(string sAccountName) {
-    return sqlEAFDSingleIntOrInsert(
-        "SELECT "+COS_SQLF_ID+" FROM "+COS_SQLT_ACCOUNT+" WHERE "+COS_SQLF_NAME+" = "+sqlQuote(sAccountName)+";",
-        "INSERT INTO "+COS_SQLT_ACCOUNT+" ("+COS_SQLF_NAME+", "+COS_SQLF_CREATION+", "+COS_SQLF_LAST_CNX+") VALUES ("+sqlQuote(sAccountName)+", NOW(), NOW());"
-    );
-}
-
-int cosGetPCId(object oPC) {
-    // Si l'identifiant a déjà été stocké, on le renvoie directement.
-    int iId = cosGetIntFromPC(oPC, COS_PC_ID);
-    if (iId != 0) {
-       return iId;
-    }
-    // Sinon on va le chercher dans la BDD.       
-    string sPCName = GetName(oPC);
-    string sAccountId = IntToString(cosGetAccountId(GetPCPlayerName(oPC)));
-    return sqlEAFDSingleIntOrInsert(
-        "SELECT "+COS_SQLF_ID+" FROM "+COS_SQLT_CHAR+" WHERE "+COS_SQLF_NAME+" = "+sqlQuote(sPCName)+";",
-        "INSERT INTO "+COS_SQLT_CHAR+" ("+COS_SQLF_ID_ACCOUNT+", "+COS_SQLF_NAME+", "+COS_SQLF_CREATION+", "+COS_SQLF_LAST_CNX+") VALUES ("+sAccountId+", "+sqlQuote(sPCName)+", NOW(), NOW());"
-    );
-}
-
-int cosGetKeyId(string sKey, int iAccountId) {
-    return sqlEAFDSingleIntOrInsert(
-        "SELECT "+COS_SQLF_ID+" FROM "+COS_SQLT_CDKEY+" WHERE "+COS_SQLF_CDKEY+" = '"+sKey+"';",
-        "INSERT INTO "+COS_SQLT_CDKEY+" ("+COS_SQLF_CDKEY+") VALUES ('"+sKey+"');"
-    );
-}
-
-int cosGetCDKeyAccountLinkId(int iKeyId, int iAccountId) {
-    string sKeyId = IntToString(iKeyId);
-    string sAccountId = IntToString(iAccountId);
-    return sqlEAFDSingleIntOrInsert(
-        "SELECT "+COS_SQLF_ID+" FROM "+COS_SQLT_CDKEY_TO_ACCOUNT+" WHERE "+COS_SQLF_ID_CDKEY+" = "+sKeyId+" AND "+COS_SQLF_ID_ACCOUNT+" = "+sAccountId+";",
-        "INSERT INTO "+COS_SQLT_CDKEY_TO_ACCOUNT+" ("+COS_SQLF_ID_ACCOUNT+", "+COS_SQLF_ID_CDKEY+") VALUES ("+sAccountId+", "+sKeyId+")"
-    );
-}
-
-int cosGetAccountIdFromPCId(int iPCId) {
-    return sqlEAFDSingleInt("SELECT "+COS_SQLF_ID_ACCOUNT+" FROM "+COS_SQLT_CHAR+" WHERE "+COS_SQLF_ID+" = "+IntToString(iPCId)+";");
-}
-
-void cosLoadPCIdentifiers(object oPC) {
-    int iPCId = cosGetPCId(oPC);
-    int iAccountId = cosGetAccountId(GetPCPlayerName(oPC));
-    int iKeyId = cosGetKeyId(GetPCPublicCDKey(oPC), iAccountId);
-    int iLinkId = cosGetCDKeyAccountLinkId(iKeyId, iAccountId);
-    cosSaveIntOnPC(oPC, COS_PC_ACCOUNT_ID, iAccountId);
-    cosSaveIntOnPC(oPC, COS_PC_ID, iPCId);
-    cosSaveIntOnPC(oPC, COS_PC_KEY_ID, iKeyId);
-    cosSaveIntOnPC(oPC, COS_PC_KEY_ACCOUNT_LINK_ID, iLinkId);
-}
-
-void cosLoadPCStartingLocation(object oPC) {
-    cosSaveLocationOnPC(oPC, COS_PC_STARTLOC, cosGetPCStartingLocation(oPC));
-}
-
-int cosIsPCIdentifiersValid(object oPC) {
-    int iAccountId = cosGetIntFromPC(oPC, COS_PC_ACCOUNT_ID);
-    int iKeyId = cosGetIntFromPC(oPC, COS_PC_KEY_ID);
-    int iPCId = cosGetIntFromPC(oPC, COS_PC_ID);
-    int iKeyAccountLinkId = cosGetIntFromPC(oPC, COS_PC_KEY_ACCOUNT_LINK_ID);
-
-    if (iAccountId == SQL_ERROR || iKeyId == SQL_ERROR || iPCId == SQL_ERROR || iKeyAccountLinkId == SQL_ERROR) {
-        return FALSE;
-    }
-
-    // On vérifie que le compte du personnage est le bon.
-    if (cosGetAccountIdFromPCId(iPCId) != iAccountId) {
-        // Le personnage à été déplacé dans le servervault !
-        return FALSE;
-    }
-
-    return TRUE;
-}
-
-int cosIsBan(object oPC) {
-    // On vérifie si le compte est banni.
-    if (cosIsAccountBan(cosGetIntFromPC(oPC, COS_PC_ACCOUNT_ID)) ||
-        cosIsKeyBan(cosGetIntFromPC(oPC, COS_PC_KEY_ID)) ||
-        cosIsPCBan(cosGetIntFromPC(oPC, COS_PC_ID))) {
-        return TRUE;
-    }
-    return FALSE;
-}
-
+// TODO : Fonction à tester
 void cosUpdateLastConnexion(object oPC) {
-    sqlExecDirect("UPDATE "+COS_SQLT_CHAR+" SET "+COS_SQLF_LAST_CNX+" = NOW() WHERE "+COS_SQLF_ID+" = "+IntToString(cosGetIntFromPC(oPC, COS_PC_ID))+";");
-    sqlExecDirect("UPDATE "+COS_SQLT_ACCOUNT+" SET "+COS_SQLF_LAST_CNX+" = NOW() WHERE "+COS_SQLF_ID+" = "+IntToString(cosGetIntFromPC(oPC, COS_PC_ACCOUNT_ID))+";");
-}
-
-/* Private function pour :
-- cosJumpToPCStartingLocation */
-void pv_cosJumpPC(object oPC, location lLoc, int iAttempt = 0) {
-    // On s'arrête au nombre d'essai maximal configuré par constante.
-    if (iAttempt < JUMP_ATTEMPT_LIMIT) {
-        // On attend que le personnage soit dans une zone valide pour le téléporter.
-        if (GetArea(oPC) == OBJECT_INVALID) {
-            // On relance la commande dans deux secondes.
-            DelayCommand(JUMP_ATTEMPT_DELAY, pv_cosJumpPC(oPC, lLoc, ++iAttempt));
-        }
-        // Personnage correctement disposé pour le saut.
-        AssignCommand(oPC, JumpToLocation(lLoc));
-    }
-}
-
-void cosJumpToPCStartingLocation(object oPC) {
-    pv_cosJumpPC(oPC, cosGetLocationFromPC(oPC, COS_PC_STARTLOC));
-}
-
-/* Private function pour :
-- cosIsAccountBan
-- cosIsPCBan
-- cosIsKeyBan */
-int pv_cosIsBan(string sTable, int iId) {
-    return sqlEAFDSingleInt("SELECT "+COS_SQLF_BAN+" FROM "+sTable+" WHERE "+COS_SQLF_ID+" = "+IntToString(iId)+";");
-}
-
-int cosIsAccountBan(int iAccountId) {
-    return pv_cosIsBan(COS_SQLT_ACCOUNT, iAccountId);
-}
-
-int cosIsPCBan(int iPCId) {
-    return pv_cosIsBan(COS_SQLT_CHAR, iPCId);
-}
-
-int cosIsKeyBan(int iKeyId) {
-    return pv_cosIsBan(COS_SQLT_CDKEY, iKeyId);
-}
-
-location cosGetPCStartingLocation(object oPC) {
-    return sqlEAFDSingleLocation("SELECT "+COS_SQLF_START_LOC+" FROM "+COS_SQLT_CHAR+" WHERE "+COS_SQLF_ID+" = "+IntToString(cosGetPCId(oPC))+";");
-}
-
-int cosPCStartingLocationValid(object oPC) {
-    sqlExecDirect("SELECT "+COS_SQLF_START_LOC+" FROM "+COS_SQLT_CHAR+" WHERE "+COS_SQLF_ID+" = "+IntToString(cosGetPCId(oPC))+";");
-    sqlFetch();
-    string sRes = sqlGetData(1);
-    return (sRes != "");
+    sqlExecDirect("UPDATE "+COS_SQLT_CHAR+" SET "+COS_SQLF_LAST_CNX+"=NOW();");
 }

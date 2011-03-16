@@ -82,10 +82,10 @@ string cmdFetch(struct cmd_data_str strCmdData, string sResult) {
 }
 
 string cmdExecAndFetch(struct cmd_data_str strCmdData, object oPC) {
-    // Si la commande n'est pas vide, on l'ex cute et on remplace directement le résultat.
+    // Si la commande n'est pas vide, on l'exécute et on remplace directement le résultat.
     if (cmdIsCommandValid(strCmdData)) {
         return cmdFetch(strCmdData, cmdExecute(strCmdData.sCommand, oPC));
     }
-    // Et on renvoie le texte d'origine modifi .
+    // Et on renvoie le texte d'origine modifié.
     return CMD_EMPTY_RESULT;
 }

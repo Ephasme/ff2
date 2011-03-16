@@ -18,9 +18,9 @@
 /***************************** PROTOTYPES ****************************/
 
 // DEF IN "usuaf_movings"
-// Fonction qui ram‡ne le personnage à un endroit défini.
+// Fonction qui ramène le personnage à un endroit défini.
 //   > object oPC - PJ que l'on projette de déplacer.
-//   > location lLoc - Localisation o– le PJ doit être déplacé.
+//   > location lLoc - Localisation où le PJ doit être déplacé.
 //   > int iRun - Le personnage court si la valeur est fixée sur TRUE.
 //   > int iJump - Le déplacement est instantané si la valeur est fixée sur TRUE.
 void usuMoveToLocation(object oPC, location lLoc, int iRun = FALSE, int iJump = FALSE);

@@ -43,7 +43,8 @@ void ts_usuLocationToString_LocationValid() {
 
 void ts_usuLocationToString_LocationInvalid() {
     // Création de la location à tester.
-    location lLoc = pv_SetLocation(GetObjectByTag(""), 0.0, 0.0, 0.0, 0.0);
+    //location lLoc = pv_SetLocation(GetObjectByTag(""), 0.0, 0.0, 0.0, 0.0);
+    location lLoc = GetLocation(OBJECT_INVALID);
     string sResult = usuLocationToString(lLoc);
     addTest("usuLocationToString", "Test avec une Location invalide.", sResult == "####0.000##0.000##0.000##0.000##");
     addTestInfo("Resultat", sResult);
@@ -225,6 +226,11 @@ void ts_usuGetNextTokenPosition_TokenSize(int iSize = 5) {
     int iSecondTokPos = iFirstTokPos + GetStringLength(sOpenTok) + GetStringLength(sSecondString);
     int iRes = usuGetNextTokenPosition(sTestString, sEndingTok, sOpenTok, iFirstTokPos);
     addTest("usuGetNextTokenPosition", "Deux tokens différents de taille donnée.", iRes == iSecondTokPos);
+}
+
+// TODO : faire un test pour cette fonction...
+void ts_usuIsLocationValid() {
+    
 }
 
 /* Private Function */
