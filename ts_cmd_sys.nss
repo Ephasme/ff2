@@ -9,17 +9,7 @@
 /**   commandes.
 /**************************************************************************************************/
 
-                    // #include "usuaf_constants"
-                // #include "usuaf_strtokman"
-                // #include "cmdaf_constants"
-            // #include "cmdaf_utils"
-
-                // #include "usuaf_constants"
-            // #include "usuaf_movings"
-        // #include "cmdaf_cmmoving"
-    // #include "cmdaf_commands"
 #include "cmdaf_main"
-    // #include "usuaf_constants"
 #include "usuaf_testfuncs"
 #include "x0_i0_position"
 
@@ -214,7 +204,6 @@ void ts_cmdExecute(object oPC) {
     addTestInfo("Nom de la variable", sValueVar);
     addTestInfo("Position sauvée au préalable", LocationToString(lSaved));
     addTestInfo("Position récupérée", LocationToString(lResult));
-    SendMessageToPC(oPC, "Test 'ts_cmdExecute' effectué.");
 }
 
 void ts_cmdFetch() {

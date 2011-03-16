@@ -8,18 +8,14 @@
 /**      Script lancé à chaque fois qu'un client NWN se connecte.
 /*********************************************************************/
 
+// Supprimer doublon dans cos_char => données déjà dans cos_char_data
+// location, id, etc...
+
 /***************************** INCLUDES ******************************/
 
-    // #include "cosaf_constants"
 #include "cosaf_globalvar"
-
-                // #include "usuaf_strtokman"
-            // #include "usuaf_locmanip"
-            // #include "sqlaf_constants"
-        // #include "sqlaf_main"
-    // #include "sqlaf_charmanips"
-    // #include "cosaf_constants"
 #include "cosaf_pcmanips"
+#include "cosaf_log"
 
 /************************** IMPLEMENTATIONS **************************/
 
@@ -30,6 +26,7 @@ void main() {
     // On récupère le personnage qui vient d'arriver.
     oPC = GetEnteringObject();
 
+    // VALIDITE MODULE
     // On vérifie que le module est bien initialisé et que le personnage est valide.
     if (!(cosGetGlobalInt(COS_MOD_IS_INIT_VARNAME) &&
           GetIsObjectValid(oPC) &&
@@ -39,34 +36,30 @@ void main() {
         return;
     }
 
-    // On charge les identifiants du personnage.
-    cosLoadPCIdentifiers(oPC);
-    if (!cosIsPCIdentifiersValid(oPC)) {
-        // Identifiants invalides.
-        BootPC(oPC);
-        return;
+    // VALIDITE PERSONNAGE
+    // On vérifie que le personnage existe.
+    if (cosIsNewPC(oPC)) {
+        cosCreatePCId(oPC);
     }
-
-    // On met à jour la date de dernière connexion du personnage et du compte du joueur.
+    // On stocke la date de sa dernière connexion.
     cosUpdateLastConnexion(oPC);
+    // On log l'arrivée du personnage.
+    int iLogId = cosCreateLog(COS_LOG_PCIN);
+    cosAddLogInfo(iLogId, COS_LOG_INFO_PCID, IntToString(cosGetPCId(oPC)));
+    cosAddLogInfo(iLogId, COS_LOG_INFO_PCNAME, GetName(oPC));
+    cosAddLogInfo(iLogId, COS_LOG_INFO_PCACCOUNT, GetPCPlayerName(oPC));
+    cosAddLogInfo(iLogId, COS_LOG_INFO_PCKEY, GetPCPublicCDKey(oPC));
 
-    // On vérifie si le joueur est banni.
-    if (cosIsBan(oPC)) {
-        BootPC(oPC);
-        return;
-    }
+    // POSITIONNEMENT PERSONNAGE
+    // On déplace le personnage à la dernière position connue.
+    cosMovePCToStartLocation(oPC);
+    // On lance la boucle de sauvegarde de position.
+    cosSavePCLocationLoop(oPC);
 
-    // On exécute les scripts de systèmes éventuels.
+    // SCRIPTS SYSTEMES
     ExecuteScript(COS_TCT_ON_CLIENT_ENTER, oPC);
 
-    // On charge sa position de départ.
-    cosLoadPCStartingLocation(oPC);
-    if (cosPCStartingLocationValid(oPC)) {
-        // On y expédie le personnage.
-        DelayCommand(COS_JUMP_DELAY, cosJumpToPCStartingLocation(oPC));
-    }
-
-    // Exécution des scripts de test.
+    // SCRIPTS TESTS
     ExecuteScript("ts_cos_sys", oPC);
     ExecuteScript("ts_usu_sys", oPC);
     ExecuteScript("ts_cmd_sys", oPC);

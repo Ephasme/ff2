@@ -12,8 +12,6 @@
 
 /***************************** INCLUDES ******************************/
 
-        // #include "usuaf_constants"
-    // #include "usuaf_strtokman"
 #include "usuaf_locmanip"
 #include "sqlaf_constants"
 
@@ -48,26 +46,17 @@ string sqlGetData(int iCol);
 // Fonction qui permet d'exécuter et de récupérer directement la valeur de la requ te sous
 // la forme d'un entier unique (à utiliser pour récupérer l'Identifiant d'un personnage par exemple).
 // EAFD signifie ExecAndFetchDirect.
-//   > string sQuery - Requ te   ex cuter.
-//   o int - Entier récupéré, résultat de la requ te.
+//   > string sQuery - Requête à exécuter.
+//   o int - Entier récupéré, résultat de la requête.
 int sqlEAFDSingleInt(string sQuery);
 
 // DEF IN "sqlaf_main"
-// Fonction qui permet d'ex cuter et de récupérer directement la valeur de la requ te
-// sous la forme d'une location (  utiliser pour récupérer le point de d part d'un personnage par exemple).
+// Fonction qui permet d'exécuter et de récupérer directement la valeur de la requête sous
+// la forme d'un entier unique (à utiliser pour récupérer l'Identifiant d'un personnage par exemple).
 // EAFD signifie ExecAndFetchDirect.
-//   > string sQuery - Requ te   ex cuter.
-//   o location - Location récupère, résultat de la requ te (renvoie le point de d part du module en cas d'erreur).
-location sqlEAFDSingleLocation(string sQuery);
-
-// DEF IN "sqlaf_main"
-// Fonction qui permet de récupérer un entier ou, si c'est impossible, d'ex cuter une insertion.
-// EAFD signifie ExecAndFetchDirect.
-//   > string sSelectQuery - Requ te de s lection   ex cuter.
-//   > string sInsertQuery - Insertion dans le cas d'une s lection vide.
-//   > int iDepth - Profondeur de r cursivit  (  ne pas d finir).
-//   o int - Entier récupéré, résultat de la requ te.
-int sqlEAFDSingleIntOrInsert(string sSelectQuery, string sInsertQuery, int iDepth = 0);
+//   > string sQuery - Requête à exécuter.
+//   o string - Entier récupéré, résultat de la requête.
+string sqlEAFDSingleString(string sQuery);
 
 // DEF IN "sqlaf_main"
 // Cette fonction crée une structure sub_query.
@@ -96,7 +85,7 @@ void sqlInit() {
     int i;
     string sStringBuffer;
 
-    // R servation de 128 bits de m moire.
+    // Réservation de 128 bits de m moire.
     for (i = 0; i < 8; i++) {
         sStringBuffer += "................................................................................................................................";
     }
@@ -113,10 +102,11 @@ object sqlGetWaypoint() {
 }
 
 void sqlExecDirect(string sQuery) {
-    // Envoie la requ te au module NWNX pour l' x cuter.
+    // Envoie la requête au module NWNX pour l'exécuter.
     SetLocalString(sqlGetWaypoint(), "NWNX!ODBC!EXEC", sQuery);
 }
 
+// TODO : Placer les string NWNX!XXX dans des constantes.
 int sqlFetch()
 {
     string sRow;
@@ -190,39 +180,11 @@ int sqlEAFDSingleInt(string sQuery) {
     }
 }
 
-location sqlEAFDSingleLocation(string sQuery) {
+// TODO : Faire une fonction de test.
+string sqlEAFDSingleString(string sQuery) {
     sqlExecDirect(sQuery);
     sqlFetch();
-    string sRes = sqlGetData(1);
-    if (sRes == "") {
-        return GetStartingLocation();
-    } else {
-        return usuStringToLocation(sRes);
-    }
-}
-
-int sqlEAFDSingleIntOrInsert(string sSelectQuery, string sInsertQuery, int iDepth = 0) {
-    if (iDepth < 2) {
-        // On ex cute la requ te de Récupération de la valeur.
-        sqlExecDirect(sSelectQuery);
-
-        sqlFetch();
-
-        if (TRUE) {
-            // On extrait la valeur après avoir récupéré les données.
-            string sRes = sqlGetData(1);
-            if (sRes == "") {
-                // Aucune valeur récupère, on ex cute l'insertion et on augmente d'un la profondeur de r cursivit .
-                sqlExecDirect(sInsertQuery);
-                return sqlEAFDSingleIntOrInsert(sSelectQuery, sInsertQuery, ++iDepth);
-            } else {
-                // La valeur existe, on la renvoie.
-                return StringToInt(sRes);
-            }
-        }
-    }
-    // Impossible d'ex cuter les requêtes : base de donnée d connect e ?
-    return SQL_ERROR;
+    return sqlGetData(1);
 }
 
 struct sub_query sqlSetSubQuery(string sQuery, string sAlias) {
