@@ -8,9 +8,6 @@
 /**      Script lancé à chaque fois qu'un client NWN se connecte.
 /*********************************************************************/
 
-// Supprimer doublon dans cos_char => données déjà dans cos_char_data
-// location, id, etc...
-
 /***************************** INCLUDES ******************************/
 
 #include "cosaf_globalvar"
@@ -34,7 +31,7 @@ void main() {
           (GetPCPublicCDKey(oPC) != ""))) {
         BootPC(oPC);
         return;
-    }
+    }    
 
     // VALIDITE PERSONNAGE
     // On vérifie que le personnage existe.
@@ -44,11 +41,7 @@ void main() {
     // On stocke la date de sa dernière connexion.
     cosUpdateLastConnexion(oPC);
     // On log l'arrivée du personnage.
-    int iLogId = cosCreateLog(COS_LOG_PCIN);
-    cosAddLogInfo(iLogId, COS_LOG_INFO_PCID, IntToString(cosGetPCId(oPC)));
-    cosAddLogInfo(iLogId, COS_LOG_INFO_PCNAME, GetName(oPC));
-    cosAddLogInfo(iLogId, COS_LOG_INFO_PCACCOUNT, GetPCPlayerName(oPC));
-    cosAddLogInfo(iLogId, COS_LOG_INFO_PCKEY, GetPCPublicCDKey(oPC));
+    cosLogClientEnter(oPC);
 
     // POSITIONNEMENT PERSONNAGE
     // On déplace le personnage à la dernière position connue.
