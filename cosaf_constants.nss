@@ -8,6 +8,11 @@
 /**      Fichier contenant toutes les constantes du système central.
 /**************************************************************************************************/
 
+/****************************************** ACTIVATEURS *******************************************/
+
+// Défini si on doit logger les dialogues dans la base de donnée.
+const int COS_LOG_PLAYER_CHAT = TRUE;
+
 /******************************************* WAYPOINTS ********************************************/
 
 // Tag de l'objet contenant les variables globales du module.
@@ -43,13 +48,18 @@ const string COS_PC_STARTLOC            = "COS_PCStartLoc";
 
 const string COS_TCT_ON_CLIENT_ENTER = "tctef_clen_main";
 
-/****************************** NOMS DES SCRIPTS SYSTEME A EXECUTER *******************************/
-const string COS_LOG_PCIN = "PC_IN";
-const string COS_LOG_PCOUT = "PC_OUT";
-const string COS_LOG_INFO_PCID = "PCId";
-const string COS_LOG_INFO_PCNAME = "PCName";
-const string COS_LOG_INFO_PCACCOUNT = "PCAccount";
-const string COS_LOG_INFO_PCKEY = "PCKey";
+/************************************** CONSTANTES DES LOGS ***************************************/
+
+const string COS_LOG_CL_ENTER = "ClientEnter";
+const string COS_LOG_CL_LEAVE = "ClientLeave";
+const string COS_LOG_MOD_LOAD = "ModuleLoad";
+const string COS_LOG_CHAT = "PlayerChat";
+const string COS_LOG_COMMAND = "Command";
+
+const string COS_LOG_PC_ID = "Id";
+const string COS_LOG_PC_ACCOUNT_ID = "Account";
+const string COS_LOG_PC_KEY_ID = "Key";
+const string COS_LOG_TEXT = "Texte";
 
 /*************************************** SQL CONFIGURATION ****************************************/
 // Tables.

@@ -10,28 +10,30 @@
 
 /***************************** INCLUDES ******************************/
 
-                    // #include "usuaf_constants"
-                // #include "usuaf_strtokman"
-                // #include "cmdaf_constants"
-            // #include "cmdaf_utils"
-
-                // #include "usuaf_constants"
-            // #include "usuaf_movings"
-        // #include "cmdaf_cmmoving"
-    // #include "cmdaf_commands"
 #include "cmdaf_main"
+#include "cosaf_log"
 
 /************************** IMPLEMENTATIONS **************************/
 
 void main() {
+    // On récupère le personnage et ce qu'il dit.
     object oPC = GetPCChatSpeaker();
     string sMessage = GetPCChatMessage();
+    
+    // On log dans la BDD si nécessaire.
+    if (COS_LOG_PLAYER_CHAT) {
+        cosLogPlayerChat(oPC, sMessage);
+    }
 
+    // On crée une structure de commande avec le message du joueur.
     struct cmd_data_str strCmdData = cmdGetFirstCommand(sMessage);
 
+    // On analyse toutes les commandes du message et on les exécute.
     while (cmdIsCommandValid(strCmdData)) {
         sMessage = cmdExecAndFetch(strCmdData, oPC);
         strCmdData = cmdGetFirstCommand(sMessage);
     }
+    
+    // On envoie le reste comme dialogue normal.
     SetPCChatMessage(sMessage);
 }
