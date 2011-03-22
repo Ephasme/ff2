@@ -12,8 +12,8 @@
 
 /***************************** INCLUDES ******************************/
 
-#include "cosaf_pcmanips"
-#include "usuaf_testfuncs"
+#include "cosa_pcmanips"
+#include "usua_testfuncs"
 
 /************************** IMPLEMENTATIONS **************************/
 

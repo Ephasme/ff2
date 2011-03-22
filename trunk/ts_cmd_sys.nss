@@ -9,8 +9,8 @@
 /**   commandes.
 /**************************************************************************************************/
 
-#include "cmdaf_main"
-#include "usuaf_testfuncs"
+#include "cmda_main"
+#include "usua_testfuncs"
 #include "x0_i0_position"
 
 /**************************************** IMPLEMENTATIONS *****************************************/

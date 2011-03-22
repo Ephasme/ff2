@@ -14,8 +14,8 @@
 
 /***************************** INCLUDES ******************************/
 
-#include "sqlaf_main"
-#include "usuaf_testfuncs"
+#include "sqla_main"
+#include "usua_testfuncs"
 
 /***************************** VARIABLES *****************************/
 
