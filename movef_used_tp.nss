@@ -1,3 +1,5 @@
+// TODO : Documenter le fichier...
+
 void pv_Jump(object oPC, string sTag) {
     location lLoc = GetLocation(GetWaypointByTag(sTag));
     float fFacing = GetFacingFromLocation(lLoc);
@@ -11,8 +13,6 @@ void main()
 {
     object oPC = GetLastUsedBy();
     string sTag = GetTag(OBJECT_SELF);
-
-    SendMessageToPC(oPC, "On teleporte !!");
 
     if (sTag == "test" || sTag == "test") {
         FadeToBlack(oPC, FADE_SPEED_FAST);

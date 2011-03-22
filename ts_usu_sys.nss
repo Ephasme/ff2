@@ -228,11 +228,6 @@ void ts_usuGetNextTokenPosition_TokenSize(int iSize = 5) {
     addTest("usuGetNextTokenPosition", "Deux tokens différents de taille donnée.", iRes == iSecondTokPos);
 }
 
-// TODO : faire un test pour cette fonction...
-void ts_usuIsLocationValid() {
-    
-}
-
 /* Private Function */
 void pv_do_OnModuleLoad_Tests() {
 

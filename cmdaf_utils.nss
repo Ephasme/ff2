@@ -17,7 +17,7 @@
 /***************************** PROTOTYPES ****************************/
 
 // DEF IN "cmdaf_utils"
-// Fonction qui renvoie la premi‡re commande trouv‚e dans un chaîne.
+// Fonction qui renvoie la première commande trouvée dans un chaîne.
 //   > string sSpeech - Chaîne à scanner.
 //   o struct cmd_data_str_loc - Structure contenant le speech et la position des tokens de la commande à traîter.
 struct cmd_data_str cmdGetFirstCommand(string sSpeech, string sOriginalSpeech = "", int iRecursionDepth = 0, int iRecursionScale = 0);
@@ -64,7 +64,7 @@ void cmdSendErrorMessage(object oPC, string sErrorMessage);
 //   o int - TRUE si la commande est valide, FALSE sinon.
 int cmdIsCommandValid(struct cmd_data_str strCommandDatas);
 
-// Structure contenant les données relatives   une commande.
+// Structure contenant les données relatives à une commande.
 struct cmd_data_str {
     string sSpeech;
     string sCommand;
