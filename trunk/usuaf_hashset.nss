@@ -14,7 +14,7 @@
 
 /***************************** PROTOTYPES ****************************/
 
-/* TODO: Traduire les descriptions de prototypes. */
+// TODO: Traduire les descriptions de prototypes.
 
 // DEF IN "usuaf_hashset"
 // create a new hash on oObject with name sHashSetName.
@@ -80,7 +80,7 @@ int usuHashGetSize(string sHashSetName);
 // Return TRUE if the current key is not the last one, FALSE otherwise
 int usuHashHasNext(string sHashSetName);
 
-/* TODO: Decrire la fonction usuHashGetWaypoint. */
+// TODO: Decrire la fonction usuHashGetWaypoint.
 
 // DEF IN "usuaf_hashset"
 object usuHashGetWaypoint();

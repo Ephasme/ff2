@@ -10,19 +10,9 @@
 /**    ATTENTION : Il faut lancer le script sur le personnage entrant.
 /*********************************************************************/
 
-// TODO : Refaire les tests pour ces fonctions...
-
 /***************************** INCLUDES ******************************/
 
-                // #include "usuaf_strtokman"
-            // #include "usuaf_locmanip"
-            // #include "sqlaf_constants"
-        // #include "sqlaf_main"
-    // #include "sqlaf_charmanips"
-    // #include "cosaf_constants"
 #include "cosaf_pcmanips"
-
-    // #include "usuaf_constants"
 #include "usuaf_testfuncs"
 
 /************************** IMPLEMENTATIONS **************************/

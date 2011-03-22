@@ -14,13 +14,7 @@
 
 /***************************** INCLUDES ******************************/
 
-            // #include "usuaf_constants"
-        // #include "usuaf_strtokman"
-    // #include "usuaf_locmanip"
-    // #include "sqlaf_constants"
 #include "sqlaf_main"
-
-    // #include "usuaf_constants"
 #include "usuaf_testfuncs"
 
 /***************************** VARIABLES *****************************/
