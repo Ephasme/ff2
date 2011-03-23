@@ -31,7 +31,7 @@ void main() {
           (GetPCPublicCDKey(oPC) != ""))) {
         BootPC(oPC);
         return;
-    }    
+    }
 
     // VALIDITE PERSONNAGE
     // On vérifie que le personnage existe.

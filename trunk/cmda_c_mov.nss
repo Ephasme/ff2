@@ -1,5 +1,5 @@
 /*********************************************************************/
-/** Nom :              cmda_cmmoving
+/** Nom :              cmda_c_moving
 /** Date de création : 08/08/2010
 /** Version :          1.0.0
 /** Cr ateur :         Peluso Loup
@@ -11,12 +11,7 @@
 
 /***************************** INCLUDES ******************************/
 
-        // #include "usua_constants"
-    // #include "usua_strtokman"
-    // #include "cmda_constants"
 #include "cmda_utils"
-
-    // #include "usua_constants"
 #include "usua_movings"
 
 /***************************** PROTOTYPES ****************************/
@@ -104,7 +99,7 @@ string cmdMoveToCommand(string sCommand, object oPC) {
     int iJump = cmdIsParameterDefined(sCommand, CMD_PAR_JUMP);
 
     // On déplace le personnage jusqu'à la location sauv e.
-    usuMoveToLocation(oPC, lDest, iRun, iJump);
+    usuGoToLoc(oPC, lDest, iRun, iJump);
 
     return CMD_EMPTY_RESULT;
 }

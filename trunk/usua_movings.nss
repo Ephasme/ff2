@@ -8,8 +8,8 @@
 /**      Script regroupant les fonctions de déplacement.
 /*********************************************************************/
 
-// TODO: Rendre plus fiable le déplacement d'un point à l'autre et éviter que les personnages.
-// ne cessent de courir quand ils franchissent une transition.
+// TODO : Remplacer les valeurs arbitraires par des constantes et tester
+// les fonctions.
 
 /***************************** INCLUDES ******************************/
 
@@ -17,31 +17,45 @@
 
 /***************************** PROTOTYPES ****************************/
 
-// DEF IN "usua_movings"
-// Fonction qui ramène le personnage à un endroit défini.
-//   > object oPC - PJ que l'on projette de déplacer.
-//   > location lLoc - Localisation où le PJ doit être déplacé.
-//   > int iRun - Le personnage court si la valeur est fixée sur TRUE.
-//   > int iJump - Le déplacement est instantané si la valeur est fixée sur TRUE.
-void usuMoveToLocation(object oPC, location lLoc, int iRun = FALSE, int iJump = FALSE);
+// TODO : Décrire les fonctions.
+
+void usuJumpToLoc(object oPC, location lLoc);
+void usuJumpToObject(object oPC, object oDest);
+void usuRunToLoc(object oPC, location lLoc);
+void usuRunToObject(object oPC, object oDest);
+void usuGoToLoc(object oPC, location lLoc, int iRun = FALSE, int iJump = FALSE);
+void usuGoToObject(object oPC, object oDest, int iRun = FALSE, int iJump = FALSE);
 
 /************************** IMPLEMENTATIONS **************************/
 
-void usuMoveToLocation(object oPC, location lLoc, int iRun = FALSE, int iJump = FALSE) {
-    string sAreaName = GetName(GetAreaFromLocation(lLoc));
-    vector vVect = GetPositionFromLocation(lLoc);
-    string sPos = "("+FloatToString(vVect.x, 0, 2)+", "+
-                      FloatToString(vVect.y, 0, 2)+", "+
-                      FloatToString(vVect.z, 0, 2)+")";
-    string sMess = USU_L_AUTOMATIC_MOVEMENT_UP_TO_THE_MAP+" "+sAreaName+".\n"+USU_L_TO_THE_POSITION+" :\n"+sPos+".";
+void usuJumpToLoc(object oPC, location lLoc) {
+    usuGoToLoc(oPC, lLoc, FALSE, TRUE);
+}
+
+void usuJumpToObject(object oPC, object oDest) {
+    usuGoToObject(oPC, oDest, FALSE, TRUE);
+}
+
+void usuRunToLoc(object oPC, location lLoc) {
+    usuGoToLoc(oPC, lLoc, TRUE);
+}
+
+void usuRunToObject(object oPC, object oDest) {
+    usuGoToObject(oPC, oDest, TRUE);
+}
+
+void usuGoToLoc(object oPC, location lLoc, int iRun = FALSE, int iJump = FALSE) {
+    object oDest = CreateObject(OBJECT_TYPE_WAYPOINT, "nw_waypoint001", lLoc);
+    usuGoToObject(oPC, oDest, iRun, iJump);
+    AssignCommand(oPC, ActionDoCommand(DestroyObject(oDest, 1.0f)));
+}
+
+void usuGoToObject(object oPC, object oDest, int iRun = FALSE, int iJump = FALSE) {
+    AssignCommand(oPC, ClearAllActions());
     if (iJump) {
-        sMess += USU_L_INSTANT_MOVING+".";
-        AssignCommand(oPC, ActionJumpToLocation(lLoc));
+        AssignCommand(oPC, JumpToObject(oDest));
     } else {
-        // TODO: Fonction à terminer.
-        // On crée une variable locale qui permet de déterminer si le personnage à atteint sa destination.
-        AssignCommand(oPC, ActionMoveToLocation(lLoc, iRun));
+        AssignCommand(oPC, ActionMoveToObject(oDest, iRun, 1.0f));
     }
-    SendMessageToPC(oPC, sMess);
 }
 

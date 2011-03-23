@@ -8,42 +8,38 @@
 /**      Script principal d'ex cution des commandes.
 /*********************************************************************/
 
-                // #include "usua_constants"
-            // #include "usua_strtokman"
-            // #include "cmda_constants"
-        // #include "cmda_utils"
+/*DEBUG*/ #include "dbga_main"
 
-            // #include "usua_constants"
-        // #include "usua_movings"
-    // #include "cmda_cmmoving"
-#include "cmda_commands"
+#include "cmda_c_mov" // Système MOV
+#include "cmda_c_afk" // Système AFK
 
 /***************************** PROTOTYPES ****************************/
 
 // DEF IN "cmda_main"
-// Fonction qui ex cute une commande et renvoie le résultat sous forme de chaîne.
-//   > string sCommand - Commande à tra ter.
-//   > object oPC - Personnage qui a lanc  la requ te.
+// Fonction qui exécute une commande et renvoie le résultat sous forme de chaîne.
+//   > string sCommand - Commande à traîter.
+//   > object oPC - Personnage qui a lancé la requête.
 //   o string - résultat de la commande (renvoie une chaîne vide si aucun résultat n'est trouvé).
 string cmdExecute(string sCommand, object oPC);
 
 // DEF IN "cmda_main"
 // Renvoie un speech int grant le résultat d'une commande.
 //   > struct cmd_data_str strCmdData - Structure de la commande.
-//   > string sResult - résultat   int grer.
+//   > string sResult - résultat à intégrer.
 //   o string - résultat de la commande (renvoie une chaîne vide si aucun résultat n'est trouvé).
 string cmdFetch(struct cmd_data_str strCmdData, string sResult);
 
 // DEF IN "cmda_main"
-// Fonction qui ex cute une commande et la remplace par son résultat dans le speech d'origine.
+// Fonction qui exécute une commande et la remplace par son résultat dans le speech d'origine.
 //   > struct cmd_data_str strCmdData - Structure de la commande.
-//   > object oPC - Personnage qui a lanc  la requ te.
+//   > object oPC - Personnage qui a lancé la requête.
 //   o string - résultat de la commande (renvoie une chaîne vide si aucun résultat n'est trouvé).
 string cmdExecAndFetch(struct cmd_data_str strCmdData, object oPC);
 
 /************************** IMPLEMENTATIONS **************************/
 
 string cmdExecute(string sCommand, object oPC) {
+/*DEBUG*/ dbgChangeSource("cmdExecute");
     string sCommandName;
 
     // On teste si le système est actif.
@@ -54,14 +50,16 @@ string cmdExecute(string sCommand, object oPC) {
     sCommandName = cmdGetCommandName(sCommand);
 
     // Et on cherche la fonction correspondante.
+    // ==== Système MOV ====
     if (sCommandName == CMD_C_SAVE_LOC) {
-
         return cmdSaveLocCommand(sCommand, oPC);
-
     } else if (sCommandName == CMD_C_MOVE_TO) {
-
         return cmdMoveToCommand(sCommand, oPC);
-
+    }
+    // ==== Système AFK ====
+    else if (sCommandName == CMD_C_TOGGLE_AFK) {
+/*DEBUG*/ dbgWrite("CMD_C_TOGGLE_AFK command detected.");
+        return cmdToggleAFKState(sCommand, oPC);
     }
 
     // Enfin, on renvoie un résultat vide si aucune fonction n'a été trouvé pour la commande.

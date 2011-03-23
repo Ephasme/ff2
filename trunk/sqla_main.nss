@@ -12,7 +12,7 @@
 
 /***************************** INCLUDES ******************************/
 
-#include "usua_locmanip"
+#include "usua_locmanips"
 #include "sqla_constants"
 
 /***************************** PROTOTYPES ****************************/
