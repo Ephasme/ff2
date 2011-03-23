@@ -19,7 +19,7 @@
 
         // #include "usua_constants"
     // #include "usua_strtokman"
-#include "usua_locmanip"
+#include "usua_locmanips"
 
 /************************** IMPLEMENTATIONS **************************/
 

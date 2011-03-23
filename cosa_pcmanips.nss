@@ -11,6 +11,7 @@
 /******************************************** INCLUDES ********************************************/
 
 #include "sqla_main"
+#include "usua_locmanips"
 #include "cosa_constants"
 
 /******************************************* PROTOTYPES *******************************************/
@@ -67,6 +68,12 @@ void cosSetLocalString(object oPC, string sVarName, string sString, int iPersist
 //                       dans la base de donnée.
 //   o string - chaîne récupère.
 string cosGetLocalString(object oPC, string sVarName, int iPersistant = TRUE);
+
+// TODO : à documenter.
+void cosSetLocalLocation(object oPC, string sVarName, location lLoc, int iPersistant = TRUE);
+
+// TODO : à documenter.
+location cosGetLocalLocation(object oPC, string sVarName, int iPersistant = TRUE);
 
 // DEF IN "cosa_pcmanips"
 // Fonction qui renvoie l'identifiant du personnage.
@@ -292,6 +299,17 @@ string cosGetLocalString(object oPC, string sVarName, int iPersistant = TRUE) {
     }
     return sRes;
 }
+
+void cosSetLocalLocation(object oPC, string sVarName, location lLoc, int iPersistant = TRUE) {
+    cosSetLocalString(oPC, sVarName, usuLocationToString(lLoc), iPersistant);
+}
+
+location cosGetLocalLocation(object oPC, string sVarName, int iPersistant = TRUE) {
+    return usuStringToLocation(cosGetLocalString(oPC, sVarName, iPersistant));
+}
+
+// TODO : Changer la boucle de sauvegarde de position par une boucle générale
+// dans laquelle faire des choses plus larges comme vérifier l'état d'AFK.
 
 /* Private function */
 // Boucle de sauvegarde de la position du personnage.

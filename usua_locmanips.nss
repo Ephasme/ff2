@@ -1,5 +1,5 @@
 /*********************************************************************/
-/** Nom :              usua_locmanip
+/** Nom :              usua_locmanips
 /** Date de création : 15/08/2010
 /** Version :          1.0.0
 /** Créateur :         Peluso Loup
@@ -14,7 +14,7 @@
 
 /***************************** PROTOTYPES ****************************/
 
-// TODO:Faire les prototypes
+// TODO : Faire les prototypes
 string usuLocationToString(location lLocation);
 location usuStringToLocation(string sLocation);
 
