@@ -69,10 +69,10 @@ void cosSetLocalString(object oPC, string sVarName, string sString, int iPersist
 //   o string - chaîne récupère.
 string cosGetLocalString(object oPC, string sVarName, int iPersistant = TRUE);
 
-// TODO : à documenter.
+// TODO (Anael) : à documenter comme ci-dessus.
 void cosSetLocalLocation(object oPC, string sVarName, location lLoc, int iPersistant = TRUE);
 
-// TODO : à documenter.
+// TODO (Anael) : à documenter comme ci-dessus.
 location cosGetLocalLocation(object oPC, string sVarName, int iPersistant = TRUE);
 
 // DEF IN "cosa_pcmanips"
@@ -316,7 +316,7 @@ location cosGetLocalLocation(object oPC, string sVarName, int iPersistant = TRUE
 void pv_cosSaveLocLoop(object oPC) {
     if (GetIsPC(oPC) && GetIsObjectValid(oPC)) {
         cosSetLocalString(oPC, COS_PC_STARTLOC, usuLocationToString(GetLocation(oPC)));
-        // TODO : Ajouter un brin d'aléatoire...
+        // TODO (Anael) : Ajouter un brin d'aléatoire...
         DelayCommand(COS_SAVEPOS_DELAY, pv_cosSaveLocLoop(oPC));
     }
 }

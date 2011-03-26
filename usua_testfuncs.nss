@@ -12,7 +12,7 @@
 
 /***************************** PROTOTYPES ****************************/
 
-// TODO: Décrire les fonctions.
+// TODO (Anael) : Documenter les fonctions.
 
 void addTestInfos(string sString);
 void addTest(string sFunction, string sCase, int iTest);

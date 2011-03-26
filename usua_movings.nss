@@ -8,8 +8,7 @@
 /**      Script regroupant les fonctions de déplacement.
 /*********************************************************************/
 
-// TODO : Remplacer les valeurs arbitraires par des constantes et tester
-// les fonctions.
+// TODO : Tester les fonctions.
 
 /***************************** INCLUDES ******************************/
 
@@ -17,7 +16,7 @@
 
 /***************************** PROTOTYPES ****************************/
 
-// TODO : Décrire les fonctions.
+// TODO (Anael) : Documenter les fonctions.
 
 void usuJumpToLoc(object oPC, location lLoc);
 void usuJumpToObject(object oPC, object oDest);
@@ -44,6 +43,9 @@ void usuRunToObject(object oPC, object oDest) {
     usuGoToObject(oPC, oDest, TRUE);
 }
 
+// TODO (Anael) : Remplacer les valeurs littérales par des constantes
+// stockées dans le fichier usua_constants.nss en sachant que les constantes
+// devront commencer par le préfixe USU_ pour se différencier des autres.
 void usuGoToLoc(object oPC, location lLoc, int iRun = FALSE, int iJump = FALSE) {
     object oDest = CreateObject(OBJECT_TYPE_WAYPOINT, "nw_waypoint001", lLoc);
     usuGoToObject(oPC, oDest, iRun, iJump);
