@@ -15,7 +15,7 @@
 #include "usua_testfuncs"
 
     // #include "usua_constants"
-#include "usua_movings"
+#include "usua_moving"
 
         // #include "usua_constants"
     // #include "usua_strtokman"

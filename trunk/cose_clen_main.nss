@@ -50,7 +50,6 @@ void main() {
     cosSavePCLocationLoop(oPC);
 
     // SCRIPTS SYSTEMES
-    ExecuteScript(COS_TCT_ON_CLIENT_ENTER, oPC);
 
     // SCRIPTS TESTS
     ExecuteScript("ts_cos_sys", oPC);

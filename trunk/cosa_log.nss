@@ -13,7 +13,7 @@
 
 #include "sqla_main"
 #include "cosa_pcmanips"
-#include "NW_I0_GENERIC"
+#include "nw_i0_generic"
 
 /******************************************* PROTOTYPES *******************************************/
 
@@ -32,25 +32,12 @@ int cosCreateLog(string sName);
 //   > string sValue - Valeur de l'information à rajouter.
 void cosAddLogInfo(int iLogId, string sName, string sValue);
 
-// TODO : Documenter cette fonction.
+// TODO (Anael) : Documenter ces fonctions.
 void cosLogClientEnter(object oPC);
-
-// TODO : Documenter cette fonction.
 void cosLogClientLeave(object oPC);
-
-// TODO : Documenter cette fonction.
 void cosLogModuleLoad();
-
-// TODO : Documenter cette fonction.
 void cosLogPlayerChat(object oPC, string sMessage);
-
-// TODO : Documenter cette fonction.
 void cosLogPlayerChat(object oPC, string sMessage);
-
-// TODO : Documenter cette fonction.
-void cosLogCommand(object oPC, string sCommand);
-
-// TODO : Documenter cette fonction.
 void cosLogTransition(object oPC, string sOriginTag, string sDestTag);
 
 /**************************************** IMPLEMENTATIONS *****************************************/
@@ -100,10 +87,6 @@ void pv_cosLogSpeech(object oSpeaker, string sTypeEvent, string sText) {
 
 void cosLogPlayerChat(object oPC, string sMessage) {
     pv_cosLogSpeech(oPC, COS_LOG_CHAT, sMessage);
-}
-
-void cosLogCommand(object oPC, string sCommand) {
-    pv_cosLogSpeech(oPC, COS_LOG_COMMAND, sCommand);
 }
 
 void cosLogTransition(object oPC, string sOriginTag, string sDestTag) {

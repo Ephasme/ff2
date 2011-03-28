@@ -47,8 +47,7 @@ const string COS_GV_ON_ENTER = "COS_GV_OnEnter";
 
 /****************************** NOMS DES SCRIPTS SYSTEME A EXECUTER *******************************/
 
-const string COS_TCT_ON_CLIENT_ENTER = "tcte_clen_main";
-const string COS_AFK_ON_ENTER_AREA = "afke_entr_area";
+const string COS_AFK_ON_ENTER_AREA = "afke_entr_area"; /* AFK */ 
 
 /************************************** CONSTANTES DES LOGS ***************************************/
 
@@ -56,8 +55,8 @@ const string COS_LOG_CL_ENTER = "ClientEnter";
 const string COS_LOG_CL_LEAVE = "ClientLeave";
 const string COS_LOG_MOD_LOAD = "ModuleLoad";
 const string COS_LOG_CHAT = "PlayerChat";
-const string COS_LOG_COMMAND = "Command";
 const string COS_LOG_TRANSITION = "Transition";
+const string COS_LOG_ATH_FLUSH = "ATH_Flush"; /* ATH */ 
 
 const string COS_LOG_PC_ORIGIN = "PCOrig";
 const string COS_LOG_PC_DESTINATION = "PCDest";

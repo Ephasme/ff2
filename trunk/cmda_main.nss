@@ -8,10 +8,9 @@
 /**      Script principal d'ex cution des commandes.
 /*********************************************************************/
 
-/*DEBUG*/ #include "dbga_main"
-
-#include "cmda_c_mov" // Système MOV
 #include "cmda_c_afk" // Système AFK
+#include "cmda_c_mov" // Système MOV
+#include "cmda_c_ath" // Système ATH
 
 /***************************** PROTOTYPES ****************************/
 
@@ -39,7 +38,6 @@ string cmdExecAndFetch(struct cmd_data_str strCmdData, object oPC);
 /************************** IMPLEMENTATIONS **************************/
 
 string cmdExecute(string sCommand, object oPC) {
-/*DEBUG*/ dbgChangeSource("cmdExecute");
     string sCommandName;
 
     // On teste si le système est actif.
@@ -50,16 +48,17 @@ string cmdExecute(string sCommand, object oPC) {
     sCommandName = cmdGetCommandName(sCommand);
 
     // Et on cherche la fonction correspondante.
-    // ==== Système MOV ====
-    if (sCommandName == CMD_C_SAVE_LOC) {
-        return cmdSaveLocCommand(sCommand, oPC);
-    } else if (sCommandName == CMD_C_MOVE_TO) {
-        return cmdMoveToCommand(sCommand, oPC);
-    }
     // ==== Système AFK ====
-    else if (sCommandName == CMD_C_TOGGLE_AFK) {
-/*DEBUG*/ dbgWrite("CMD_C_TOGGLE_AFK command detected.");
-        return cmdToggleAFKState(sCommand, oPC);
+    if (sCommandName == CMD_C_TOGGLE_AFK) {
+        return cmd_afkToggleAFKState(sCommand, oPC);
+    // ==== Système MOV ====
+    } else if (sCommandName == CMD_C_MOVE_TO) {
+        return cmd_movMoveToCommand(sCommandName, oPC);
+    } else if (sCommandName == CMD_C_SAVE_LOC) {
+        return cmd_movSaveLocCommand(sCommandName, oPC);
+    // ==== Système ATH ====
+    } else if (sCommandName == CMD_C_FLUSH_AUTH) {
+        return cmd_athFlushAuth(sCommandName, oPC);
     }
 
     // Enfin, on renvoie un résultat vide si aucune fonction n'a été trouvé pour la commande.
