@@ -69,10 +69,20 @@ void cosSetLocalString(object oPC, string sVarName, string sString, int iPersist
 //   o string - chaîne récupère.
 string cosGetLocalString(object oPC, string sVarName, int iPersistant = TRUE);
 
-// TODO (Anael) : à documenter comme ci-dessus.
+// DEF IN "cosa_pcmanips"
+// Fonction qui permet de sauver une localisation stockée sur un PJ (à travers un Waypoint de donnée).
+//   > object oPC - Personnage concerné.
+//   > string sVarName - Nom de la variable contenant la valeur à récupérer.
+//   > location lLoc - Valeur de la localisation à stocker.
+//   > int iPersistant - TRUE par défaut. La valeur est stockée en base de donnée.
 void cosSetLocalLocation(object oPC, string sVarName, location lLoc, int iPersistant = TRUE);
 
-// TODO (Anael) : à documenter comme ci-dessus.
+// DEF IN "cosa_pcmanips"
+// Fonction qui permet de récupérer une localisation stockée sur un PJ (à travers le Waypoint de donnée).
+//   > object oPC - Personnage concerné.
+//   > string sVarName - Nom de la variable contenant la valeur à récupérer.
+//   > int iPersistant - TRUE par défaut. Si la recherche est infructueuse, la fonction regarde
+//                       dans la base de donnée.
 location cosGetLocalLocation(object oPC, string sVarName, int iPersistant = TRUE);
 
 // DEF IN "cosa_pcmanips"
