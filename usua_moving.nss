@@ -78,8 +78,8 @@ void usuGoToLoc(object oPC, location lLoc, int iRun = FALSE, int iJump = FALSE) 
     object oDest = CreateObject(OBJECT_TYPE_WAYPOINT, USU_WP_CIBLE, lLoc);
 
     usuGoToObject(oPC, oDest, iRun, iJump);
-    // TODO (Anael) : stocker le 1.0f dans une constante USU_TIME_BEFORE_DESTROY_WP
-    AssignCommand(oPC, ActionDoCommand(DestroyObject(oDest, 1.0f)));
+    
+    AssignCommand(oPC, ActionDoCommand(DestroyObject(oDest, USU_TIME_BEFORE_DESTROY_WP)));
 }
 
 void usuGoToObject(object oPC, object oDest, int iRun = FALSE, int iJump = FALSE) {
@@ -87,7 +87,7 @@ void usuGoToObject(object oPC, object oDest, int iRun = FALSE, int iJump = FALSE
     if (iJump) {
         AssignCommand(oPC, JumpToObject(oDest));
     } else {
-    // TODO (Anael) : stocker le 1.0f dans une constante USU_DISTANCE_BETWEEN_CIBLE
-        AssignCommand(oPC, ActionMoveToObject(oDest, iRun, 1.0f));
+    
+        AssignCommand(oPC, ActionMoveToObject(oDest, iRun, USU_DISTANCE_BETWEEN_CIBLE));
     }
 }
