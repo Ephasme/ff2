@@ -2,7 +2,7 @@
 /** Nom :              usua_movings
 /** Date de création : 21/07/2010
 /** Version :          1.0.0
-/** Cr ateur :         Peluso Loup
+/** Créateur :         Peluso Loup
 /***************************** ChangeLog *****************************/
 /** V1.0.0 (par Peluso Loup) :
 /**      Script regroupant les fonctions de déplacement.
@@ -16,8 +16,6 @@
 
 /***************************** PROTOTYPES ****************************/
 
-// TODO (Anael) : Documenter les fonctions.
-
 // DEF IN "usua_moving"
 // Fonction qui permet de téléporter un personnage vers un objet. 
 //   > object oPC - Personnage concerné.
@@ -25,32 +23,37 @@
 void usuJumpToObject(object oPC, object oDest);
 
 // DEF IN "usua_moving"
-// Fonction qui permet de faire marcher un personnage vers une localisation (en passant par un waypoint détruit à la fin du déplacement)
+// Fonction qui permet de faire courir un personnage vers une localisation.
 //   > object oPC - Personnage concerné.
 //   > location lLoc - localisation vers laquelle le personnage devra marcher.
 void usuRunToLoc(object oPC, location lLoc);
 
 // DEF IN "usua_moving"
-// Fonction qui permet de faire marcher un personnage vers un objet. 
+// Fonction qui permet de faire courir un personnage vers un objet. 
 //   > object oPC - Personnage concerné.
-//   > object oDest - Objet vers lequel le personnage devra marcher. 
+//   > object oDest - Objet vers lequel le personnage devra courir. 
 void usuRunToObject(object oPC, object oDest);
 
 // DEF IN "usua_moving"
-// Fonction qui permet de créer un waypoint à une localisation, qui y déplace le personnage (grâce à la fonction usuGotoObject) en marchant ou en le téléportant puis qui détruit le waypoint.
+// Fonction qui permet de créer un waypoint à une localisation, qui y déplace le
+// personnage (grâce à la fonction usuGotoObject) en marchant ou en le
+// téléportant puis qui détruit le waypoint.
 //   > object oPC - Personnage concerné.
 //   > location lLoc - Localisation où sera créé le waypoint.
-//   > int iRun = FALSE - Boléen initialisé à FALSE, s'il vaut TRUE, le personnage sera déplacé en marchant.
+//   > int iRun = FALSE - Boléen initialisé à FALSE, s'il vaut TRUE, le personnage sera déplacé en courant.
 //   > int iJump = FALSE - Boléen initialisé à FALSE, s'il vaut TRUE, le personnage sera déplacé par téléportation.
 void usuGoToLoc(object oPC, location lLoc, int iRun = FALSE, int iJump = FALSE);
 
 // DEF IN "usua_moving"
-// Focntion qui permet de déplacer le personnage vers un objet en marchant ou en le téléportant.
+// Focntion qui permet de déplacer le personnage vers un objet en marchant ou en
+// le téléportant.
 //   > object oPC - Personnage concerné.
 //   > object oDest - Objet vers lequel sera déplacé le personnage 
 //   > location lLoc - Localisation où sera créé le waypoint.
-//   > int iRun = FALSE - Boléen initialisé à FALSE, s'il vaut TRUE, le personnage sera déplacé en marchant.
-//   > int iJump = FALSE - Boléen initialisé à FALSE, s'il vaut TRUE, le personnage sera déplacé par téléportation.
+//   > int iRun = FALSE - Boléen initialisé à FALSE, s'il vaut TRUE, le
+// personnage sera déplacé en marchant.
+//   > int iJump = FALSE - Boléen initialisé à FALSE, s'il vaut TRUE, le
+// personnage sera déplacé par téléportation.
 void usuGoToObject(object oPC, object oDest, int iRun = FALSE, int iJump = FALSE);
 
 /************************** IMPLEMENTATIONS **************************/
@@ -89,4 +92,3 @@ void usuGoToObject(object oPC, object oDest, int iRun = FALSE, int iJump = FALSE
         AssignCommand(oPC, ActionMoveToObject(oDest, iRun, 1.0f));
     }
 }
-
