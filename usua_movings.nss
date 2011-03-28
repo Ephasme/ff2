@@ -16,11 +16,7 @@
 
 /***************************** PROTOTYPES ****************************/
 
-// DEF IN "usua_moving"
-// Fonction qui permet de téléporter un personnage vers une localisation (en passant par un waypoint détruit à la fin du déplacement)
-//   > object oPC - Personnage concerné.
-//   > location lLoc - localisation ou sera téléporté le personnage.
-void usuJumpToLoc(object oPC, location lLoc);
+// TODO (Anael) : Documenter les fonctions.
 
 // DEF IN "usua_moving"
 // Fonction qui permet de téléporter un personnage vers un objet. 
@@ -78,12 +74,9 @@ void usuRunToObject(object oPC, object oDest) {
 // TODO (Anael) : Remplacer les valeurs littérales par des constantes
 // stockées dans le fichier usua_constants.nss en sachant que les constantes
 // devront commencer par le préfixe USU_ pour se différencier des autres.
-// REP : J'ai remplacé la valeur littérale "nw_waypoint001" par 
-// const string USU_WP_HASHSET_RESREF et vérifier que le fichier "usua_constants" est bien dans les #includes.
-// Je n'ai pas vu d'autre constante à remplacer, s'il y en a d'autres merci de me prévenir que je les repères à l'avenir.
-
 void usuGoToLoc(object oPC, location lLoc, int iRun = FALSE, int iJump = FALSE) {
-    object oDest = CreateObject(OBJECT_TYPE_WAYPOINT, const string USU_WP_HASHSET_RESREF, lLoc);
+    object oDest = CreateObject(OBJECT_TYPE_WAYPOINT, "nw_waypoint001", lLoc);
+
     usuGoToObject(oPC, oDest, iRun, iJump);
     AssignCommand(oPC, ActionDoCommand(DestroyObject(oDest, 1.0f)));
 }
