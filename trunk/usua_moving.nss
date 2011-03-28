@@ -1,5 +1,5 @@
-﻿/*********************************************************************/
-/** Nom :              usua_moving
+/*********************************************************************/
+/** Nom :              usua_movings
 /** Date de création : 21/07/2010
 /** Version :          1.0.0
 /** Créateur :         Peluso Loup
@@ -25,7 +25,7 @@ void usuJumpToObject(object oPC, object oDest);
 // DEF IN "usua_moving"
 // Fonction qui permet de faire courir un personnage vers une localisation.
 //   > object oPC - Personnage concerné.
-//   > location lLoc - localisation vers laquelle le personnage devra marcher.
+//   > location lLoc - localisation vers laquelle le personnage devra courrir.
 void usuRunToLoc(object oPC, location lLoc);
 
 // DEF IN "usua_moving"
@@ -36,12 +36,12 @@ void usuRunToObject(object oPC, object oDest);
 
 // DEF IN "usua_moving"
 // Fonction qui permet de créer un waypoint à une localisation, qui y déplace le
-// personnage (grâce à la fonction usuGotoObject) en marchant ou en le
+// personnage (grâce à la fonction usuGotoObject) en courant ou en le
 // téléportant puis qui détruit le waypoint.
 //   > object oPC - Personnage concerné.
 //   > location lLoc - Localisation où sera créé le waypoint.
-//   > int iRun = FALSE - Boléen initialisé à FALSE, s'il vaut TRUE, le personnage sera déplacé en courant.
-//   > int iJump = FALSE - Boléen initialisé à FALSE, s'il vaut TRUE, le personnage sera déplacé par téléportation.
+//   > int iRun = FALSE - Booléen initialisé à FALSE, s'il vaut TRUE, le personnage sera déplacé en courant.
+//   > int iJump = FALSE - Booléen initialisé à FALSE, s'il vaut TRUE, le personnage sera déplacé par téléportation.
 void usuGoToLoc(object oPC, location lLoc, int iRun = FALSE, int iJump = FALSE);
 
 // DEF IN "usua_moving"
@@ -51,7 +51,7 @@ void usuGoToLoc(object oPC, location lLoc, int iRun = FALSE, int iJump = FALSE);
 //   > object oDest - Objet vers lequel sera déplacé le personnage 
 //   > location lLoc - Localisation où sera créé le waypoint.
 //   > int iRun = FALSE - Boléen initialisé à FALSE, s'il vaut TRUE, le
-// personnage sera déplacé en marchant.
+// personnage sera déplacé en courant.
 //   > int iJump = FALSE - Boléen initialisé à FALSE, s'il vaut TRUE, le
 // personnage sera déplacé par téléportation.
 void usuGoToObject(object oPC, object oDest, int iRun = FALSE, int iJump = FALSE);
@@ -78,7 +78,7 @@ void usuRunToObject(object oPC, object oDest) {
 // stockées dans le fichier usua_constants.nss en sachant que les constantes
 // devront commencer par le préfixe USU_ pour se différencier des autres.
 void usuGoToLoc(object oPC, location lLoc, int iRun = FALSE, int iJump = FALSE) {
-    object oDest = CreateObject(OBJECT_TYPE_WAYPOINT, "nw_waypoint001", lLoc);
+    object oDest = CreateObject(OBJECT_TYPE_WAYPOINT, USU_WP_CIBLE, lLoc);
 
     usuGoToObject(oPC, oDest, iRun, iJump);
     AssignCommand(oPC, ActionDoCommand(DestroyObject(oDest, 1.0f)));

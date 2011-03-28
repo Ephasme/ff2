@@ -27,6 +27,9 @@ const int USU_HASHSET_SUCCESS = TRUE;
 const string USU_WP_HASHSET_TAG = "cos_wpHashSet";
 const string USU_WP_HASHSET_RESREF = "nw_waypoint001";
 
+// Tag de l'objet cible pour les déplacements de personnages.
+const string USU_WP_CIBLE = "nw_waypoint001";
+
 // ********************** TESTS ************************* //
 
 const int TS_TEST_MODE = FALSE;
