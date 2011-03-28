@@ -16,7 +16,7 @@
 /***************************** PROTOTYPES ****************************/
 
 // DEF IN "usua_strtokman"
-// Fonction qui renvoie la position du dernier Délimiteur dans une chaine.
+// Fonction qui renvoie la position du dernier délimiteur dans une chaine.
 //   > string sStr - Chaîne à scanner.
 //   > string sTok - Délimiteur.
 //   o int - Position du dernier Délimiteur trouvé ou USU_TOKEN_POSITION_ERROR si rien n'a été trouvé.

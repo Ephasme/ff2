@@ -33,7 +33,7 @@ const int CMD_MAX_DEPTH = 5;
 
 // ............... CONSTANTES DES COMMANDES .................
 
-// ==== Système de déplacement ====
+// ==== Système MOV ====
 // Commandes
 const string CMD_C_MOVE_TO = "moveto";
 const string CMD_C_SAVE_LOC = "savepos";
@@ -53,6 +53,11 @@ const string ERR_MOVING_TYPE_NOT_DEFINED = "Le type de déplacement (vers un Wayp
 const string CMD_M_YOU_SAVED_THIS_POSITION_IN_THE_VARIABLE = "Vous avez sauvegardé cette position dans la variable.";
 const string CMD_M_YOU_CAN_REUSE_IT_TO_RETURN_THERE_AUTOMATICALLY = "Vous pourrez la réutiliser pour y revenir automatiquement.";
 
-// ==== Système d'afk ====
+// ==== Système AFK ====
 // Commandes
 const string CMD_C_TOGGLE_AFK = "afk";
+
+// ==== Système ATH ====
+// Commandes
+const string CMD_C_FLUSH_AUTH = "flush_auth";
+const string CMD_M_YOU_FLUSHED_AUTHORIZATIONS = "Vous avez mis à jour les autorisations.";

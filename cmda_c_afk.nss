@@ -20,14 +20,11 @@
 //   > string sCommand - Commande à traiter.
 //   > object oPC - Source de la requête.
 //   o string - Chaîne vide.
-string cmdToggleAFKState(string sCommand, object oPC);
+string cmd_afkToggleAFKState(string sCommand, object oPC);
 
 /************************** IMPLEMENTATIONS **************************/
 
-string cmdToggleAFKState(string sCommand, object oPC) {
-/*DEBUG*/ dbgChangeSource("cmdToggleAFKState");
-/*DEBUG*/ dbgWrite("Changing AFK State.");
+string cmd_afkToggleAFKState(string sCommand, object oPC) {
     afkToggleState(oPC);
-/*DEBUG*/ dbgWrite("AFK State changed.");
     return CMD_EMPTY_RESULT;
 }

@@ -1,5 +1,5 @@
 /*********************************************************************/
-/** Nom :              cmda_c_moving
+/** Nom :              cmda_c_mov
 /** Date de création : 08/08/2010
 /** Version :          1.0.0
 /** Cr ateur :         Peluso Loup
@@ -12,27 +12,27 @@
 /***************************** INCLUDES ******************************/
 
 #include "cmda_utils"
-#include "usua_movings"
+#include "usua_moving"
 
 /***************************** PROTOTYPES ****************************/
 
-// DEF IN "cmda_commands"
+// DEF IN "cmda_c_mov"
 // Fonction qui déplace un personnage vers un point du module.
 //   > string sCommand - Commande à tra ter.
 //   > object oPC - Source de la requ te.
 //   o string - Chaîne vide.
-string cmdMoveToCommand(string sCommand, object oPC);
+string cmd_movMoveToCommand(string sCommand, object oPC);
 
-// DEF IN "cmda_commands"
+// DEF IN "cmda_c_mov"
 // Fonction qui sauvegarde la position actuelle du personnage.
 //   > string sCommand - Commande à tra ter.
 //   > object oPC - Source de la requ te.
 //   o string - Chaîne vide.
-string cmdSaveLocCommand(string sCommand, object oPC);
+string cmd_movSaveLocCommand(string sCommand, object oPC);
 
 /************************** IMPLEMENTATIONS **************************/
 
-string cmdSaveLocCommand(string sCommand, object oPC) {
+string cmd_movSaveLocCommand(string sCommand, object oPC) {
     // On récupère le nom de la variable choisi par le joueur.
     string sVarName = cmdGetParameterValue(sCommand, CMD_PAR_LOCAL_LOCATION_VARIABLE_NAME);
     // On récupère la position actuelle du PJ.
@@ -46,7 +46,7 @@ string cmdSaveLocCommand(string sCommand, object oPC) {
     return CMD_EMPTY_RESULT;
 }
 
-string cmdMoveToCommand(string sCommand, object oPC) {
+string cmd_movMoveToCommand(string sCommand, object oPC) {
     // Est-ce que le personnage source est valide ?
     if (!GetIsPC(oPC)) {
         return CMD_EMPTY_RESULT; 
