@@ -1,5 +1,5 @@
 /*********************************************************************/
-/** Nom :              usua_movings
+/** Nom :              usua_moving
 /** Date de création : 21/07/2010
 /** Version :          1.0.0
 /** Créateur :         Peluso Loup
@@ -25,7 +25,7 @@ void usuJumpToObject(object oPC, object oDest);
 // DEF IN "usua_moving"
 // Fonction qui permet de faire courir un personnage vers une localisation.
 //   > object oPC - Personnage concerné.
-//   > location lLoc - localisation vers laquelle le personnage devra courrir.
+//   > location lLoc - localisation vers laquelle le personnage devra courir.
 void usuRunToLoc(object oPC, location lLoc);
 
 // DEF IN "usua_moving"
@@ -74,13 +74,11 @@ void usuRunToObject(object oPC, object oDest) {
     usuGoToObject(oPC, oDest, TRUE);
 }
 
-// TODO (Anael) : Remplacer les valeurs littérales par des constantes
-// stockées dans le fichier usua_constants.nss en sachant que les constantes
-// devront commencer par le préfixe USU_ pour se différencier des autres.
 void usuGoToLoc(object oPC, location lLoc, int iRun = FALSE, int iJump = FALSE) {
     object oDest = CreateObject(OBJECT_TYPE_WAYPOINT, USU_WP_CIBLE, lLoc);
 
     usuGoToObject(oPC, oDest, iRun, iJump);
+    // TODO (Anael) : stocker le 1.0f dans une constante USU_TIME_BEFORE_DESTROY_WP
     AssignCommand(oPC, ActionDoCommand(DestroyObject(oDest, 1.0f)));
 }
 
@@ -89,6 +87,7 @@ void usuGoToObject(object oPC, object oDest, int iRun = FALSE, int iJump = FALSE
     if (iJump) {
         AssignCommand(oPC, JumpToObject(oDest));
     } else {
+    // TODO (Anael) : stocker le 1.0f dans une constante USU_DISTANCE_BETWEEN_CIBLE
         AssignCommand(oPC, ActionMoveToObject(oDest, iRun, 1.0f));
     }
 }
