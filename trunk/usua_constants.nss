@@ -31,10 +31,10 @@ const string USU_WP_HASHSET_RESREF = "nw_waypoint001";
 const string USU_WP_CIBLE = "nw_waypoint001";
 
 // Temps avant la destruction du waypoint cible pour un déplacement de personnage.
-const string USU_TIME_BEFORE_DESTROY_WP = 1.0f;
+const float USU_TIME_BEFORE_DESTROY_WP = 1.0f;
 
 // Distance du personnage à la cible lors d'un déplacement de personnage
-const string USU_DISTANCE_BETWEEN_CIBLE = 1.0f;
+const float USU_DISTANCE_BETWEEN_CIBLE = 1.0f;
 
 // ********************** TESTS ************************* //
 
