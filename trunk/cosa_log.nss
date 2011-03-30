@@ -36,7 +36,8 @@ void cosAddLogInfo(int iLogId, string sName, string sValue);
 void cosLogClientEnter(object oPC);
 void cosLogClientLeave(object oPC);
 void cosLogModuleLoad();
-void cosLogPlayerChat(object oPC, string sMessage);
+
+// TODO : Changer le mode de stockage des message PJ dans la table appropriée.
 void cosLogPlayerChat(object oPC, string sMessage);
 void cosLogTransition(object oPC, string sOriginTag, string sDestTag);
 

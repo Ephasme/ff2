@@ -8,6 +8,9 @@
 /**      Fichier contenant toutes les constantes du système central.
 /**************************************************************************************************/
 
+/******************************************** GENERAL *********************************************/
+const string COS_EMPTY_STRING = "";
+
 /****************************************** ACTIVATEURS *******************************************/
 
 // Défini si on doit logger les dialogues dans la base de donnée.
