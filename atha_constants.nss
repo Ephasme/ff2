@@ -15,12 +15,9 @@ const int ATH_FORBIDDEN = 1; // La permission est refusée.
 const int ATH_ALLOWED = 2; // La permission est accordée (prévaut sur FORBIDDEN).
 const int ATH_RESTRICTED = 3; // Ce niveau correspond au fait que la permission ne sera jamais accordée. Prévaut sur les deux précédentes.
 
-const int ATH_GRANT = 1;
-const int ATH_BANKEY = 2;
-const int ATH_BANACCOUNT = 3;
-const int ATH_BANCHAR = 4;
-const int ATH_JUMP = 5;
-const int ATH_TRANSITION = 6;
+const int ATH_JUMP = 1;
+const int ATH_SPEAK = 2;
+const int ATH_EXITAREA = 3;
 
 // SQL Tables
 const string ATH_SQLT_AUTH_TO_CHAR = "`ath_auth_to_char`";

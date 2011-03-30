@@ -27,21 +27,16 @@ void athSendNotAllowedMessage(int iAuthId, object oPC);
 // TODO : à poursuivre.
 
 int athIsAllowed(int iAuthId, object oPC) {
-
 	// Si le système est désactivé, on autorise tout.
-	if (ATH_SYSTEM_ENABLED == FALSE) {
-		return TRUE;
+	if (ATH_SYSTEM_ENABLED) {
+		// Sinon on récupère l'autorisation correspondante.
+		int iAuth = sqlEAFDSingleInt("SELECT MAX("+ATH_SQLF_AUTH_TYPE+") FROM "+ATH_SQLT_GLOBAL+" WHERE "+ATH_SQLF_ID_AUTH+" = "+IntToString(iAuthId)+" AND "+ATH_SQLF_ID_CHAR+" = "+IntToString(cosGetPCId(oPC))+";");
+
+		// Si le personnage est interdit ou restreint alors la fonction renvoie false.
+		if (iAuth == ATH_FORBIDDEN || iAuth == ATH_RESTRICTED) {
+			return FALSE;
+		}
 	}
-	
-	// Sinon on récupère l'autorisation correspondante.
-	int iAuth = sqlEAFDSingleInt("SELECT MAX("+ATH_SQLF_AUTH_TYPE+") FROM "+ATH_SQLT_GLOBAL+" WHERE "+ATH_SQLF_ID_AUTH+" = "+IntToString(iAuthId)+" AND "+ATH_SQLF_ID_CHAR+" = "+IntToString(cosGetPCId(oPC))+";");
-	
-	// Si le personnage est interdit ou restreint alors la fonction renvoie false.
-    if (iAuth == ATH_FORBIDDEN || iAuth == ATH_RESTRICTED) {
-        return FALSE;
-    }
-	
-	// Sinon tout va bien.
     return TRUE;
 }
 

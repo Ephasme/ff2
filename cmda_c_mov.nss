@@ -103,12 +103,10 @@ string cmd_movMoveToCommand(string sCommand, object oPC) {
 	// Peut-il se téléporter ?
 	if (iJump && !athIsAllowed(ATH_JUMP, oPC)) {
 		athSendNotAllowedMessage(ATH_JUMP, oPC);
-		return CMD_EMPTY_RESULT;
+	} else {
+		// On déplace le personnage jusqu'à la location sauvée.
+		usuGoToLoc(oPC, lDest, iRun, iJump);
 	}
-	// TODO : Ajouter le test de transition.
-
-    // On déplace le personnage jusqu'à la location sauvée.
-    usuGoToLoc(oPC, lDest, iRun, iJump);
 
     return CMD_EMPTY_RESULT;
 }
