@@ -60,4 +60,4 @@ const string CMD_C_TOGGLE_AFK = "afk";
 // ==== Système ATH ====
 // Commandes
 const string CMD_C_FLUSH_AUTH = "flush_auth";
-const string CMD_M_YOU_FLUSHED_AUTHORIZATIONS = "Vous avez mis à jour les autorisations.";
+const string CMD_M_YOU_FLUSHED_AUTHORIZATIONS = "Les autorisations ont été mise à jour.";

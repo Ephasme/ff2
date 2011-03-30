@@ -8,11 +8,19 @@
 /**      Fichier contenant toutes les constantes du système de permissions.
 /**************************************************************************************************/
 
+const int ATH_SYSTEM_ENABLED = TRUE;
+
 // Niveaux de permission.
 const int ATH_FORBIDDEN = 1; // La permission est refusée.
 const int ATH_ALLOWED = 2; // La permission est accordée (prévaut sur FORBIDDEN).
-const int ATH_RESTRICTED = 3; // Ce niveau correspond au fait que la permission ne sera jamais accordée.
-                              // Prévaut sur les deux précédentes.
+const int ATH_RESTRICTED = 3; // Ce niveau correspond au fait que la permission ne sera jamais accordée. Prévaut sur les deux précédentes.
+
+const int ATH_GRANT = 1;
+const int ATH_BANKEY = 2;
+const int ATH_BANACCOUNT = 3;
+const int ATH_BANCHAR = 4;
+const int ATH_JUMP = 5;
+const int ATH_TRANSITION = 6;
 
 // SQL Tables
 const string ATH_SQLT_AUTH_TO_CHAR = "`ath_auth_to_char`";

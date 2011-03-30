@@ -2,7 +2,7 @@
 /** Nom :              cmda_c_mov
 /** Date de création : 08/08/2010
 /** Version :          1.0.0
-/** Cr ateur :         Peluso Loup
+/** Créateur :         Peluso Loup
 /***************************** ChangeLog *****************************/
 /** V1.0.0 (par Peluso Loup) :
 /**      Script contenant la liste des commandes relatives aux
@@ -13,13 +13,14 @@
 
 #include "cmda_utils"
 #include "usua_moving"
+#include "atha_main"
 
 /***************************** PROTOTYPES ****************************/
 
 // DEF IN "cmda_c_mov"
 // Fonction qui déplace un personnage vers un point du module.
-//   > string sCommand - Commande à tra ter.
-//   > object oPC - Source de la requ te.
+//   > string sCommand - Commande à traîter.
+//   > object oPC - Source de la requête.
 //   o string - Chaîne vide.
 string cmd_movMoveToCommand(string sCommand, object oPC);
 
@@ -63,13 +64,13 @@ string cmd_movMoveToCommand(string sCommand, object oPC) {
         return CMD_EMPTY_RESULT;
     }
   
-    // Au moins un des deux dois  tre d fini.
+    // Au moins un des deux dois être défini.
     if (!(iToLocation || iToWaypoint)) {
         cmdSendErrorMessage(oPC, ERR_MOVING_TYPE_NOT_DEFINED);
         return CMD_EMPTY_RESULT;
     } 
     
-    // Variables contenant les informations pass es en param tre de la commande pour déplacer le PJ.
+    // Variables contenant les informations passées en paramètre de la commande pour déplacer le PJ.
     location lDest;
     string sWaypointTag;
     string sLocalLocationVarName;
@@ -97,8 +98,16 @@ string cmd_movMoveToCommand(string sCommand, object oPC) {
 
     // Est-ce que l'on va déplacer le PJ instantanément ?
     int iJump = cmdIsParameterDefined(sCommand, CMD_PAR_JUMP);
+	
+	// ==== Système ATH ====
+	// Peut-il se téléporter ?
+	if (iJump && !athIsAllowed(ATH_JUMP, oPC)) {
+		athSendNotAllowedMessage(ATH_JUMP, oPC);
+		return CMD_EMPTY_RESULT;
+	}
+	// TODO : Ajouter le test de transition.
 
-    // On déplace le personnage jusqu'à la location sauv e.
+    // On déplace le personnage jusqu'à la location sauvée.
     usuGoToLoc(oPC, lDest, iRun, iJump);
 
     return CMD_EMPTY_RESULT;
