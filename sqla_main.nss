@@ -12,7 +12,7 @@
 
 /***************************** INCLUDES ******************************/
 
-#include "usua_locmanips"
+#include "stda_locmanips"
 #include "sqla_constants"
 
 /***************************** PROTOTYPES ****************************/
@@ -126,8 +126,7 @@ int sqlFetch()
     }
 }
 
-string sqlGetData(int iCol)
-{
+string sqlGetData(int iCol) {
     int iPos;
     string sResultSet = GetLocalString(sqlGetWaypoint(), "NWNX_ODBC_CurrentRow");
 
@@ -188,10 +187,10 @@ string sqlEAFDSingleString(string sQuery) {
 }
 
 struct sub_query sqlSetSubQuery(string sQuery, string sAlias) {
-    struct sub_query sqRes;
-    sqRes.sQuery = sQuery;
-    sqRes.sAlias = sAlias;
-    return sqRes;
+    struct sub_query sqlRes;
+    sqlRes.sQuery = sQuery;
+    sqlRes.sAlias = sAlias;
+    return sqlRes;
 }
 
 string sqlQuote(string sString) {

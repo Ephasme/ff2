@@ -17,7 +17,6 @@ const int ATH_RESTRICTED = 3; // Ce niveau correspond au fait que la permission 
 
 const int ATH_JUMP = 1;
 const int ATH_SPEAK = 2;
-const int ATH_EXITAREA = 3;
 
 // SQL Tables
 const string ATH_SQLT_AUTH_TO_CHAR = "`ath_auth_to_char`";
