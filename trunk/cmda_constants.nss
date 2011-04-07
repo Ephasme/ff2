@@ -1,8 +1,8 @@
 /**************************************************************************************************/
 /** Nom :              cmda_constants
-/** Date de cr‚ation : 29/08/2010
+/** Date de création : 29/08/2010
 /** Version :          1.0.0
-/** Cr‚ateur :         Peluso Loup
+/** Créateur :         Peluso Loup
 /******************************************* ChangeLog ********************************************/
 /** V1.0.0 (par Peluso Loup) :
 /**      Fichier contenant toutes les constantes du système de commandes.
@@ -10,14 +10,14 @@
 const int CMD_ENABLED = TRUE;
 
 // Token utilisé pour démarrer une séquence de commandes.
-const string CMD_OPENING_TOKEN = "<!";
+const string CMD_OPENING_TOKEN = "<<";
 const int CMD_OPENING_TOKEN_LENGTH = 2;
 
-const string CMD_CLOSING_TOKEN = "!>";
+const string CMD_CLOSING_TOKEN = ">>";
 const int CMD_CLOSING_TOKEN_LENGTH = 2;
 
 const string CMD_PARAMETER_TOKEN = " ";
-const string CMD_DEFINITION_TOKEN = ":";
+const string CMD_DEFINITION_TOKEN = "=";
 
 // Messages d'erreur.
 const string CMD_ERROR = "";

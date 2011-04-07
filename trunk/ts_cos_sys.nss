@@ -13,7 +13,7 @@
 /***************************** INCLUDES ******************************/
 
 #include "cosa_pcmanips"
-#include "usua_testfuncs"
+#include "stda_testfuncs"
 
 /************************** IMPLEMENTATIONS **************************/
 

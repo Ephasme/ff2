@@ -15,7 +15,7 @@
 /***************************** INCLUDES ******************************/
 
 #include "sqla_main"
-#include "usua_testfuncs"
+#include "stda_testfuncs"
 
 /***************************** VARIABLES *****************************/
 
@@ -63,7 +63,7 @@ void ts_sqlEAFDSingleLocation() {
         iResA && iResB && iResC
     );
     addTestInfo("Résultat requête", sResQue);
-    addTestInfo("Location reconstruite", usuLocationToString(lLoc));
+    addTestInfo("Location reconstruite", stdLocationToString(lLoc));
 }
 
 void ts_sqlEAFDSingleIntOrInsert() {

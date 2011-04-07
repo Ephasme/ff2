@@ -11,7 +11,7 @@
 /******************************************** INCLUDES ********************************************/
 
 #include "sqla_main"
-#include "usua_locmanips"
+#include "stda_locmanips"
 #include "cosa_constants"
 
 /******************************************* PROTOTYPES *******************************************/
@@ -311,11 +311,11 @@ string cosGetLocalString(object oPC, string sVarName, int iPersistant = TRUE) {
 }
 
 void cosSetLocalLocation(object oPC, string sVarName, location lLoc, int iPersistant = TRUE) {
-    cosSetLocalString(oPC, sVarName, usuLocationToString(lLoc), iPersistant);
+    cosSetLocalString(oPC, sVarName, stdLocationToString(lLoc), iPersistant);
 }
 
 location cosGetLocalLocation(object oPC, string sVarName, int iPersistant = TRUE) {
-    return usuStringToLocation(cosGetLocalString(oPC, sVarName, iPersistant));
+    return stdStringToLocation(cosGetLocalString(oPC, sVarName, iPersistant));
 }
 
 // TODO : Changer la boucle de sauvegarde de position par une boucle générale
@@ -325,7 +325,7 @@ location cosGetLocalLocation(object oPC, string sVarName, int iPersistant = TRUE
 // Boucle de sauvegarde de la position du personnage.
 void pv_cosSaveLocLoop(object oPC) {
     if (GetIsPC(oPC) && GetIsObjectValid(oPC)) {
-        cosSetLocalString(oPC, COS_PC_STARTLOC, usuLocationToString(GetLocation(oPC)));
+        cosSetLocalString(oPC, COS_PC_STARTLOC, stdLocationToString(GetLocation(oPC)));
         // TODO (Anael) : Ajouter un brin d'aléatoire...
         DelayCommand(COS_SAVEPOS_DELAY, pv_cosSaveLocLoop(oPC));
     }
@@ -338,9 +338,9 @@ void cosSavePCLocationLoop(object oPC) {
 void cosMovePCToStartLocation(object oPC) {
     string sLoc = cosGetLocalString(oPC, COS_PC_STARTLOC);
     if (sLoc == "") {
-        sLoc = usuLocationToString(GetStartingLocation());
+        sLoc = stdLocationToString(GetStartingLocation());
     }
-    AssignCommand(oPC, ActionJumpToLocation(usuStringToLocation(sLoc)));
+    AssignCommand(oPC, ActionJumpToLocation(stdStringToLocation(sLoc)));
 }
 
 // TODO : Fonction à tester

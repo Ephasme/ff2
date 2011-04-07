@@ -68,9 +68,9 @@ string cmdExecute(string sCommand, object oPC) {
 string cmdFetch(struct cmd_data_str strCmdData, string sResult) {
     if (cmdIsCommandValid(strCmdData)) {
         // On extrait la partie gauche, avant la commande.
-        string sLeftPart = usuGetStringBeforeToken(strCmdData.sSpeech, strCmdData.iOpeningTokPos);
+        string sLeftPart = stdGetStringBeforeToken(strCmdData.sSpeech, strCmdData.iOpeningTokPos);
         // On extrait la partie droite, après la commande.
-        string sRightPart = usuGetStringAfterToken(strCmdData.sSpeech, CMD_CLOSING_TOKEN_LENGTH, strCmdData.iClosingTokPos);
+        string sRightPart = stdGetStringAfterToken(strCmdData.sSpeech, CMD_CLOSING_TOKEN_LENGTH, strCmdData.iClosingTokPos);
         // On remplace la commande par son résultat.
         return sLeftPart+sResult+sRightPart;
     } else {

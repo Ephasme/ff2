@@ -22,6 +22,9 @@ void athFlush();
 string athGetAuthName(int iAuthId);
 void athSendNotAllowedMessage(int iAuthId, object oPC);
 
+void athSetAreaPermission(object oArea);
+int athGetAreaPermission(object oArea, int iPermission);
+
 /************************** IMPLEMENTATIONS **************************/
 
 // TODO : à poursuivre.

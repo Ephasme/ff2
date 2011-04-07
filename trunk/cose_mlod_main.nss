@@ -22,7 +22,7 @@ void main() {
 
     // Tests.
     ExecuteScript("ts_cos_sys", OBJECT_SELF);
-    ExecuteScript("ts_usu_sys", OBJECT_SELF);
+    ExecuteScript("ts_std_sys", OBJECT_SELF);
     ExecuteScript("ts_cmd_sys", OBJECT_SELF);
     ExecuteScript("ts_sql_sys", OBJECT_SELF);
 

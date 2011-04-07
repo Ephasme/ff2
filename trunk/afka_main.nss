@@ -15,8 +15,8 @@
 
 #include "afka_constants"
 #include "cosa_pcmanips"
-#include "usua_locmanips"
-#include "usua_moving"
+#include "stda_locmanips"
+#include "stda_moving"
 #include "nw_i0_generic"
 
 /***************************** PROTOTYPES ****************************/
@@ -45,12 +45,12 @@ void afkActivateAFK(object oPC) {
     if (!GetIsFighting(oPC)) {
         cosSetLocalLocation(oPC, AFK_LAST_LOCATION, GetLocation(oPC));
         cosSetLocalInt(oPC, AFK_IS_ACTIVATED, TRUE);
-        usuJumpToObject(oPC, GetWaypointByTag(AFK_DEST_WP_TAG));
+        stdJumpToObject(oPC, GetWaypointByTag(AFK_DEST_WP_TAG));
     }
 }
 void afkDeactivateAFK(object oPC) {
     location lLoc = cosGetLocalLocation(oPC, AFK_LAST_LOCATION);
     cosSetLocalInt(oPC, AFK_IS_ACTIVATED, FALSE);
-    usuJumpToLoc(oPC, lLoc);
+    stdJumpToLoc(oPC, lLoc);
 }
 

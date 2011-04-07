@@ -20,7 +20,7 @@ void main() {
     // On récupère le personnage et ce qu'il dit.
     object oPC = GetPCChatSpeaker();
     string sMessage = GetPCChatMessage();
-	string sSpeech = sMessage;
+    string sSpeech = sMessage;
 
     // On crée une structure de commande avec le message du joueur.
     struct cmd_data_str strCmdData = cmdGetFirstCommand(sSpeech);
@@ -36,14 +36,14 @@ void main() {
     if (athIsAllowed(ATH_SPEAK, oPC)) {
         // On envoie le reste comme dialogue normal.
         SetPCChatMessage(sSpeech);
-		// On log dans la BDD si nécessaire.
-		if (COS_LOG_PLAYER_CHAT) {
-			cosLogPlayerChat(oPC, sMessage);
-		}
+        // On log dans la BDD si nécessaire.
+        if (COS_LOG_PLAYER_CHAT) {
+            cosLogPlayerChat(oPC, sMessage);
+        }
     } else {
         // Sinon on informe le PJ qu'il ne peut pas parler.
         athSendNotAllowedMessage(ATH_SPEAK, oPC);
-		// Et on envoit un texte vide.
-		SetPCChatMessage(CMD_EMPTY_SPEECH);
+        // Et on envoit un texte vide.
+        SetPCChatMessage(CMD_EMPTY_SPEECH);
     }
 }

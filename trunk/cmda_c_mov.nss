@@ -12,7 +12,7 @@
 /***************************** INCLUDES ******************************/
 
 #include "cmda_utils"
-#include "usua_moving"
+#include "stda_moving"
 #include "atha_main"
 
 /***************************** PROTOTYPES ****************************/
@@ -50,31 +50,31 @@ string cmd_movSaveLocCommand(string sCommand, object oPC) {
 string cmd_movMoveToCommand(string sCommand, object oPC) {
     // Est-ce que le personnage source est valide ?
     if (!GetIsPC(oPC)) {
-        return CMD_EMPTY_RESULT; 
+        return CMD_EMPTY_RESULT;
     }
-    
+
     // Est-ce qu'on se déplace vers une location ?
     int iToLocation = cmdIsParameterDefined(sCommand, CMD_PAR_TO_LOCATION);
     // Est-ce qu'on se déplace vers un waypoint ?
     int iToWaypoint = cmdIsParameterDefined(sCommand, CMD_PAR_TO_WAYPOINT);
-    
+
     // Impossible de faire les deux.
     if (iToLocation && iToWaypoint) {
         cmdSendErrorMessage(oPC, ERR_IMPOSSIBLE_TO_MOVE_TO_WAYPOINT_AND_TO_RENT);
         return CMD_EMPTY_RESULT;
     }
-  
-    // Au moins un des deux dois être défini.
+
+    // Au moins un des deux doit être défini.
     if (!(iToLocation || iToWaypoint)) {
         cmdSendErrorMessage(oPC, ERR_MOVING_TYPE_NOT_DEFINED);
         return CMD_EMPTY_RESULT;
-    } 
-    
+    }
+
     // Variables contenant les informations passées en paramètre de la commande pour déplacer le PJ.
     location lDest;
     string sWaypointTag;
     string sLocalLocationVarName;
-    
+
     if (iToLocation) {
         // On récupère la location de destination.
         sLocalLocationVarName = cmdGetParameterValue(sCommand, CMD_PAR_LOCAL_LOCATION_VARIABLE_NAME);
@@ -92,21 +92,21 @@ string cmd_movMoveToCommand(string sCommand, object oPC) {
         }
         lDest = GetLocation(oWP);
     }
-    
+
     // Est-ce le PJ va se déplacer en courant ?
     int iRun = cmdIsParameterDefined(sCommand, CMD_PAR_RUN);
 
     // Est-ce que l'on va déplacer le PJ instantanément ?
     int iJump = cmdIsParameterDefined(sCommand, CMD_PAR_JUMP);
-	
-	// ==== Système ATH ====
-	// Peut-il se téléporter ?
-	if (iJump && !athIsAllowed(ATH_JUMP, oPC)) {
-		athSendNotAllowedMessage(ATH_JUMP, oPC);
-	} else {
-		// On déplace le personnage jusqu'à la location sauvée.
-		usuGoToLoc(oPC, lDest, iRun, iJump);
-	}
+
+    // ==== Système ATH ====
+    // Peut-il se téléporter ?
+    if (iJump && !athIsAllowed(ATH_JUMP, oPC)) {
+        athSendNotAllowedMessage(ATH_JUMP, oPC);
+    } else {
+        // On déplace le personnage jusqu'à la location sauvée.
+        stdGoToLoc(oPC, lDest, iRun, iJump);
+    }
 
     return CMD_EMPTY_RESULT;
 }

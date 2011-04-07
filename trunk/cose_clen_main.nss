@@ -53,7 +53,7 @@ void main() {
 
     // SCRIPTS TESTS
     ExecuteScript("ts_cos_sys", oPC);
-    ExecuteScript("ts_usu_sys", oPC);
+    ExecuteScript("ts_std_sys", oPC);
     ExecuteScript("ts_cmd_sys", oPC);
     ExecuteScript("ts_sql_sys", oPC);
 
