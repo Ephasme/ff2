@@ -10,7 +10,6 @@
 
 /***************************** INCLUDES ******************************/
 
-    // #include "stda_constants"
 #include "stda_strtokman"
 #include "cmda_constants"
 
@@ -88,7 +87,7 @@ struct cmd_data_str cmdSetDataStructure(string sSpeech = CMD_EMPTY_SPEECH, strin
 
 struct cmd_data_str cmdGetFirstCommand(string sSpeech, string sOriginalSpeech = "", int iRecursionDepth = 0, int iRecursionScale = 0) {
     if (iRecursionDepth == 0) {
-        sOriginalSpeech = sSpeech; 
+        sOriginalSpeech = sSpeech;
     }
     if (CMD_ENABLED == FALSE || iRecursionDepth++ > CMD_MAX_DEPTH) {
         return EMPTY_COMMAND_DATAS;
@@ -110,6 +109,7 @@ struct cmd_data_str cmdGetFirstCommand(string sSpeech, string sOriginalSpeech = 
     sCommand = stdTrimAllSpaces(sCommand);
     return cmdSetDataStructure(sOriginalSpeech, sCommand, iRecursionScale+iOpenTokPos, iRecursionScale+iClosTokPos);
 }
+
 string cmdGetCommandName(string sCommand) {
     return stdTrimAllSpaces(stdGetStringBeforeToken(sCommand, stdGetFirstTokenPosition(sCommand, CMD_PARAMETER_TOKEN)));
 }

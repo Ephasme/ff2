@@ -19,6 +19,7 @@
 // TODO (Anael) : Documenter les fonctions.
 int athIsAllowed(int iAuthId, object oPC);
 void athFlush();
+void athInit();
 string athGetAuthName(int iAuthId);
 void athSendNotAllowedMessage(int iAuthId, object oPC);
 
@@ -68,4 +69,8 @@ void athFlush() {
 	
 	// Modifie les clefs primaires et le système de stockage.
     sqlExecDirect("ALTER TABLE "+ATH_SQLT_GLOBAL+" ADD PRIMARY KEY("+ATH_SQLF_AUTH_TYPE+","+ATH_SQLF_ID_AUTH+","+ATH_SQLF_ID_CHAR+"), ENGINE=MyISAM;");
+}
+
+void athInit() {
+	athFlush();
 }

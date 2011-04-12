@@ -22,9 +22,9 @@ void main() {
     object oObj = GetEnteringObject();
     cosSaveOnEnter(oObj);
 
-    // ==== SYTEME AFK =================================================
+    // ==== SYTEME AFK ==== //
     ExecuteScript(COS_AFK_ON_ENTER_AREA, oObj);
-    
+
     // On récupère l'aire.
     object oArea = GetArea(oObj);
     // On teste si les données sont toujours valides.

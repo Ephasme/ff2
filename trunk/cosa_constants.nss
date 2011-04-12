@@ -56,8 +56,16 @@ const string COS_LOG_CL_LEAVE = "ClientLeave";
 const string COS_LOG_MOD_LOAD = "ModuleLoad";
 const string COS_LOG_CHAT = "PlayerChat";
 const string COS_LOG_TRANSITION = "Transition";
-const string COS_LOG_ATH_FLUSH = "ATH_Flush"; /* ATH */ 
+const string COS_LOG_PLAYER_DEATH = "PlayerDeath";
+const string COS_LOG_PLAYER_RESPAWN = "PlayerRespawn";
+const string COS_LOG_ATH_FLUSH = "ATH_Flush"; /* ATH */
 
+const string COS_LOG_PC_VICTIM_ID = "VictimID";
+const string COS_LOG_PC_KILLER_ID = "KillerID";
+const string COS_LOG_PC_KILLER_TAG = "KillerTag";
+const string COS_LOG_KILL_TYPE = "KillType";
+const string COS_LOG_PVP_KILL = "PvP";
+const string COS_LOG_PVM_KILL = "PvM";
 const string COS_LOG_PC_ORIGIN = "PCOrig";
 const string COS_LOG_PC_DESTINATION = "PCDest";
 const string COS_LOG_PC_IS_FIGHTING = "PCFight";

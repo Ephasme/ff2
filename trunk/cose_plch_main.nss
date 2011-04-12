@@ -5,7 +5,7 @@
 /** Cr ateur :         Peluso Loup
 /***************************** ChangeLog *****************************/
 /** V1.0.0 (par Peluso Loup) :
-/**      Script lancé au chargement du module.
+/**      Script lancé à chaque fois qu'un joueur parle.
 /*********************************************************************/
 
 /***************************** INCLUDES ******************************/
