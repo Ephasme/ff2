@@ -10,10 +10,11 @@
 
 /* Waypoint cible. */
 const string RSP_DEST_WP_TAG = "rsp_dest_wp";
+const string RSP_ORIG_WP_TAG = "rsp_orig_wp";
 
 /* Info du système */
 const string RSP_SYS_NAME = "Système de respawn";
 const string RSP_SYS_ACRO = "RSP";
 
 /* Erreurs */
-const string RSP_ERR_CANNOT_FIND_DEST_WAYPOINT = "Impossible de trouver le waypoint de destination.";
+const string RSP_ERR_CANNOT_FIND_WAYPOINT = "Impossible de trouver le waypoint désiré.";

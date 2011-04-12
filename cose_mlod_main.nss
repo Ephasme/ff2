@@ -11,6 +11,7 @@
 /***************************** INCLUDES ******************************/
 
 #include "sqla_main"
+#include "atha_main"
 #include "cosa_globalvar"
 #include "cosa_log"
 
@@ -18,17 +19,12 @@
 
 void main() {
     // Systèmes principaux.
-    sqlInit(); // Système de connection à la base de donnée.
-
-    // Tests.
-    ExecuteScript("ts_cos_sys", OBJECT_SELF);
-    ExecuteScript("ts_std_sys", OBJECT_SELF);
-    ExecuteScript("ts_cmd_sys", OBJECT_SELF);
-    ExecuteScript("ts_sql_sys", OBJECT_SELF);
+    sqlInit(); // ==== SYSTEM SQL ==== //
+    athInit(); // ==== SYSTEM ATH ==== //
 
     // On a terminé l'initialisation du module.
     cosSetGlobalInt(COS_MOD_IS_INIT_VARNAME, TRUE);
-    
+
     // On log le démarrage du module en BDD.
     cosLogModuleLoad();
 }

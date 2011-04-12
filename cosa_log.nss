@@ -36,6 +36,7 @@ void cosAddLogInfo(int iLogId, string sName, string sValue);
 void cosLogClientEnter(object oPC);
 void cosLogClientLeave(object oPC);
 void cosLogModuleLoad();
+void cosLogPlayerDeath(object oPC, object oKiller);
 
 // TODO : Changer le mode de stockage des message PJ dans la table appropriée.
 void cosLogPlayerChat(object oPC, string sMessage);
@@ -73,6 +74,25 @@ void cosLogClientEnter(object oPC) {
 
 void cosLogClientLeave(object oPC) {
     pv_cosLogClientEvent(oPC, COS_LOG_CL_LEAVE);
+}
+
+void cosLogPlayerDeath(object oPC, object oKiller) {
+	int iLogId = cosCreateLog(COS_LOG_PLAYER_DEATH);
+	if (GetIsPC(oPC)) {
+		cosAddLogInfo(iLogId, COS_LOG_PC_VICTIM_ID, IntToString(cosGetPCId(oPC)));
+		if (GetIsPC(oKiller)) {
+			cosAddLogInfo(iLogId, COS_LOG_KILL_TYPE, COS_LOG_PVP_KILL);
+			cosAddLogInfo(iLogId, COS_LOG_PC_KILLER_ID, IntToString(cosGetPCId(oPC)));
+		} else {
+			cosAddLogInfo(iLogId, COS_LOG_KILL_TYPE, COS_LOG_PVM_KILL);
+			cosAddLogInfo(iLogId, COS_LOG_PC_KILLER_TAG, GetTag(oKiller));
+		}
+	}
+}
+
+void cosLogPlayerRespawn(object oPC) {
+	int iLogId = cosCreateLog(COS_LOG_PLAYER_RESPAWN);
+    cosAddLogInfo(iLogId, COS_LOG_PC_ID, IntToString(cosGetPCId(oPC)));
 }
 
 void cosLogModuleLoad() {
