@@ -43,19 +43,16 @@ void main() {
     // On log l'arrivée du personnage.
     cosLogClientEnter(oPC);
 
+    // EQUIPEMENT STANDARD
+    cosGivePlayerTools(oPC);
+
     // POSITIONNEMENT PERSONNAGE
-    // On déplace le personnage à la dernière position connue.
-    cosMovePCToStartLocation(oPC);
-    // On lance la boucle de sauvegarde de position.
-    cosSavePCLocationLoop(oPC);
+    // On démarre la gestion du positionnement du personnage.
+    cosStartLocationManager(oPC);
 
     // SCRIPTS SYSTEMES
 
     // SCRIPTS TESTS
-    ExecuteScript("ts_cos_sys", oPC);
-    ExecuteScript("ts_std_sys", oPC);
-    ExecuteScript("ts_cmd_sys", oPC);
-    ExecuteScript("ts_sql_sys", oPC);
 
     // On affiche un message de bienvenue.
     FloatingTextStringOnCreature(COS_M_WELCOME_ONTO_SERVER+" "+GetName(oPC)+" !", oPC);

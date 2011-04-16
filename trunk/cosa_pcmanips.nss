@@ -10,6 +10,8 @@
 
 /******************************************** INCLUDES ********************************************/
 
+#include "nw_i0_spells" // Pour le random delay.
+
 #include "sqla_main"
 #include "stda_locmanips"
 #include "cosa_constants"
@@ -145,19 +147,22 @@ void cosCreatePublicCDKeyId(object oPC);
 void cosLinkAccountToKey(object oPC);
 
 // DEF IN "cosa_pcmanips"
-// Boucle qui sauvegarde la position actuelle du personnage comme sa dernière position connue toute les X secondes.
+// Démarre le système de gestion du positionnement du personnage.
 //   > object oPC - Personnage concerné.
-void cosSavePCLocationLoop(object oPC);
-
-// DEF IN "cosa_pcmanips"
-// Déplace le personnage jusqu'à sa dernière position connue.
-//   > object oPC - Personnage concerné.
-void cosMovePCToStartLocation(object oPC);
+void cosStartLocationManager(object oPC);
 
 // DEF IN "cosa_pcmanips"
 // Met à jour la date de dernière connexion.
 //   > object oPC - Personnage concerné.
 void cosUpdateLastConnexion(object oPC);
+
+// TODO (Anael) : Commenter les fonctions.
+
+// DEF IN "cosa_pcmanips"
+void cosGive(object oPC, string sTag, string sResRef);
+
+// DEF IN "cosa_pcmanips"
+void cosGivePlayerTools(object oPC);
 
 /**************************************** IMPLEMENTATIONS *****************************************/
 
@@ -318,32 +323,53 @@ location cosGetLocalLocation(object oPC, string sVarName, int iPersistant = TRUE
     return stdStringToLocation(cosGetLocalString(oPC, sVarName, iPersistant));
 }
 
-// TODO : Changer la boucle de sauvegarde de position par une boucle générale
-// dans laquelle faire des choses plus larges comme vérifier l'état d'AFK.
-
-/* Private function */
-// Boucle de sauvegarde de la position du personnage.
-void pv_cosSaveLocLoop(object oPC) {
-    if (GetIsPC(oPC) && GetIsObjectValid(oPC)) {
-        cosSetLocalString(oPC, COS_PC_STARTLOC, stdLocationToString(GetLocation(oPC)));
-        // TODO (Anael) : Ajouter un brin d'aléatoire...
-        DelayCommand(COS_SAVEPOS_DELAY, pv_cosSaveLocLoop(oPC));
-    }
+/* Private functions */
+int pv_is_in_starting_area(object oPC) {
+	return GetArea(oPC) == GetAreaFromLocation(GetStartingLocation());
 }
-
-void cosSavePCLocationLoop(object oPC) {
-    pv_cosSaveLocLoop(oPC);
+void pv_save_loc_loop(object oPC) {
+	if (GetIsObjectValid(oPC) && GetIsPC(oPC)) {
+		if (!pv_is_in_starting_area(oPC) && GetIsObjectValid(GetArea(oPC))) {
+			cosSetLocalString(oPC, COS_PC_STARTLOC, stdLocationToString(GetLocation(oPC)));
+		}
+		float fDelay = GetRandomDelay(COS_SAVEPOS_DELAY_MIN, COS_SAVEPOS_DELAY_MAX);
+		DelayCommand(fDelay, pv_save_loc_loop(oPC));
+	}
 }
-
-void cosMovePCToStartLocation(object oPC) {
+void pv_begin_save_loc_loop(object oPC) {
+    pv_save_loc_loop(oPC);
+}
+void pv_move_to_start_loc(object oPC) {
     string sLoc = cosGetLocalString(oPC, COS_PC_STARTLOC);
     if (sLoc == "") {
         sLoc = stdLocationToString(GetStartingLocation());
     }
     AssignCommand(oPC, ActionJumpToLocation(stdStringToLocation(sLoc)));
+    pv_begin_save_loc_loop(oPC);
+}
+void pv_wait_for_start_loc(object oPC) {
+    if (pv_is_in_starting_area(oPC)) {
+        pv_move_to_start_loc(oPC);
+    } else {
+        DelayCommand(COS_STARTLOC_WAITING_DELAY, pv_wait_for_start_loc(oPC));
+    }
 }
 
-// TODO : Fonction à tester
+void cosStartLocationManager(object oPC) {
+    pv_wait_for_start_loc(oPC);
+}
+
 void cosUpdateLastConnexion(object oPC) {
     sqlExecDirect("UPDATE "+COS_SQLT_CHAR+" SET "+COS_SQLF_LAST_CNX+"=NOW();");
+}
+
+void cosGive(object oPC, string sTag, string sResRef) {
+    object oObj = GetItemPossessedBy(oPC, sTag);
+    if (oObj == OBJECT_INVALID) {
+        CreateItemOnObject(sResRef, oPC);
+    }
+}
+
+void cosGivePlayerTools(object oPC) {
+    cosGive(oPC, COS_PLT_SELECT_TAG, COS_PLT_SELECT_RESREF);
 }

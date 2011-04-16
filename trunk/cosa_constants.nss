@@ -30,7 +30,9 @@ const string COS_M_WELCOME_ONTO_SERVER = "Bienvenue sur le serveur";
 /************************************** CONSTANTES DIVERSES ***************************************/
 
 // Delay avant d'emmener le personnage quelque part.
-const float  COS_SAVEPOS_DELAY          = 5.0f;
+const float COS_SAVEPOS_DELAY_MIN      = 2.9f;
+const float COS_SAVEPOS_DELAY_MAX      = 5.9f;
+const float COS_STARTLOC_WAITING_DELAY = 3.0f;
 
 // Variable stockant le nom de la variable d'initialisation du module.
 const string COS_MOD_IS_INIT_VARNAME    = "COS_ModuleIsInit";
@@ -96,3 +98,8 @@ const string COS_SQLF_LAST_CNX = "`last_connexion`";
 const string COS_SQLF_LAST_UPDATE = "`last_update`";
 const string COS_SQLF_CREATION = "`creation`";
 const string COS_SQLF_BAN = "`ban`";
+
+/*************************************** PLAYER TOOLS ****************************************/
+// Outil de sélection.
+const string COS_PLT_SELECT_TAG = "selit000_select";
+const string COS_PLT_SELECT_RESREF = "selit000_select";
