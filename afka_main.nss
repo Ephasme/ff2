@@ -1,15 +1,15 @@
 /*********************************************************************/
 /** Nom :              afka_main.nss
-/** Date de création : 22/03/2011
+/** Date de crÃ©ation : 22/03/2011
 /** Version :          1.0.0
 /** Createur :         Loup Peluso
 /***************************** ChangeLog *****************************/
 /** V1.0.0 :
-/**     Script gérant la mise en mode AFK des personnages.
+/**     Script gÃ©rant la mise en mode AFK des personnages.
 /*********************************************************************/
 
-// TODO : Effectuer une vérification dans une boucle de personnage.
-// (voir dans PCMANIPS la boucle de sauvegarde de position => élargir)
+// TODO : Effectuer une vÃ©rification dans une boucle de personnage.
+// (voir dans PCMANIPS la boucle de sauvegarde de position => Ã©largir)
 
 /***************************** INCLUDES ******************************/
 
@@ -45,7 +45,7 @@ void afkActivateAFK(object oPC) {
     if (!GetIsFighting(oPC)) {
         cosSetLocalLocation(oPC, AFK_LAST_LOCATION, GetLocation(oPC));
         cosSetLocalInt(oPC, AFK_IS_ACTIVATED, TRUE);
-        stdJumpToObject(oPC, GetWaypointByTag(AFK_DEST_WP_TAG));
+        stdJumpToObject(oPC, GetWaypointByTag(AFK_DESTINATION_WAYPOINT_TAG));
     }
 }
 void afkDeactivateAFK(object oPC) {
