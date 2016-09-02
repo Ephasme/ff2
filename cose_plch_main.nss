@@ -12,7 +12,6 @@
 
 #include "cmda_main"
 #include "cosa_log"
-#include "atha_main"
 
 /************************** IMPLEMENTATIONS **************************/
 
@@ -31,19 +30,10 @@ void main() {
         strCmdData = cmdGetFirstCommand(sSpeech);
     }
 
-    // ==== Système ATH ====
-    // Est-ce que le personnage peut parler ?
-    if (athIsAllowed(ATH_SPEAK, oPC)) {
-        // On envoie le reste comme dialogue normal.
-        SetPCChatMessage(sSpeech);
-        // On log dans la BDD si nécessaire.
-        if (COS_LOG_PLAYER_CHAT) {
-            cosLogPlayerChat(oPC, sMessage);
-        }
-    } else {
-        // Sinon on informe le PJ qu'il ne peut pas parler.
-        athSendNotAllowedMessage(ATH_SPEAK, oPC);
-        // Et on envoit un texte vide.
-        SetPCChatMessage(CMD_EMPTY_SPEECH);
+    // On envoie le reste comme dialogue normal.
+    SetPCChatMessage(sSpeech);
+    // On log dans la BDD si nécessaire.
+    if (COS_LOG_PLAYER_CHAT) {
+        cosLogPlayerChat(oPC, sMessage);
     }
 }

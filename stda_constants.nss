@@ -38,7 +38,7 @@ const float STD_DISTANCE_BETWEEN_CIBLE = 1.0f;
 
 // ********************** TESTS ************************* //
 
-const int TS_TEST_MODE = FALSE;
+const int TS_TEST_MODE = TRUE;
 
 const int TS_STD_SYS = TRUE;
 const int TS_SQL_SYS = TRUE;

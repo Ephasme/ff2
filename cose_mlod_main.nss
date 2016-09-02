@@ -11,19 +11,24 @@
 /***************************** INCLUDES ******************************/
 
 #include "sqla_main"
-#include "atha_main"
 #include "cosa_globalvar"
 #include "cosa_log"
 
 /************************** IMPLEMENTATIONS **************************/
 
 void main() {
+    SetLocalString(GetModule(), "NWNX!INIT", "1");
+
     // Systèmes principaux.
     sqlInit(); // ==== SYSTEM SQL ==== //
-    athInit(); // ==== SYSTEM ATH ==== //
 
     // On a terminé l'initialisation du module.
     cosSetGlobalInt(COS_MOD_IS_INIT_VARNAME, TRUE);
+
+    ExecuteScript("ts_cos_sys", OBJECT_SELF);
+    ExecuteScript("ts_std_sys", OBJECT_SELF);
+    ExecuteScript("ts_cmd_sys", OBJECT_SELF);
+    ExecuteScript("ts_sql_sys", OBJECT_SELF);
 
     // On log le démarrage du module en BDD.
     cosLogModuleLoad();

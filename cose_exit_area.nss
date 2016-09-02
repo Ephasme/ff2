@@ -5,19 +5,18 @@
 /** Créateur :         Peluso Loup
 /***************************** ChangeLog *****************************/
 /** V1.0.0 (par Peluso Loup) :
-/**      Script lancé à chaque fois qu'un personnage sort d'une zone. 
+/**      Script lancé à chaque fois qu'un personnage sort d'une zone.
 /*********************************************************************/
 
 /***************************** INCLUDES ******************************/
 
 #include "cosa_log"
-#include "atha_main"
 
 /************************** IMPLEMENTATIONS **************************/
 
 void main() {
 
-	// On récupère le PC.
-	object oPC = GetExitingObject();
-	
+    // On récupère le PC.
+    object oPC = GetExitingObject();
+
 }

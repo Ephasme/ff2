@@ -1,170 +1,32 @@
-/**************************************************************************************************/
-/** Nom :              cosa_pcmanips
-/** Date de création : 16/07/2010
-/** Version :          1.0.0
-/** Cr ateur :         Peluso Loup
-/******************************************** ChangeLog *******************************************/
-/** V1.0.0 (par Peluso Loup) :
-/**      Script contenant les fonctions relatives à la gestion des personnages.
-/**************************************************************************************************/
-
-/******************************************** INCLUDES ********************************************/
-
-#include "nw_i0_spells" // Pour le random delay.
+#include "nw_i0_spells"
 
 #include "sqla_main"
 #include "stda_locmanips"
 #include "cosa_constants"
 
-/******************************************* PROTOTYPES *******************************************/
-
-// DEF IN "cosa_pcmanips"
-// Fonction qui permet de récupérer le Waypoint contenant les données du personnage.
-//   > object oPC - Personnage à traiter.
-//   o object - Waypoint de donnée.
 object cosGetPCWaypoint(object oPC);
-
-// DEF IN "cosa_pcmanips"
-// Fonction qui permet de créer le Waypoint contenant les données du personnage.
-//   > object oPC - Personnage à traiter.
-//   o object - Waypoint de donnée.
 object cosCreatePCWaypoint(object oPC);
-
-// DEF IN "cosa_pcmanips"
-// Fonction qui permet de sauver un couple valeur/PJ dans la base de donnée.
-//   > object oPC - Personnage concerné.
-//   > string sVarName - Nom de la variable contenant la valeur à stocker.
-//   > string sValue - Donnée à sauvegarder.
 void cosSaveLocalValue(object oPC, string sVarName, string sValue);
-
-// DEF IN "cosa_pcmanips"
-// Fonction qui permet de sauver un entier stocké sur un PJ (à travers le Waypoint de donnée).
-//   > object oPC - Personnage concerné.
-//   > string sVarName - Nom de la variable contenant la valeur à récupérer.
-//   > int iPersistant - TRUE par défaut. La valeur est stockée en base de donnée.
-//   > int - Integer à stocker.
 void cosSetLocalInt(object oPC, string sVarName, int iValue, int iPersistant = TRUE);
-
-// DEF IN "cosa_pcmanips"
-// Fonction qui permet de récupérer un entier stocké sur un PJ (à travers le Waypoint de donnée).
-//   > object oPC - Personnage concerné.
-//   > string sVarName - Nom de la variable contenant la valeur à récupérer.
-//   > int iPersistant - TRUE par défaut. Si la recherche est infructueuse, la fonction regarde
-//                       dans la base de donnée.
-//   o int - Integer récupéré.
 int cosGetLocalInt(object oPC, string sVarName, int iPersistant = TRUE);
-
-// DEF IN "cosa_pcmanips"
-// Fonction qui permet de sauver une chaîne stockée sur un PJ (à travers le Waypoint de donnée).
-//   > object oPC - Personnage concerné.
-//   > string sVarName - Nom de la variable contenant la valeur à stocker.
-//   > int iPersistant - TRUE par défaut. La valeur est stockée en base de donnée.
-//   > string - Chaîne à stocker.
 void cosSetLocalString(object oPC, string sVarName, string sString, int iPersistant = TRUE);
-
-// DEF IN "cosa_pcmanips"
-// Fonction qui permet de récupérer une chaîne stockée sur un PJ (à travers le Waypoint de donnée).
-//   > object oPC - Personnage concerné.
-//   > string sVarName - Nom de la variable contenant la valeur à récupérer.
-//   > int iPersistant - TRUE par défaut. Si la recherche est infructueuse, la fonction regarde
-//                       dans la base de donnée.
-//   o string - chaîne récupère.
 string cosGetLocalString(object oPC, string sVarName, int iPersistant = TRUE);
-
-// DEF IN "cosa_pcmanips"
-// Fonction qui permet de sauver une localisation stockée sur un PJ (à travers un Waypoint de donnée).
-//   > object oPC - Personnage concerné.
-//   > string sVarName - Nom de la variable contenant la valeur à récupérer.
-//   > location lLoc - Valeur de la localisation à stocker.
-//   > int iPersistant - TRUE par défaut. La valeur est stockée en base de donnée.
 void cosSetLocalLocation(object oPC, string sVarName, location lLoc, int iPersistant = TRUE);
-
-// DEF IN "cosa_pcmanips"
-// Fonction qui permet de récupérer une localisation stockée sur un PJ (à travers le Waypoint de donnée).
-//   > object oPC - Personnage concerné.
-//   > string sVarName - Nom de la variable contenant la valeur à récupérer.
-//   > int iPersistant - TRUE par défaut. Si la recherche est infructueuse, la fonction regarde
-//                       dans la base de donnée.
 location cosGetLocalLocation(object oPC, string sVarName, int iPersistant = TRUE);
-
-// DEF IN "cosa_pcmanips"
-// Fonction qui renvoie l'identifiant du personnage.
-//   > object oPC - Personnage concerné.
-//   o int - Identifiant.
 int cosGetPCId(object oPC);
-
-// DEF IN "cosa_pcmanips"
-// Fonction qui teste si le personnage est nouveau sur le serveur.
-//   > object oPC - Personnage concerné.
-//   o int - TRUE s'il est nouveau, FALSE sinon.
 int cosIsNewPC(object oPC);
-
-// DEF IN "cosa_pcmanips"
-// Fonction qui crée un nouvel identifiant de personnage.
-// Si nécessaire elle crée aussi un nouvel identifiant de compte, de clef CD
-// et elle lie le compte avec la clef.
-//   > object oPC - Personnage concerné.
 void cosCreatePCId(object oPC);
-
-// DEF IN "cosa_pcmanips"
-// Fonction qui renvoie l'identifiant du compte.
-//   > object oPC - Personnage concerné.
-//   o int - Identifiant.
 int cosGetAccountId(object oPC);
-
-// DEF IN "cosa_pcmanips"
-// Fonction qui teste si le compte est nouveau sur le serveur.
-//   > object oPC - Personnage concerné.
-//   o int - TRUE s'il est nouveau, FALSE sinon.
 int cosHasNewAccount(object oPC);
-
-// DEF IN "cosa_pcmanips"
-// Fonction qui crée un nouvel identifiant de compte.
-//   > object oPC - Personnage concerné.
 void cosCreateAccountId(object oPC);
-
-// DEF IN "cosa_pcmanips"
-// Fonction qui renvoie l'identifiant de la clef CD.
-//   > object oPC - Personnage concerné.
-//   o int - Identifiant.
 int cosGetPublicCDKeyId(object oPC);
-
-// DEF IN "cosa_pcmanips"
-// Fonction qui teste si la clef CD est nouvelle sur le serveur.
-//   > object oPC - Personnage concerné.
-//   o int - TRUE si elle est nouvelle, FALSE sinon.
 int cosHasNewPublicCDKey(object oPC);
-
-// DEF IN "cosa_pcmanips"
-// Fonction qui crée un nouvel identifiant de clef CD.
-//   > object oPC - Personnage concerné.
 void cosCreatePublicCDKeyId(object oPC);
-
-// DEF IN "cosa_pcmanips"
-// Fonction qui crée un lien entre la clef CD et le compte du personnage.
-//   > object oPC - Personnage concerné.
-//   o int - Identifiant.
 void cosLinkAccountToKey(object oPC);
-
-// DEF IN "cosa_pcmanips"
-// Démarre le système de gestion du positionnement du personnage.
-//   > object oPC - Personnage concerné.
 void cosStartLocationManager(object oPC);
-
-// DEF IN "cosa_pcmanips"
-// Met à jour la date de dernière connexion.
-//   > object oPC - Personnage concerné.
 void cosUpdateLastConnexion(object oPC);
-
-// TODO (Anael) : Commenter les fonctions.
-
-// DEF IN "cosa_pcmanips"
 void cosGive(object oPC, string sTag, string sResRef);
-
-// DEF IN "cosa_pcmanips"
 void cosGivePlayerTools(object oPC);
-
-/**************************************** IMPLEMENTATIONS *****************************************/
 
 int cosGetPCId(object oPC) {
     int iId = cosGetLocalInt(oPC, COS_PC_ID, FALSE);
@@ -323,10 +185,10 @@ location cosGetLocalLocation(object oPC, string sVarName, int iPersistant = TRUE
     return stdStringToLocation(cosGetLocalString(oPC, sVarName, iPersistant));
 }
 
-/* Private functions */
 int pv_is_in_starting_area(object oPC) {
 	return GetArea(oPC) == GetAreaFromLocation(GetStartingLocation());
 }
+
 void pv_save_loc_loop(object oPC) {
 	if (GetIsObjectValid(oPC) && GetIsPC(oPC)) {
 		if (!pv_is_in_starting_area(oPC) && GetIsObjectValid(GetArea(oPC))) {
@@ -336,9 +198,11 @@ void pv_save_loc_loop(object oPC) {
 		DelayCommand(fDelay, pv_save_loc_loop(oPC));
 	}
 }
+
 void pv_begin_save_loc_loop(object oPC) {
     pv_save_loc_loop(oPC);
 }
+
 void pv_move_to_start_loc(object oPC) {
     string sLoc = cosGetLocalString(oPC, COS_PC_STARTLOC);
     if (sLoc == "") {
@@ -347,6 +211,7 @@ void pv_move_to_start_loc(object oPC) {
     AssignCommand(oPC, ActionJumpToLocation(stdStringToLocation(sLoc)));
     pv_begin_save_loc_loop(oPC);
 }
+
 void pv_wait_for_start_loc(object oPC) {
     if (pv_is_in_starting_area(oPC)) {
         pv_move_to_start_loc(oPC);
